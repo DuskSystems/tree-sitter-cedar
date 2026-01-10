@@ -1,0 +1,56 @@
+{
+  "remove_trailing_whitespace_on_save": true,
+  "ensure_final_newline_on_save": true,
+
+  "file_scan_exclusions": [
+    "**/.direnv",
+    "**/.git",
+  ],
+
+  "languages": {
+    "JavaScript": {
+      "language_servers": ["vtsls"],
+      "format_on_save": "on",
+      "formatter": "language_server"
+    },
+
+    "Nix": {
+      "language_servers": ["nixd", "nil"],
+      "format_on_save": "on",
+      "formatter": "language_server"
+    }
+  },
+
+  "lsp": {
+    "vtsls": {
+      "binary": {
+        "path": "vtsls",
+        "arguments": ["--stdio"]
+      }
+    },
+
+    "nixd": {
+      "binary": {
+        "path": "nixd"
+      },
+
+      "settings": {
+        "formatting": {
+          "command": ["nixfmt", "--width=120"]
+        }
+      }
+    },
+
+    "nil": {
+      "binary": {
+        "path": "nil"
+      }
+    },
+
+    "typos": {
+      "binary": {
+        "path": "typos-lsp"
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+# Node
+node_modules
+
+# Nix
+result
+result-*
+
+# Dir Env
+.direnv
