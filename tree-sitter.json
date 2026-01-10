@@ -1,0 +1,39 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT OR Apache-2.0",
+    "description": "Cedar grammars for tree-sitter",
+    "authors": [
+      {
+        "name": "Cathal Mullan",
+        "email": "contact@cathal.dev"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/DuskSystems/tree-sitter-cedar"
+    }
+  },
+  "grammars": [
+    {
+      "name": "cedar",
+      "camelcase": "Cedar",
+      "scope": "source.cedar",
+      "path": "cedar",
+      "file-types": ["cedar"],
+      "highlights": "cedar/queries/highlights.scm",
+      "tags": "cedar/queries/tags.scm",
+      "injection-regex": "^cedar$"
+    },
+    {
+      "name": "cedarschema",
+      "camelcase": "CedarSchema",
+      "scope": "source.cedarschema",
+      "path": "cedarschema",
+      "file-types": ["cedarschema"],
+      "highlights": "cedarschema/queries/highlights.scm",
+      "tags": "cedarschema/queries/tags.scm",
+      "injection-regex": "^cedarschema$"
+    }
+  ]
+}

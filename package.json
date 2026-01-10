@@ -1,0 +1,13 @@
+{
+  "name": "@dusksystems/tree-sitter-cedar",
+  "version": "0.1.0",
+  "description": "Cedar grammars for tree-sitter",
+  "keywords": ["cedar", "grammar", "policy", "schema", "tree-sitter"],
+  "license": "MIT OR Apache-2.0",
+  "author": "Cathal Mullan <contact@cathal.dev>",
+  "repository": "https://github.com/DuskSystems/tree-sitter-cedar",
+  "files": ["cedar", "cedarschema"],
+  "devDependencies": {
+    "tree-sitter-cli": "0.25.10"
+  }
+}
