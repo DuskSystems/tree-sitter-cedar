@@ -37,12 +37,6 @@
             # Nix
             NIX_PATH = "nixpkgs=${nixpkgs.outPath}";
 
-            # C
-            CPATH = pkgs.lib.makeIncludePath [
-              pkgs.glibc.dev
-              pkgs.tree-sitter
-            ];
-
             # Screenshots
             PLAYWRIGHT_BROWSERS_PATH = pkgs.playwright-driver.browsers;
             FONTCONFIG_FILE = pkgs.makeFontsConf {
@@ -51,9 +45,6 @@
           };
 
           buildInputs = with pkgs; [
-            # C
-            clang-tools
-
             # Node
             nodejs
             vtsls
