@@ -27,9 +27,7 @@ module.exports = grammar({
     annotation: $ => seq(
       '@',
       $.identifier,
-      '(',
-      $.string,
-      ')',
+      optional(seq('(', $.string, ')')),
     ),
 
     scope: $ => seq(
@@ -259,6 +257,39 @@ module.exports = grammar({
         ),
       ),
       '::',
+      choice(
+        $.string,
+        $.entity_record,
+      ),
+    ),
+
+    entity_record: $ => seq(
+      '{',
+      optional(
+        seq(
+          $.ref_init,
+          repeat(
+            seq(
+              ',',
+              $.ref_init,
+            ),
+          ),
+          optional(','),
+        ),
+      ),
+      '}',
+    ),
+
+    ref_init: $ => seq(
+      $.identifier,
+      ':',
+      $._literal,
+    ),
+
+    _literal: $ => choice(
+      $.true,
+      $.false,
+      $.integer,
       $.string,
     ),
 
@@ -287,7 +318,7 @@ module.exports = grammar({
       ),
     ),
 
-    slot: _ => seq('?', choice('principal', 'resource')),
+    slot: $ => seq('?', $.identifier),
     variable: _ => choice('principal', 'action', 'resource', 'context'),
 
     true: _ => 'true',

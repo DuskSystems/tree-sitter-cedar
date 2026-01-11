@@ -37,7 +37,7 @@
 
 (slot
   "?" @variable.parameter
-  ["principal" "resource"] @variable.parameter)
+  (identifier) @variable.parameter)
 
 [
   "=="
