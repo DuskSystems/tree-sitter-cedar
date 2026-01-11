@@ -932,15 +932,11 @@
         }
       ]
     },
-    "_string_content": {
+    "string_content": {
       "type": "IMMEDIATE_TOKEN",
       "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "PATTERN",
-          "value": "[^\"\\\\]+"
-        }
+        "type": "PATTERN",
+        "value": "[^\"\\\\]+"
       }
     },
     "string": {
@@ -957,7 +953,7 @@
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "_string_content"
+                "name": "string_content"
               },
               {
                 "type": "SYMBOL",
@@ -967,8 +963,19 @@
           }
         },
         {
-          "type": "STRING",
-          "value": "\""
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "IMMEDIATE_TOKEN",
+              "content": {
+                "type": "STRING",
+                "value": "\""
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -986,7 +993,7 @@
             "members": [
               {
                 "type": "PATTERN",
-                "value": "[\\\\'\"nrt0]"
+                "value": "[^xu]"
               },
               {
                 "type": "PATTERN",

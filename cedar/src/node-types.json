@@ -595,6 +595,10 @@
         {
           "type": "escape_sequence",
           "named": true
+        },
+        {
+          "type": "string_content",
+          "named": true
         }
       ]
     }
@@ -791,6 +795,10 @@
   {
     "type": "resource",
     "named": false
+  },
+  {
+    "type": "string_content",
+    "named": true
   },
   {
     "type": "then",
