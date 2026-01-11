@@ -1,4 +1,4 @@
-(comment) @comment.line
+(comment) @comment
 
 (string) @string
 (escape_sequence) @string.escape
