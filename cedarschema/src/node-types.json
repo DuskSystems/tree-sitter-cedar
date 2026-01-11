@@ -1,5 +1,20 @@
 [
   {
+    "type": "action_attributes",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "attribute_entry",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "action_declaration",
     "named": true,
     "fields": {},
@@ -7,6 +22,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "action_attributes",
+          "named": true
+        },
         {
           "type": "action_name_list",
           "named": true
@@ -136,6 +155,37 @@
         },
         {
           "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "attribute_entry",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "false",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "true",
           "named": true
         }
       ]
@@ -617,6 +667,10 @@
     "named": false
   },
   {
+    "type": "attributes",
+    "named": false
+  },
+  {
     "type": "comment",
     "named": true,
     "extra": true
@@ -638,12 +692,20 @@
     "named": true
   },
   {
+    "type": "false",
+    "named": true
+  },
+  {
     "type": "identifier",
     "named": true
   },
   {
     "type": "in",
     "named": false
+  },
+  {
+    "type": "integer",
+    "named": true
   },
   {
     "type": "namespace",
@@ -664,6 +726,10 @@
   {
     "type": "tags",
     "named": false
+  },
+  {
+    "type": "true",
+    "named": true
   },
   {
     "type": "type",

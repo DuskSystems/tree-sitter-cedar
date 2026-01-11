@@ -59,8 +59,44 @@ module.exports = grammar({
       $.action_name_list,
       optional($.action_parents),
       optional($.applies_to),
+      optional($.action_attributes),
       ';',
     ),
+
+    action_attributes: $ => seq(
+      'attributes',
+      '{',
+      optional(
+        seq(
+          $.attribute_entry,
+          repeat(
+            seq(
+              ',',
+              $.attribute_entry,
+            ),
+          ),
+          optional(','),
+        ),
+      ),
+      '}',
+    ),
+
+    attribute_entry: $ => seq(
+      choice($.identifier, $.string),
+      ':',
+      $._literal,
+    ),
+
+    _literal: $ => choice(
+      $.true,
+      $.false,
+      $.integer,
+      $.string,
+    ),
+
+    true: _ => 'true',
+    false: _ => 'false',
+    integer: _ => token(/[0-9]+/),
 
     common_type_declaration: $ => seq(
       repeat($.annotation),
