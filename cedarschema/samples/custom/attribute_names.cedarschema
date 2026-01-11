@@ -1,0 +1,17 @@
+namespace Example {
+  entity User = {
+    name: String,
+    age?: Long,
+    "email-address": String,
+    active: Bool,
+  };
+
+  action read appliesTo {
+    principal: [User],
+    resource: [User],
+    context: {
+      ip_address: String,
+      timestamp?: Long,
+    }
+  };
+}
