@@ -61,6 +61,8 @@
 
 (common_type_declaration (identifier) @type.definition)
 
+(attribute_declaration (identifier) @property)
+
 (name (identifier) @type)
 
 (qualified_name (identifier) @type)
