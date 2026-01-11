@@ -10,9 +10,15 @@
   "type"
   "in"
   "appliesTo"
+  "attributes"
   "tags"
   "enum"
 ] @keyword
+
+(integer) @number
+
+(true) @boolean
+(false) @boolean
 
 [
   "principal"
@@ -62,6 +68,8 @@
 (common_type_declaration (identifier) @type.definition)
 
 (attribute_declaration (identifier) @property)
+
+(attribute_entry (identifier) @property)
 
 (name (identifier) @type)
 

@@ -1,0 +1,13 @@
+action ViewDocument in [ReadActions]
+  appliesTo {
+    principal: [User, Public],
+    resource: Document,
+    context: {
+        network: ipaddr,
+        browser: String
+    }
+  }
+  attributes {
+    version: 1,
+    group: "meta"
+  };
