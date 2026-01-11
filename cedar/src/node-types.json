@@ -490,10 +490,6 @@
       "required": false,
       "types": [
         {
-          "type": "identifier",
-          "named": true
-        },
-        {
           "type": "name",
           "named": true
         },

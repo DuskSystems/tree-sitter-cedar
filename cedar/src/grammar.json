@@ -477,17 +477,8 @@
                 "value": "has"
               },
               {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "SYMBOL",
-                    "name": "identifier"
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "string"
-                  }
-                ]
+                "type": "SYMBOL",
+                "name": "_add_expression"
               }
             ]
           }

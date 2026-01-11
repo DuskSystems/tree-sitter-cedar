@@ -98,7 +98,7 @@ module.exports = grammar({
 
     relation_expression: $ => choice(
       prec.left(3, seq($._add_expression, choice('==', '!=', '<', '<=', '>', '>='), $._add_expression)),
-      prec.left(3, seq($._add_expression, 'has', choice($.identifier, $.string))),
+      prec.left(3, seq($._add_expression, 'has', $._add_expression)),
       prec.left(3, seq($._add_expression, 'like', $.string)),
       prec.left(3, seq($._add_expression, 'is', $.name, optional(seq('in', $._add_expression)))),
       prec.left(3, seq($._add_expression, 'in', $._add_expression)),
