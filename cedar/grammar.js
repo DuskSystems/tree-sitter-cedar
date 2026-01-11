@@ -326,7 +326,7 @@ module.exports = grammar({
 
     integer: _ => token(/[0-9]+/),
 
-    string_content: _ => token.immediate(/[^"\\]+/),
+    string_content: _ => token.immediate(/[^"\\\r\n]+/),
     string: $ => seq(
       '"',
       repeat(
