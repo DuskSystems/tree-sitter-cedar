@@ -84,6 +84,21 @@
     }
   },
   {
+    "type": "entity_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "ref_init",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "entity_reference",
     "named": true,
     "fields": {},
@@ -91,6 +106,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "entity_record",
+          "named": true
+        },
         {
           "type": "identifier",
           "named": true
@@ -432,6 +451,37 @@
     }
   },
   {
+    "type": "ref_init",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "false",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "true",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "relation_expression",
     "named": true,
     "fields": {},
@@ -526,7 +576,17 @@
   {
     "type": "slot",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "string",
