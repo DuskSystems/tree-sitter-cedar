@@ -77,7 +77,7 @@ module.exports = grammar({
         $.and_expression,
         repeat(
           seq(
-            '||',
+            choice('||', '|'),
             $.and_expression,
           ),
         ),
@@ -89,7 +89,7 @@ module.exports = grammar({
         $.relation_expression,
         repeat(
           seq(
-            '&&',
+            choice('&&', '&'),
             $.relation_expression,
           ),
         ),
@@ -97,7 +97,7 @@ module.exports = grammar({
     ),
 
     relation_expression: $ => choice(
-      prec.left(3, seq($._add_expression, choice('==', '!=', '<', '<=', '>', '>='), $._add_expression)),
+      prec.left(3, seq($._add_expression, choice('==', '!=', '<', '<=', '>', '>=', '='), $._add_expression)),
       prec.left(3, seq($._add_expression, 'has', $._add_expression)),
       prec.left(3, seq($._add_expression, 'like', $.string)),
       prec.left(3, seq($._add_expression, 'is', $.name, optional(seq('in', $._add_expression)))),
