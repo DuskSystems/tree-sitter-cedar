@@ -295,23 +295,23 @@ module.exports = grammar({
       $.string,
     ),
 
-    _string_content: _ => token.immediate(prec(1, /[^"\\]+/)),
+    string_content: _ => token.immediate(/[^"\\]+/),
     string: $ => seq(
       '"',
       repeat(
         choice(
-          $._string_content,
+          $.string_content,
           $.escape_sequence,
         ),
       ),
-      '"',
+      optional(token.immediate('"')),
     ),
 
     escape_sequence: _ => token.immediate(
       seq(
         '\\',
         choice(
-          /[\\'"nrt0]/,
+          /[^xu]/,
           /x[0-9a-fA-F]{2}/,
           /u\{[0-9a-fA-F]+\}/,
         ),
