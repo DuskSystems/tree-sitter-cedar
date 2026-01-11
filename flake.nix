@@ -36,6 +36,12 @@
           env = {
             # Nix
             NIX_PATH = "nixpkgs=${nixpkgs.outPath}";
+
+            # Screenshots
+            PLAYWRIGHT_BROWSERS_PATH = pkgs.playwright-driver.browsers;
+            FONTCONFIG_FILE = pkgs.makeFontsConf {
+              fontDirectories = [ pkgs.julia-mono ];
+            };
           };
 
           buildInputs = with pkgs; [
