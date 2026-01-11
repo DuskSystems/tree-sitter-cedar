@@ -1,0 +1,81 @@
+body {
+  display: inline-block;
+  min-width: 680px;
+  background: #1e1e2e;
+  color: #cdd6f4;
+  font-family: JuliaMono;
+  font-size: 14px;
+  line-height: 1.5;
+  padding-top: 16px;
+  padding-right: 24px;
+  padding-bottom: 16px;
+  padding-left: 24px;
+  border-radius: 8px;
+}
+
+.line-number {
+  color: #6c7086;
+  opacity: 0.6;
+}
+
+.attribute {
+  color: #fab387;
+}
+
+.boolean {
+  color: #fab387;
+}
+
+.comment {
+  color: #9399b2;
+  font-style: italic;
+}
+
+.function {
+  color: #89b4fa;
+}
+
+.keyword {
+  color: #cba6f7;
+}
+
+.module {
+  color: #f9e2af;
+  font-style: italic;
+}
+
+.number {
+  color: #fab387;
+}
+
+.operator {
+  color: #89dceb;
+}
+
+.property {
+  color: #89b4fa;
+}
+
+.punctuation.bracket {
+  color: #9399b2;
+}
+
+.punctuation.delimiter {
+  color: #9399b2;
+}
+
+.punctuation.special {
+  color: #f5c2e7;
+}
+
+.string {
+  color: #a6e3a1;
+}
+
+.type {
+  color: #f9e2af;
+}
+
+.variable {
+  color: #cdd6f4;
+}

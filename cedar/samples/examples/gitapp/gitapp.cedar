@@ -1,4 +1,5 @@
-// a repo admin can pushRepo, pullRepo, forkRepo, addRepoReporter, addRepoContributor, addRepoAdmin
+// a repo admin can pushRepo, pullRepo, forkRepo,
+// addRepoReporter, addRepoContributor, addRepoAdmin
 @id("resource.admins_Repo")
 permit (
   principal,
@@ -13,7 +14,8 @@ permit (
 )
 when { principal in resource.admins };
 
-// a repo admin can addIssue, editIssue, assignIssue, closeIssue, deleteIssue
+// a repo admin can addIssue, editIssue,
+// assignIssue, closeIssue, deleteIssue
 @id("resource.admins_Issue")
 permit (
   principal,

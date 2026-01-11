@@ -8,6 +8,7 @@
   "repository": "https://github.com/DuskSystems/tree-sitter-cedar",
   "files": ["cedar", "cedarschema"],
   "devDependencies": {
+    "playwright-core": "1.57.0",
     "tree-sitter-cli": "0.25.10"
   }
 }
