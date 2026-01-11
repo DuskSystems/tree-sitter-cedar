@@ -8,12 +8,6 @@
   ],
 
   "languages": {
-    "C": {
-      "language_servers": ["clangd"],
-      "format_on_save": "on",
-      "formatter": "language_server"
-    },
-
     "JavaScript": {
       "language_servers": ["vtsls"],
       "format_on_save": "on",
@@ -28,12 +22,6 @@
   },
 
   "lsp": {
-    "clangd": {
-      "binary": {
-        "path": "clangd"
-      }
-    },
-
     "vtsls": {
       "binary": {
         "path": "vtsls",
