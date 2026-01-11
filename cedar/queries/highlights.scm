@@ -92,6 +92,8 @@
     "toMilliseconds" "toSeconds" "toMinutes" "toHours" "toDays"))
 
 (field_access (identifier) @property)
+(record_entry (identifier) @property)
+(ref_init (identifier) @property)
 
 (entity_reference (identifier) @type)
 
