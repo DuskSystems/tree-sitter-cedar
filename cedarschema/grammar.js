@@ -31,7 +31,7 @@ module.exports = grammar({
       'namespace',
       $.name,
       '{',
-      repeat($._declaration),
+      repeat(choice($.namespace, $._declaration)),
       '}',
     ),
 

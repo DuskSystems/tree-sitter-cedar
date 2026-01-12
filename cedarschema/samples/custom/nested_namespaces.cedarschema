@@ -1,0 +1,20 @@
+// https://github.com/cedar-policy/rfcs/pull/105
+
+namespace App {
+  namespace Users {
+    namespace Internal {
+      entity Employee;
+    }
+
+    entity User;
+    entity Admin in [User];
+  }
+
+  namespace Resources {
+    namespace Documents {
+      entity Report {
+        author: App::Users::Internal::Employee,
+      };
+    }
+  }
+}
