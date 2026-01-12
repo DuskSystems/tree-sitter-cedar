@@ -13,6 +13,7 @@
   "forbid"
   "when"
   "unless"
+  "template"
 ] @keyword
 
 [
@@ -46,6 +47,7 @@
   "<="
   ">"
   ">="
+  "=>"
   "&&"
   "||"
   "+"
@@ -63,6 +65,7 @@
   ","
   ";"
   "."
+  ":"
   "::"
 ] @punctuation.delimiter
 
@@ -99,6 +102,6 @@
 (ref_init (identifier) @property)
 
 (entity_reference (identifier) @type)
-
+(type_reference (name (identifier) @type))
 (scope_constraint "is" (name (identifier) @type))
 (relation_expression "is" (name (identifier) @type))

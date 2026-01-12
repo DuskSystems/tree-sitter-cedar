@@ -21,6 +21,7 @@ module.exports = grammar({
   rules: {
     policy_set: $ => repeat($.policy),
     policy: $ => seq(
+      optional($.template_declaration),
       repeat($.annotation),
       $.effect,
       '(',
@@ -29,6 +30,8 @@ module.exports = grammar({
       repeat($.condition),
       ';',
     ),
+
+    template_declaration: $ => seq('template', '(', commaSep($.slot), ')', '=>'),
 
     effect: _ => choice('permit', 'forbid'),
 
@@ -251,7 +254,9 @@ module.exports = grammar({
       repeat(seq('::', $.identifier)),
     )),
 
-    slot: $ => seq('?', $.identifier),
+    slot: $ => seq('?', $.identifier, optional(seq(':', $.type_reference))),
+    type_reference: $ => prec.left(seq($.name, optional(seq('<', commaSep1($.type_reference), '>')))),
+
     variable: _ => choice('principal', 'action', 'resource', 'context'),
 
     true: _ => 'true',
