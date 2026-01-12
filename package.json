@@ -1,6 +1,7 @@
 {
   "name": "@dusksystems/tree-sitter-cedar",
   "version": "0.1.0",
+  "private": true,
   "description": "Cedar grammars for tree-sitter",
   "keywords": ["cedar", "grammar", "policy", "schema", "tree-sitter"],
   "license": "MIT OR Apache-2.0",
