@@ -377,6 +377,10 @@
         {
           "type": "scope",
           "named": true
+        },
+        {
+          "type": "template_declaration",
+          "named": true
         }
       ]
     }
@@ -574,11 +578,15 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "type_reference",
           "named": true
         }
       ]
@@ -598,6 +606,40 @@
         },
         {
           "type": "string_content",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "template_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "slot",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "type_reference",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "type_reference",
           "named": true
         }
       ]
@@ -712,6 +754,10 @@
     "named": false
   },
   {
+    "type": "=>",
+    "named": false
+  },
+  {
     "type": ">",
     "named": false
   },
@@ -807,6 +853,10 @@
   {
     "type": "string_content",
     "named": true
+  },
+  {
+    "type": "template",
+    "named": false
   },
   {
     "type": "then",
