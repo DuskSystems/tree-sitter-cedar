@@ -323,21 +323,6 @@
     }
   },
   {
-    "type": "entity_type",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "name",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "enum_type",
     "named": true,
     "fields": {},
@@ -580,7 +565,7 @@
       "required": false,
       "types": [
         {
-          "type": "entity_type",
+          "type": "name",
           "named": true
         }
       ]

@@ -1,6 +1,14 @@
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
+function commaSep1(rule) {
+  return seq(rule, repeat(seq(',', rule)));
+}
+
+function commaSep(rule) {
+  return optional(commaSep1(rule));
+}
+
 module.exports = grammar({
   name: 'cedar',
 
@@ -55,8 +63,7 @@ module.exports = grammar({
       '}',
     ),
 
-    expression: $ => $._expression,
-    _expression: $ => choice(
+    expression: $ => choice(
       $.if_expression,
       $.or_expression,
     ),
@@ -153,17 +160,7 @@ module.exports = grammar({
       '.',
       $.identifier,
       '(',
-      optional(
-        seq(
-          $.expression,
-          repeat(
-            seq(
-              ',',
-              $.expression,
-            ),
-          ),
-        ),
-      ),
+      commaSep($.expression),
       ')',
     ),
 
@@ -188,17 +185,7 @@ module.exports = grammar({
       seq(
         $.name,
         '(',
-        optional(
-          seq(
-            $.expression,
-            repeat(
-              seq(
-                ',',
-                $.expression,
-              ),
-            ),
-          ),
-        ),
+        commaSep($.expression),
         ')',
       ),
     ),
@@ -207,76 +194,35 @@ module.exports = grammar({
 
     list_expression: $ => seq(
       '[',
-      optional(
-        seq(
-          $.expression,
-          repeat(
-            seq(
-              ',',
-              $.expression,
-            ),
-          ),
-          optional(','),
-        ),
-      ),
+      commaSep($.expression),
+      optional(','),
       ']',
     ),
 
     record_expression: $ => seq(
       '{',
-      optional(
-        seq(
-          $.record_entry,
-          repeat(
-            seq(
-              ',',
-              $.record_entry,
-            ),
-          ),
-          optional(','),
-        ),
-      ),
+      commaSep($.record_entry),
+      optional(','),
       '}',
     ),
 
     record_entry: $ => seq(
-      choice(
-        $.identifier,
-        $.string,
-      ),
+      choice($.identifier, $.string),
       ':',
       $.expression,
     ),
 
     entity_reference: $ => seq(
       $.identifier,
-      repeat(
-        seq(
-          '::',
-          $.identifier,
-        ),
-      ),
+      repeat(seq('::', $.identifier)),
       '::',
-      choice(
-        $.string,
-        $.entity_record,
-      ),
+      choice($.string, $.entity_record),
     ),
 
     entity_record: $ => seq(
       '{',
-      optional(
-        seq(
-          $.ref_init,
-          repeat(
-            seq(
-              ',',
-              $.ref_init,
-            ),
-          ),
-          optional(','),
-        ),
-      ),
+      commaSep($.ref_init),
+      optional(','),
       '}',
     ),
 
@@ -295,28 +241,15 @@ module.exports = grammar({
 
     entity_list: $ => seq(
       '[',
-      $.entity_reference,
-      repeat(
-        seq(
-          ',',
-          $.entity_reference,
-        ),
-      ),
+      commaSep1($.entity_reference),
       optional(','),
       ']',
     ),
 
-    name: $ => prec.right(
-      seq(
-        $.identifier,
-        repeat(
-          seq(
-            '::',
-            $.identifier,
-          ),
-        ),
-      ),
-    ),
+    name: $ => prec.right(seq(
+      $.identifier,
+      repeat(seq('::', $.identifier)),
+    )),
 
     slot: $ => seq('?', $.identifier),
     variable: _ => choice('principal', 'action', 'resource', 'context'),

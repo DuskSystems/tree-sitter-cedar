@@ -1,6 +1,14 @@
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
+function commaSep1(rule) {
+  return seq(rule, repeat(seq(',', rule)));
+}
+
+function commaSep(rule) {
+  return optional(commaSep1(rule));
+}
+
 module.exports = grammar({
   name: 'cedarschema',
 
@@ -40,12 +48,7 @@ module.exports = grammar({
       choice(
         seq(
           optional($.entity_parents),
-          optional(
-            seq(
-              optional('='),
-              $.record_type,
-            ),
-          ),
+          optional(seq(optional('='), $.record_type)),
           optional($.entity_tags),
           ';',
         ),
@@ -66,18 +69,8 @@ module.exports = grammar({
     action_attributes: $ => seq(
       'attributes',
       '{',
-      optional(
-        seq(
-          $.attribute_entry,
-          repeat(
-            seq(
-              ',',
-              $.attribute_entry,
-            ),
-          ),
-          optional(','),
-        ),
-      ),
+      commaSep($.attribute_entry),
+      optional(','),
       '}',
     ),
 
@@ -120,13 +113,7 @@ module.exports = grammar({
     enum_type: $ => seq(
       'enum',
       '[',
-      $.string,
-      repeat(
-        seq(
-          ',',
-          $.string,
-        ),
-      ),
+      commaSep1($.string),
       optional(','),
       ']',
       ';',
@@ -137,29 +124,17 @@ module.exports = grammar({
       $.qualified_name_list,
     ),
 
+    _applies_to_member: $ => choice(
+      $.principal_types,
+      $.resource_types,
+      $.context_type,
+    ),
+
     applies_to: $ => seq(
       'appliesTo',
       '{',
-      optional(
-        seq(
-          choice(
-            $.principal_types,
-            $.resource_types,
-            $.context_type,
-          ),
-          repeat(
-            seq(
-              ',',
-              choice(
-                $.principal_types,
-                $.resource_types,
-                $.context_type,
-              ),
-            ),
-          ),
-          optional(','),
-        ),
-      ),
+      commaSep($._applies_to_member),
+      optional(','),
       '}',
     ),
 
@@ -206,18 +181,8 @@ module.exports = grammar({
 
     record_type: $ => seq(
       '{',
-      optional(
-        seq(
-          $.attribute_declaration,
-          repeat(
-            seq(
-              ',',
-              $.attribute_declaration,
-            ),
-          ),
-          optional(','),
-        ),
-      ),
+      commaSep($.attribute_declaration),
+      optional(','),
       '}',
     ),
 
@@ -232,99 +197,31 @@ module.exports = grammar({
     annotation: $ => seq(
       '@',
       $.identifier,
-      optional(
-        seq(
-          '(',
-          $.string,
-          ')',
-        ),
-      ),
+      optional(seq('(', $.string, ')')),
     ),
 
-    entity_type: $ => $.name,
-
     type_list: $ => choice(
-      seq(
-        '[',
-        optional(
-          seq(
-            $.entity_type,
-            repeat(
-              seq(
-                ',',
-                $.entity_type,
-              ),
-            ),
-            optional(','),
-          ),
-        ),
-        ']',
-      ),
-      $.entity_type,
+      seq('[', commaSep($.name), optional(','), ']'),
+      $.name,
     ),
 
     qualified_name: $ => choice(
-      seq(
-        $.identifier,
-        repeat(
-          seq(
-            '::',
-            $.identifier,
-          ),
-        ),
-        '::',
-        $.string,
-      ),
+      seq($.identifier, repeat(seq('::', $.identifier)), '::', $.string),
       $._attribute_name,
     ),
 
     qualified_name_list: $ => choice(
-      seq(
-        '[',
-        $.qualified_name,
-        repeat(
-          seq(
-            ',',
-            $.qualified_name,
-          ),
-        ),
-        optional(','),
-        ']',
-      ),
+      seq('[', commaSep1($.qualified_name), optional(','), ']'),
       $.qualified_name,
     ),
 
-    name: $ => prec.right(
-      seq(
-        $.identifier,
-        repeat(
-          seq(
-            '::',
-            $.identifier,
-          ),
-        ),
-      ),
-    ),
-
-    identifier_list: $ => seq(
+    name: $ => prec.right(seq(
       $.identifier,
-      repeat(
-        seq(
-          ',',
-          $.identifier,
-        ),
-      ),
-    ),
+      repeat(seq('::', $.identifier)),
+    )),
 
-    action_name_list: $ => seq(
-      $._attribute_name,
-      repeat(
-        seq(
-          ',',
-          $._attribute_name,
-        ),
-      ),
-    ),
+    identifier_list: $ => commaSep1($.identifier),
+    action_name_list: $ => commaSep1($._attribute_name),
 
     _attribute_name: $ => choice(
       $.identifier,
