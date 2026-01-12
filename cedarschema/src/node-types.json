@@ -394,6 +394,10 @@
         {
           "type": "name",
           "named": true
+        },
+        {
+          "type": "namespace",
+          "named": true
         }
       ]
     }
