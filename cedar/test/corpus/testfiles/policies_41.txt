@@ -1,0 +1,49 @@
+================================================================================
+policies_41
+================================================================================
+
+// JuniorModerators can delete forum posts
+permit(
+  principal,
+  action == ForumOp::"deletePost",
+  resource == Forum::"nature_photography"
+)
+when {
+  principal in resource.roles["JuniorModerator"]
+};
+
+--------------------------------------------------------------------------------
+(policy_set
+  (comment)
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (resource
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content))))))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)))
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))
+                  (index_access
+                    (string
+                      (string_content))))))))))))

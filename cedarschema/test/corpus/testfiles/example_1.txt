@@ -1,0 +1,43 @@
+================================================================================
+example_1
+================================================================================
+
+entity TopLevel = {
+  obj: {
+    String: String,
+    entity: String,
+    namespace: String,
+    "nested-With-Dash": String,
+    nestedStr: String,
+    type: String
+  }
+};
+
+--------------------------------------------------------------------------------
+(schema
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (record_type
+      (attribute_declaration
+        (identifier)
+        (record_type
+          (attribute_declaration
+            (identifier)
+            (primitive_type))
+          (attribute_declaration
+            (identifier)
+            (primitive_type))
+          (attribute_declaration
+            (identifier)
+            (primitive_type))
+          (attribute_declaration
+            (string
+              (string_content))
+            (primitive_type))
+          (attribute_declaration
+            (identifier)
+            (primitive_type))
+          (attribute_declaration
+            (identifier)
+            (primitive_type)))))))

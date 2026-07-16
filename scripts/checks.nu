@@ -66,4 +66,11 @@ def tree-sitter-check []: nothing -> nothing {
         print $dirty
         exit 1
     }
+
+    for grammar in $grammars {
+        do {
+            cd $grammar
+            tree-sitter test
+        }
+    }
 }

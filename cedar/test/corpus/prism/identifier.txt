@@ -1,0 +1,125 @@
+================================================================================
+identifier
+================================================================================
+
+// poorly formed: This identifier is reserved and cannot be used: XX
+permit (principal, action, resource)
+when { resource.ip == ip("127.0.0.1") }
+when { resource.decimal == decimal("0.1234") }
+when { resource.if.in.has.then.else.like.is.true.false }
+when { resource.principal.resource.action.context }
+when { resource.permit.forbid.when.unless };
+
+--------------------------------------------------------------------------------
+(policy_set
+  (comment)
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action)
+      (resource))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (extension_call
+                    (name
+                      (identifier))
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (string
+                                  (string_content))))))))))))))))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (extension_call
+                    (name
+                      (identifier))
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (string
+                                  (string_content))))))))))))))))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))
+                  (field_access
+                    (identifier))
+                  (field_access
+                    (identifier))
+                  (field_access
+                    (identifier))
+                  (field_access
+                    (identifier))
+                  (field_access
+                    (identifier))
+                  (field_access
+                    (identifier))
+                  (field_access
+                    (identifier))
+                  (field_access
+                    (identifier)))))))))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))
+                  (field_access
+                    (identifier))
+                  (field_access
+                    (identifier))
+                  (field_access
+                    (identifier)))))))))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))
+                  (field_access
+                    (identifier))
+                  (field_access
+                    (identifier))
+                  (field_access
+                    (identifier)))))))))))

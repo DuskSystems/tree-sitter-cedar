@@ -1,0 +1,67 @@
+================================================================================
+policies_8
+================================================================================
+
+// Solution #2: Using conditions in a single policy.
+// Note - depending on the implementation of a backend datastore,
+// shifting rules into the conditions may result in changes to
+// performance or search/lookup capabilities, as the condition clauses
+// can be less amenable to indexing.
+permit(
+  principal == User::"alice",
+  action,
+  resource in Album::"jane_vacation"
+)
+when {
+  action in PhotoflashRole::"viewer" ||
+  action == PhotoOp::"edit"
+};
+
+--------------------------------------------------------------------------------
+(policy_set
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (policy
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (action)
+      (resource
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content))))))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)))
+              (unary_expression
+                (member_expression
+                  (entity_reference
+                    (identifier)
+                    (string
+                      (string_content)))))))
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)))
+              (unary_expression
+                (member_expression
+                  (entity_reference
+                    (identifier)
+                    (string
+                      (string_content))))))))))))

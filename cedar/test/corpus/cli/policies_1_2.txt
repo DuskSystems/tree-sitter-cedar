@@ -1,0 +1,35 @@
+================================================================================
+policies_1_2
+================================================================================
+
+// but Tim is disallowed from viewing the photo
+@id("disallow tim policy")
+forbid (
+  principal == User::"tim",
+  action,
+  resource == Photo::"VacationPhoto94.jpg"
+);
+
+--------------------------------------------------------------------------------
+(policy_set
+  (comment)
+  (policy
+    (annotation
+      (identifier)
+      (string
+        (string_content)))
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (action)
+      (resource
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content))))))))

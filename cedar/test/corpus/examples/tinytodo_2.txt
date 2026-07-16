@@ -1,0 +1,36 @@
+================================================================================
+tinytodo_2
+================================================================================
+
+// Policy 1: A User can perform any action on a List they own
+permit (principal, action, resource)
+when { resource is List && resource.owner == principal };
+
+--------------------------------------------------------------------------------
+(policy_set
+  (comment)
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action)
+      (resource))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)))
+              (name
+                (identifier)))
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (variable))))))))))

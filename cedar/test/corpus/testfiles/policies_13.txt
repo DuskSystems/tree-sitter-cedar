@@ -1,0 +1,18 @@
+================================================================================
+policies_13
+:error
+================================================================================
+
+permit(
+  principal:User,
+  action in [AlbumOp::"listPhotos", PhotoOp::"view"],
+  resource in Album::"device_prototypes"
+)
+when {
+  principal.department == "HardwareEngineering" &&
+  principal.jobLevel >= 10 &&
+  (context.time.now - principal.hireDate).getDays() >= 365
+};
+
+--------------------------------------------------------------------------------
+(ERROR)

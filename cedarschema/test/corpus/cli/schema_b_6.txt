@@ -1,0 +1,23 @@
+================================================================================
+schema_b_6
+================================================================================
+
+entity Album in [Account] { account: Account, private: Bool };
+
+--------------------------------------------------------------------------------
+(schema
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (entity_parents
+      (type_list
+        (name
+          (identifier))))
+    (record_type
+      (attribute_declaration
+        (identifier)
+        (name
+          (identifier)))
+      (attribute_declaration
+        (identifier)
+        (primitive_type)))))

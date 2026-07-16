@@ -1,0 +1,170 @@
+================================================================================
+contains
+================================================================================
+
+// contains, containsAll, containsAny
+// see https://docs.cedarpolicy.com/policies/syntax-operators.html
+permit (principal, action, resource)
+when
+{
+  [1, -22, 34].contains(1) &&
+  [1, -22, 34].containsAll([-22, 1]) &&
+  [1, -22].containsAny([1, -22, 34]) &&
+  [].isEmpty()
+};
+
+--------------------------------------------------------------------------------
+(policy_set
+  (comment)
+  (comment)
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action)
+      (resource))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (list_expression
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (integer)))))))
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (unary_expression
+                                (member_expression
+                                  (integer))))))))
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (integer))))))))
+                  (method_call
+                    (identifier)
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (integer)))))))))))
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (list_expression
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (integer)))))))
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (unary_expression
+                                (member_expression
+                                  (integer))))))))
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (integer))))))))
+                  (method_call
+                    (identifier)
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (list_expression
+                                  (expression
+                                    (or_expression
+                                      (and_expression
+                                        (relation_expression
+                                          (unary_expression
+                                            (unary_expression
+                                              (member_expression
+                                                (integer))))))))
+                                  (expression
+                                    (or_expression
+                                      (and_expression
+                                        (relation_expression
+                                          (unary_expression
+                                            (member_expression
+                                              (integer))))))))))))))))))
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (list_expression
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (integer)))))))
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (unary_expression
+                                (member_expression
+                                  (integer)))))))))
+                  (method_call
+                    (identifier)
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (list_expression
+                                  (expression
+                                    (or_expression
+                                      (and_expression
+                                        (relation_expression
+                                          (unary_expression
+                                            (member_expression
+                                              (integer)))))))
+                                  (expression
+                                    (or_expression
+                                      (and_expression
+                                        (relation_expression
+                                          (unary_expression
+                                            (unary_expression
+                                              (member_expression
+                                                (integer))))))))
+                                  (expression
+                                    (or_expression
+                                      (and_expression
+                                        (relation_expression
+                                          (unary_expression
+                                            (member_expression
+                                              (integer))))))))))))))))))
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (list_expression)
+                  (method_call
+                    (identifier)))))))))))

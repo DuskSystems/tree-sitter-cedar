@@ -1,0 +1,27 @@
+================================================================================
+schema_a_9
+================================================================================
+
+action view, delete, edit
+  appliesTo { principal: [User], resource: [Photo, Video, Album] };
+
+--------------------------------------------------------------------------------
+(schema
+  (action_declaration
+    (action_name_list
+      (identifier)
+      (identifier)
+      (identifier))
+    (applies_to
+      (principal_types
+        (type_list
+          (name
+            (identifier))))
+      (resource_types
+        (type_list
+          (name
+            (identifier))
+          (name
+            (identifier))
+          (name
+            (identifier)))))))

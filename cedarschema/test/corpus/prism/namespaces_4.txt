@@ -1,0 +1,85 @@
+================================================================================
+namespaces_4
+================================================================================
+
+// numeronym namespace (like k8s or i18n)
+namespace k8s {
+  entity User in Group;
+  entity Group;
+  entity Resource {
+    metadata?: String
+  };
+  action "list" appliesTo {
+    principal: [k8s::User],
+    resource: [k8s::Resource],
+    context: {}
+  };  
+  action "update" appliesTo {
+    principal: [k8s::User],
+    resource: [k8s::Resource],
+    context: {
+      oldObject?: String
+    }
+  };
+}
+
+--------------------------------------------------------------------------------
+(schema
+  (comment)
+  (namespace
+    (name
+      (identifier))
+    (entity_declaration
+      (identifier_list
+        (identifier))
+      (entity_parents
+        (type_list
+          (name
+            (identifier)))))
+    (entity_declaration
+      (identifier_list
+        (identifier)))
+    (entity_declaration
+      (identifier_list
+        (identifier))
+      (record_type
+        (attribute_declaration
+          (identifier)
+          (primitive_type))))
+    (action_declaration
+      (action_name_list
+        (string
+          (string_content)))
+      (applies_to
+        (principal_types
+          (type_list
+            (name
+              (identifier)
+              (identifier))))
+        (resource_types
+          (type_list
+            (name
+              (identifier)
+              (identifier))))
+        (context_type
+          (record_type))))
+    (action_declaration
+      (action_name_list
+        (string
+          (string_content)))
+      (applies_to
+        (principal_types
+          (type_list
+            (name
+              (identifier)
+              (identifier))))
+        (resource_types
+          (type_list
+            (name
+              (identifier)
+              (identifier))))
+        (context_type
+          (record_type
+            (attribute_declaration
+              (identifier)
+              (primitive_type))))))))

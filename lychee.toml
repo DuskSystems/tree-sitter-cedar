@@ -11,3 +11,7 @@ exclude_loopback = true
 exclude_private = true
 
 exclude = []
+exclude_path = [
+  "cedar/test",
+  "cedarschema/test",
+]

@@ -1,0 +1,42 @@
+================================================================================
+policies_3
+================================================================================
+
+// Everyone can view the photos in the "jane_vacation" album
+// (and list the photos in the album)
+@id("jane_vacation public")
+permit (
+  principal,
+  action in [Action::"view", Action::"listPhotos"],
+  resource in Album::"jane_vacation"
+);
+
+--------------------------------------------------------------------------------
+(policy_set
+  (comment)
+  (comment)
+  (policy
+    (annotation
+      (identifier)
+      (string
+        (string_content)))
+    (effect)
+    (scope
+      (principal)
+      (action
+        (scope_constraint
+          (entity_list
+            (entity_reference
+              (identifier)
+              (string
+                (string_content)))
+            (entity_reference
+              (identifier)
+              (string
+                (string_content))))))
+      (resource
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content))))))))

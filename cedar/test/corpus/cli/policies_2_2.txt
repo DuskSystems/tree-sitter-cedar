@@ -1,0 +1,40 @@
+================================================================================
+policies_2_2
+================================================================================
+
+// Bob can only view things in the "jane_vacation" album
+@id("bob's view policy")
+permit (
+  principal == User::"bob",
+  action == Action::"view",
+  resource in Album::"jane_vacation"
+);
+
+--------------------------------------------------------------------------------
+(policy_set
+  (comment)
+  (policy
+    (annotation
+      (identifier)
+      (string
+        (string_content)))
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (action
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (resource
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content))))))))

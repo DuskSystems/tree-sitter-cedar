@@ -1,0 +1,28 @@
+================================================================================
+tags_n_roles_7
+================================================================================
+
+action DeleteWorkspace in ["Role-A Actions"] appliesTo {
+  principal: User,
+  resource: Workspace,
+};
+
+--------------------------------------------------------------------------------
+(schema
+  (action_declaration
+    (action_name_list
+      (identifier))
+    (action_parents
+      (qualified_name_list
+        (qualified_name
+          (string
+            (string_content)))))
+    (applies_to
+      (principal_types
+        (type_list
+          (name
+            (identifier))))
+      (resource_types
+        (type_list
+          (name
+            (identifier)))))))

@@ -1,0 +1,20 @@
+================================================================================
+tags_1
+================================================================================
+
+entity User = {
+  jobLevel: Long,
+} tags Set<String>;
+
+--------------------------------------------------------------------------------
+(schema
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (record_type
+      (attribute_declaration
+        (identifier)
+        (primitive_type)))
+    (entity_tags
+      (set_type
+        (primitive_type)))))

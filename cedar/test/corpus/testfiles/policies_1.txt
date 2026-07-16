@@ -1,0 +1,41 @@
+================================================================================
+policies_1
+================================================================================
+
+// These are sample policies for testing the Cedar parser.
+
+@test_annotation("This is the annotation")
+permit(
+  principal == User::"alice",
+  action == PhotoOp::"view",
+  resource == Photo::"VacationPhoto94.jpg"
+);
+
+--------------------------------------------------------------------------------
+(policy_set
+  (comment)
+  (policy
+    (annotation
+      (identifier)
+      (string
+        (string_content)))
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (action
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (resource
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content))))))))

@@ -1,0 +1,40 @@
+================================================================================
+policies_1_1
+================================================================================
+
+// Everyone in the group UserGroup::"jane_friends" can view this specific photo
+@id("jane's friends view-permission policy")
+permit (
+  principal in UserGroup::"jane_friends",
+  action == Action::"view",
+  resource == Photo::"VacationPhoto94.jpg"
+);
+
+--------------------------------------------------------------------------------
+(policy_set
+  (comment)
+  (policy
+    (annotation
+      (identifier)
+      (string
+        (string_content)))
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (action
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (resource
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content))))))))

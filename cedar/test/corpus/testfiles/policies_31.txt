@@ -1,0 +1,18 @@
+================================================================================
+policies_31
+:error
+================================================================================
+
+permit(
+  principal == User::"alice",
+  action == TableOp::"read",
+  resource == Table::"customers"
+)
+advice {
+  "[hash(EmailAddress),
+    filter(SubscriptionLevel, \"Enterprise\"),
+    filter(Country, \"US\"]"
+};
+
+--------------------------------------------------------------------------------
+(ERROR)

@@ -1,0 +1,74 @@
+================================================================================
+keywords
+================================================================================
+
+// https://docs.cedarpolicy.com/schema/human-readable-schema-grammar.html
+namespace NS {
+  type T = {"type": __cedar::String, namespace: String};
+  entity E in E = {action: String};
+  entity R in [R] = {entity: E};
+  action "a" appliesTo {
+    principal: [NS::E],
+    resource: [NS::R],
+    context: {}
+  };
+}
+
+--------------------------------------------------------------------------------
+(schema
+  (comment)
+  (namespace
+    (name
+      (identifier))
+    (common_type_declaration
+      (identifier)
+      (record_type
+        (attribute_declaration
+          (string
+            (string_content))
+          (name
+            (identifier)
+            (identifier)))
+        (attribute_declaration
+          (identifier)
+          (primitive_type))))
+    (entity_declaration
+      (identifier_list
+        (identifier))
+      (entity_parents
+        (type_list
+          (name
+            (identifier))))
+      (record_type
+        (attribute_declaration
+          (identifier)
+          (primitive_type))))
+    (entity_declaration
+      (identifier_list
+        (identifier))
+      (entity_parents
+        (type_list
+          (name
+            (identifier))))
+      (record_type
+        (attribute_declaration
+          (identifier)
+          (name
+            (identifier)))))
+    (action_declaration
+      (action_name_list
+        (string
+          (string_content)))
+      (applies_to
+        (principal_types
+          (type_list
+            (name
+              (identifier)
+              (identifier))))
+        (resource_types
+          (type_list
+            (name
+              (identifier)
+              (identifier))))
+        (context_type
+          (record_type))))))

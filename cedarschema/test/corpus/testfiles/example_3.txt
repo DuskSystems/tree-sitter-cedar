@@ -1,0 +1,87 @@
+================================================================================
+example_3
+================================================================================
+
+namespace Ns {
+  type Bar = {
+    obj: {
+      nestedLong: Long,
+      nestedObj: {
+        nestedStr: String
+      }
+    },
+    setWithAnonymousType: Set<{
+      key: String,
+      val: String
+    }>
+  };
+
+  entity Resource = {
+    bar: Bar
+  };
+
+  entity User;
+
+  action "get" appliesTo {
+    principal: [User],
+    resource: [Resource],
+    context: {}
+  };
+}
+
+--------------------------------------------------------------------------------
+(schema
+  (namespace
+    (name
+      (identifier))
+    (common_type_declaration
+      (identifier)
+      (record_type
+        (attribute_declaration
+          (identifier)
+          (record_type
+            (attribute_declaration
+              (identifier)
+              (primitive_type))
+            (attribute_declaration
+              (identifier)
+              (record_type
+                (attribute_declaration
+                  (identifier)
+                  (primitive_type))))))
+        (attribute_declaration
+          (identifier)
+          (set_type
+            (record_type
+              (attribute_declaration
+                (identifier)
+                (primitive_type))
+              (attribute_declaration
+                (identifier)
+                (primitive_type)))))))
+    (entity_declaration
+      (identifier_list
+        (identifier))
+      (record_type
+        (attribute_declaration
+          (identifier)
+          (name
+            (identifier)))))
+    (entity_declaration
+      (identifier_list
+        (identifier)))
+    (action_declaration
+      (action_name_list
+        (string
+          (string_content)))
+      (applies_to
+        (principal_types
+          (type_list
+            (name
+              (identifier))))
+        (resource_types
+          (type_list
+            (name
+              (identifier))))
+        (context_type
+          (record_type))))))

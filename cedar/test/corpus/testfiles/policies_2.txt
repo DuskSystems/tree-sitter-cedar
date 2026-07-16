@@ -1,0 +1,43 @@
+================================================================================
+policies_2
+================================================================================
+
+@anno1("first annotation")
+@anno2("second annotation")
+permit(
+  principal in Group::"jane_friends",
+  action == PhotoOp::"view",
+  resource == Photo::"VacationPhoto94.jpg"
+);
+
+--------------------------------------------------------------------------------
+(policy_set
+  (policy
+    (annotation
+      (identifier)
+      (string
+        (string_content)))
+    (annotation
+      (identifier)
+      (string
+        (string_content)))
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (action
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (resource
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content))))))))
