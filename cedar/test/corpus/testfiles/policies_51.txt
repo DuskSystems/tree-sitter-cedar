@@ -1,0 +1,48 @@
+================================================================================
+policies_51
+================================================================================
+
+permit (
+  principal == IAM::Principal::"arn:aws:iam::12345678901:user/Dave",
+  action in [S3::Action::"CreateBucket",
+             S3::Action::"ListAllMyBuckets",
+             S3::Action::"GetBucketLocation"],
+  resource in Account::"12345678901"
+);
+
+--------------------------------------------------------------------------------
+(policy_set
+  (policy
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (identifier)
+            (string
+              (string_content)))))
+      (action
+        (scope_constraint
+          (entity_list
+            (entity_reference
+              (identifier)
+              (identifier)
+              (string
+                (string_content)))
+            (entity_reference
+              (identifier)
+              (identifier)
+              (string
+                (string_content)))
+            (entity_reference
+              (identifier)
+              (identifier)
+              (string
+                (string_content))))))
+      (resource
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content))))))))

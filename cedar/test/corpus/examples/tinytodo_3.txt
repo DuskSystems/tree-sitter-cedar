@@ -1,0 +1,36 @@
+================================================================================
+tinytodo_3
+================================================================================
+
+// Policy 2: Users who are members of [?principal] are readers of [?resource]
+@id("reader-template")
+permit (
+    principal in ?principal,
+    action == Action::"GetList",
+    resource == ?resource
+);
+
+--------------------------------------------------------------------------------
+(policy_set
+  (comment)
+  (policy
+    (annotation
+      (identifier)
+      (string
+        (string_content)))
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (slot
+            (identifier))))
+      (action
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (resource
+        (scope_constraint
+          (slot
+            (identifier)))))))

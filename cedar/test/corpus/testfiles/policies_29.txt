@@ -1,0 +1,21 @@
+================================================================================
+policies_29
+:error
+================================================================================
+
+// If no MFA and after Jan 1, block with an error message
+forbid (
+  principal,
+  action,
+  resource in Account::"jane"
+)
+when {
+  context.time.now >= timestamp("2022-01-01T00:00:00.000-05:00") &&
+  !context.authentication.usedMFA
+}
+advice {
+  "MFA is required starting January 1"
+};
+
+--------------------------------------------------------------------------------
+(ERROR)

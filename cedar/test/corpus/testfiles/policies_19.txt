@@ -1,0 +1,59 @@
+================================================================================
+policies_19
+================================================================================
+
+permit(
+  principal,
+  action,
+  resource
+)
+when {
+  principal == resource.owner ||
+  (resource has admins && principal in resource.admins)
+};
+
+--------------------------------------------------------------------------------
+(policy_set
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action)
+      (resource))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)))
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))))))
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (parenthesized_expression
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (variable)))
+                            (unary_expression
+                              (member_expression
+                                (identifier))))
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (variable)))
+                            (unary_expression
+                              (member_expression
+                                (variable)
+                                (field_access
+                                  (identifier))))))))))))))))))

@@ -1,0 +1,31 @@
+================================================================================
+policies_48
+================================================================================
+
+permit (
+  principal == IAM::User::{awsAccountId: "123456789012", userName: "alice"},
+  action,
+  resource
+);
+
+--------------------------------------------------------------------------------
+(policy_set
+  (policy
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (identifier)
+            (entity_record
+              (ref_init
+                (identifier)
+                (string
+                  (string_content)))
+              (ref_init
+                (identifier)
+                (string
+                  (string_content)))))))
+      (action)
+      (resource))))

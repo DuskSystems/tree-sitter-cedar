@@ -1,0 +1,64 @@
+================================================================================
+tags_n_roles_2
+================================================================================
+
+entity User in [Role] {
+  allowedTagsForRole: {
+    "Role-A"?: {
+        production_status?: Set<String>,
+        country?: Set<String>,
+        stage?: Set<String>,
+    },
+    "Role-B"?: {
+        production_status?: Set<String>,
+        country?: Set<String>,
+        stage?: Set<String>,
+    },
+  },
+};
+
+--------------------------------------------------------------------------------
+(schema
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (entity_parents
+      (type_list
+        (name
+          (identifier))))
+    (record_type
+      (attribute_declaration
+        (identifier)
+        (record_type
+          (attribute_declaration
+            (string
+              (string_content))
+            (record_type
+              (attribute_declaration
+                (identifier)
+                (set_type
+                  (primitive_type)))
+              (attribute_declaration
+                (identifier)
+                (set_type
+                  (primitive_type)))
+              (attribute_declaration
+                (identifier)
+                (set_type
+                  (primitive_type)))))
+          (attribute_declaration
+            (string
+              (string_content))
+            (record_type
+              (attribute_declaration
+                (identifier)
+                (set_type
+                  (primitive_type)))
+              (attribute_declaration
+                (identifier)
+                (set_type
+                  (primitive_type)))
+              (attribute_declaration
+                (identifier)
+                (set_type
+                  (primitive_type))))))))))

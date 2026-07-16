@@ -1,0 +1,31 @@
+================================================================================
+policies_47
+================================================================================
+
+permit (
+  principal,
+  action,
+  resource == Album::{uid: "772358b3-de11-42dc-8681-f0a32e34aab8",
+                      displayName: "vacation_photos"}
+);
+
+--------------------------------------------------------------------------------
+(policy_set
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action)
+      (resource
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (entity_record
+              (ref_init
+                (identifier)
+                (string
+                  (string_content)))
+              (ref_init
+                (identifier)
+                (string
+                  (string_content))))))))))

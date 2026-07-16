@@ -1,0 +1,93 @@
+================================================================================
+if_then_else
+================================================================================
+
+permit (
+  principal,
+  action == NameSpace::Action::"readObjects",
+  resource in NameSpace::Container::"container"
+)
+when { resource.tenant == principal.custom.tenant_id }
+when
+{
+  if
+    resource has owner
+  then
+    resource.owner == principal.custom.user_id
+  else
+    true
+};
+
+--------------------------------------------------------------------------------
+(policy_set
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (identifier)
+            (string
+              (string_content)))))
+      (resource
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (identifier)
+            (string
+              (string_content))))))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))
+                  (field_access
+                    (identifier)))))))))
+    (condition
+      (expression
+        (if_expression
+          (expression
+            (or_expression
+              (and_expression
+                (relation_expression
+                  (unary_expression
+                    (member_expression
+                      (variable)))
+                  (unary_expression
+                    (member_expression
+                      (identifier)))))))
+          (expression
+            (or_expression
+              (and_expression
+                (relation_expression
+                  (unary_expression
+                    (member_expression
+                      (variable)
+                      (field_access
+                        (identifier))))
+                  (unary_expression
+                    (member_expression
+                      (variable)
+                      (field_access
+                        (identifier))
+                      (field_access
+                        (identifier))))))))
+          (expression
+            (or_expression
+              (and_expression
+                (relation_expression
+                  (unary_expression
+                    (member_expression
+                      (true))))))))))))

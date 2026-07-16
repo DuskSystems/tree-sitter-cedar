@@ -1,0 +1,54 @@
+================================================================================
+policies_42
+================================================================================
+
+// SeniorModerators can delete forum posts and update the forum configuration
+permit(
+  principal,
+  action in [ForumOp::"deletePost", ForumOp::"updateConfiguration"],
+  resource == Forum::"nature_photography"
+)
+when {
+  principal in resource.roles["SeniorModerator"]
+};
+
+--------------------------------------------------------------------------------
+(policy_set
+  (comment)
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action
+        (scope_constraint
+          (entity_list
+            (entity_reference
+              (identifier)
+              (string
+                (string_content)))
+            (entity_reference
+              (identifier)
+              (string
+                (string_content))))))
+      (resource
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content))))))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)))
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))
+                  (index_access
+                    (string
+                      (string_content))))))))))))

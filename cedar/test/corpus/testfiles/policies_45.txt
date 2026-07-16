@@ -1,0 +1,26 @@
+================================================================================
+policies_45
+================================================================================
+
+permit (
+  principal,
+  action,
+  resource == Album::{displayName: "vacation_photos"}
+);
+
+--------------------------------------------------------------------------------
+(policy_set
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action)
+      (resource
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (entity_record
+              (ref_init
+                (identifier)
+                (string
+                  (string_content))))))))))

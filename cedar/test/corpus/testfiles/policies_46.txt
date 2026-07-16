@@ -1,0 +1,24 @@
+================================================================================
+policies_46
+================================================================================
+
+permit (
+  principal,
+  action,
+  resource == Album::"vacation_photos" //Requires custom resolver
+);
+
+--------------------------------------------------------------------------------
+(policy_set
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action)
+      (resource
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content))))))
+    (comment)))

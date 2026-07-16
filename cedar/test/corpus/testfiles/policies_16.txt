@@ -1,0 +1,41 @@
+================================================================================
+policies_16
+================================================================================
+
+permit(
+  principal,
+  action == PhotoOp::"view",
+  resource
+)
+when {
+  principal.department == resource.department
+};
+
+--------------------------------------------------------------------------------
+(policy_set
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (resource))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier)))))))))))

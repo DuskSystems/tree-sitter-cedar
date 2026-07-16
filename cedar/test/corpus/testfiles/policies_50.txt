@@ -1,0 +1,36 @@
+================================================================================
+policies_50
+================================================================================
+
+permit (
+  principal == IAM::Principal::"arn:aws:iam::12345678901:user/Dave",
+  action == S3::Action::"PutObject",
+  resource == S3::Bucket::"arn:aws:s3:::awsexamplebucket1"
+);
+
+--------------------------------------------------------------------------------
+(policy_set
+  (policy
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (identifier)
+            (string
+              (string_content)))))
+      (action
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (identifier)
+            (string
+              (string_content)))))
+      (resource
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (identifier)
+            (string
+              (string_content))))))))

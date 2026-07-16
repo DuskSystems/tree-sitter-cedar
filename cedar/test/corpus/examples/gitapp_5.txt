@@ -1,0 +1,72 @@
+================================================================================
+gitapp_5
+================================================================================
+
+// a repo contributor can pushRepo, pullRepo, forkRepo
+@id("resource.contributors_Repo")
+permit (
+  principal,
+  action in
+    [GitApp::Action::"pushRepo",
+     GitApp::Action::"pullRepo",
+     GitApp::Action::"forkRepo"],
+  resource in GitApp::Application::"GitApp"
+)
+when { resource has contributors && principal in resource.contributors };
+
+--------------------------------------------------------------------------------
+(policy_set
+  (comment)
+  (policy
+    (annotation
+      (identifier)
+      (string
+        (string_content)))
+    (effect)
+    (scope
+      (principal)
+      (action
+        (scope_constraint
+          (entity_list
+            (entity_reference
+              (identifier)
+              (identifier)
+              (string
+                (string_content)))
+            (entity_reference
+              (identifier)
+              (identifier)
+              (string
+                (string_content)))
+            (entity_reference
+              (identifier)
+              (identifier)
+              (string
+                (string_content))))))
+      (resource
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (identifier)
+            (string
+              (string_content))))))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)))
+              (unary_expression
+                (member_expression
+                  (identifier))))
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)))
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier)))))))))))

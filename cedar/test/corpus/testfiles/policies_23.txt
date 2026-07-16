@@ -1,0 +1,72 @@
+================================================================================
+policies_23
+================================================================================
+
+forbid (
+  principal,
+  action,
+  resource in Account::"jane"
+)
+unless {
+  context.http.authentication.acr == "phrh" &&
+  (context.time.now - context.authentication.time).getMinutes() < 30
+};
+
+--------------------------------------------------------------------------------
+(policy_set
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action)
+      (resource
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content))))))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))
+                  (field_access
+                    (identifier))
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (string
+                    (string_content)))))
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (parenthesized_expression
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (variable)
+                                (field_access
+                                  (identifier))
+                                (field_access
+                                  (identifier))))
+                            (unary_expression
+                              (member_expression
+                                (variable)
+                                (field_access
+                                  (identifier))
+                                (field_access
+                                  (identifier)))))))))
+                  (method_call
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (integer))))))))))

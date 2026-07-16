@@ -1,0 +1,40 @@
+================================================================================
+policies_5_1
+================================================================================
+
+// Alice's friends can view all of her photos
+@id("alice's friends view policy")
+permit (
+  principal in UserGroup::"alice_friends",
+  action == Action::"view",
+  resource in Account::"alice"
+);
+
+--------------------------------------------------------------------------------
+(policy_set
+  (comment)
+  (policy
+    (annotation
+      (identifier)
+      (string
+        (string_content)))
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (action
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (resource
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content))))))))

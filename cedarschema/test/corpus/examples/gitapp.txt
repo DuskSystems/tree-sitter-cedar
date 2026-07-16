@@ -1,0 +1,121 @@
+================================================================================
+gitapp
+================================================================================
+
+namespace GitApp {
+  entity Issue, User, Application;
+  entity Repo in [Application] = {
+    "admins": Set<User>,
+    "contributors"?: Set<User>,
+    "reporters"?: Set<User>,
+  };
+
+  action addRepoAdmin, addRepoContributor, addRepoReporter appliesTo {
+    principal: [User],
+    resource: [Repo]
+  };
+  action deleteIssue, editIssue appliesTo {
+    principal: [User],
+    resource: [Repo]
+  };
+  action forkRepo, pullRepo, pushRepo appliesTo {
+    principal: [User],
+    resource: [Repo]
+  };
+  action addIssue, assignIssue, closeIssue appliesTo {
+    principal: [User],
+    resource: [Repo]
+  };
+}
+
+--------------------------------------------------------------------------------
+(schema
+  (namespace
+    (name
+      (identifier))
+    (entity_declaration
+      (identifier_list
+        (identifier)
+        (identifier)
+        (identifier)))
+    (entity_declaration
+      (identifier_list
+        (identifier))
+      (entity_parents
+        (type_list
+          (name
+            (identifier))))
+      (record_type
+        (attribute_declaration
+          (string
+            (string_content))
+          (set_type
+            (name
+              (identifier))))
+        (attribute_declaration
+          (string
+            (string_content))
+          (set_type
+            (name
+              (identifier))))
+        (attribute_declaration
+          (string
+            (string_content))
+          (set_type
+            (name
+              (identifier))))))
+    (action_declaration
+      (action_name_list
+        (identifier)
+        (identifier)
+        (identifier))
+      (applies_to
+        (principal_types
+          (type_list
+            (name
+              (identifier))))
+        (resource_types
+          (type_list
+            (name
+              (identifier))))))
+    (action_declaration
+      (action_name_list
+        (identifier)
+        (identifier))
+      (applies_to
+        (principal_types
+          (type_list
+            (name
+              (identifier))))
+        (resource_types
+          (type_list
+            (name
+              (identifier))))))
+    (action_declaration
+      (action_name_list
+        (identifier)
+        (identifier)
+        (identifier))
+      (applies_to
+        (principal_types
+          (type_list
+            (name
+              (identifier))))
+        (resource_types
+          (type_list
+            (name
+              (identifier))))))
+    (action_declaration
+      (action_name_list
+        (identifier)
+        (identifier)
+        (identifier))
+      (applies_to
+        (principal_types
+          (type_list
+            (name
+              (identifier))))
+        (resource_types
+          (type_list
+            (name
+              (identifier))))))))

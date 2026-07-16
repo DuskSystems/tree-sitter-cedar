@@ -1,0 +1,66 @@
+================================================================================
+policies_34
+================================================================================
+
+permit (
+  principal,
+  action == Table::"query",
+  resource in Database::"photoflash_data_lake"
+)
+unless {
+  context.query has pii_columns &&
+  context.query.pii_columns.size() > 0 &&
+  !principal.approved_for_pii
+};
+
+--------------------------------------------------------------------------------
+(policy_set
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (resource
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content))))))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (identifier))))
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))
+                  (field_access
+                    (identifier))
+                  (method_call
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (integer))))
+            (relation_expression
+              (unary_expression
+                (unary_expression
+                  (member_expression
+                    (variable)
+                    (field_access
+                      (identifier))))))))))))

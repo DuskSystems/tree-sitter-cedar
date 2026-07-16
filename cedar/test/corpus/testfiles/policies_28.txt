@@ -1,0 +1,21 @@
+================================================================================
+policies_28
+:error
+================================================================================
+
+// If no MFA and before Jan 1, allow with a warning
+permit (
+  principal,
+  action,
+  resource in Account::"jane"
+)
+when {
+  context.time.now < timestamp("2022-01-01T00:00:00.000-05:00") &&
+  !context.authentication.usedMFA
+}
+advice {
+  "Notice: MFA will be required starting January 1"
+};
+
+--------------------------------------------------------------------------------
+(ERROR)

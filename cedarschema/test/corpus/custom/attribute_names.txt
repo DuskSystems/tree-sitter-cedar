@@ -1,0 +1,64 @@
+================================================================================
+attribute_names
+================================================================================
+
+namespace Example {
+  entity User = {
+    name: String,
+    age?: Long,
+    "email-address": String,
+    active: Bool,
+  };
+
+  action read appliesTo {
+    principal: [User],
+    resource: [User],
+    context: {
+      ip_address: String,
+      timestamp?: Long,
+    }
+  };
+}
+
+--------------------------------------------------------------------------------
+(schema
+  (namespace
+    (name
+      (identifier))
+    (entity_declaration
+      (identifier_list
+        (identifier))
+      (record_type
+        (attribute_declaration
+          (identifier)
+          (primitive_type))
+        (attribute_declaration
+          (identifier)
+          (primitive_type))
+        (attribute_declaration
+          (string
+            (string_content))
+          (primitive_type))
+        (attribute_declaration
+          (identifier)
+          (primitive_type))))
+    (action_declaration
+      (action_name_list
+        (identifier))
+      (applies_to
+        (principal_types
+          (type_list
+            (name
+              (identifier))))
+        (resource_types
+          (type_list
+            (name
+              (identifier))))
+        (context_type
+          (record_type
+            (attribute_declaration
+              (identifier)
+              (primitive_type))
+            (attribute_declaration
+              (identifier)
+              (primitive_type))))))))

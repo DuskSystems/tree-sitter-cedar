@@ -1,0 +1,42 @@
+================================================================================
+policies_11
+================================================================================
+
+permit(
+  principal == User::"alice",
+  action in [AccountOp::"listAlbums", AlbumOp::"listPhotos", PhotoOp::"view"],
+  resource in Account::"jane"
+);
+
+--------------------------------------------------------------------------------
+(policy_set
+  (policy
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (action
+        (scope_constraint
+          (entity_list
+            (entity_reference
+              (identifier)
+              (string
+                (string_content)))
+            (entity_reference
+              (identifier)
+              (string
+                (string_content)))
+            (entity_reference
+              (identifier)
+              (string
+                (string_content))))))
+      (resource
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content))))))))

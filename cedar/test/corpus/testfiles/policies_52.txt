@@ -1,0 +1,43 @@
+================================================================================
+policies_52
+================================================================================
+
+permit (
+  principal == IAM::Principal::"arn:aws:iam::12345678901:user/Dave",
+  action in [S3::Action::"GetObjectVersion",
+             S3::Action::"GetBucketAcl"],
+  resource in S3::Bucket::"DOC-EXAMPLE-BUCKET1"
+);
+
+--------------------------------------------------------------------------------
+(policy_set
+  (policy
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (identifier)
+            (string
+              (string_content)))))
+      (action
+        (scope_constraint
+          (entity_list
+            (entity_reference
+              (identifier)
+              (identifier)
+              (string
+                (string_content)))
+            (entity_reference
+              (identifier)
+              (identifier)
+              (string
+                (string_content))))))
+      (resource
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (identifier)
+            (string
+              (string_content))))))))

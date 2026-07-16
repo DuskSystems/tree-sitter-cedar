@@ -1,0 +1,46 @@
+================================================================================
+forbid_1
+================================================================================
+
+// see https://docs.cedarpolicy.com/policies/syntax-policy.html
+@id("F1")
+forbid (principal, action, resource)
+when { resource.private }
+unless { principal == resource.owner };
+
+--------------------------------------------------------------------------------
+(policy_set
+  (comment)
+  (policy
+    (annotation
+      (identifier)
+      (string
+        (string_content)))
+    (effect)
+    (scope
+      (principal)
+      (action)
+      (resource))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier)))))))))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)))
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier)))))))))))

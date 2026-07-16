@@ -1,0 +1,24 @@
+================================================================================
+slots
+================================================================================
+
+permit (
+  principal in ?user_group,
+  action,
+  resource in ?resource
+);
+
+--------------------------------------------------------------------------------
+(policy_set
+  (policy
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (slot
+            (identifier))))
+      (action)
+      (resource
+        (scope_constraint
+          (slot
+            (identifier)))))))

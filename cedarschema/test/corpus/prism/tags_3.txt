@@ -1,0 +1,27 @@
+================================================================================
+tags_3
+================================================================================
+
+action "writeDoc" appliesTo {
+  principal: [User],
+  resource: [Document],
+  context: {}
+};
+
+--------------------------------------------------------------------------------
+(schema
+  (action_declaration
+    (action_name_list
+      (string
+        (string_content)))
+    (applies_to
+      (principal_types
+        (type_list
+          (name
+            (identifier))))
+      (resource_types
+        (type_list
+          (name
+            (identifier))))
+      (context_type
+        (record_type)))))

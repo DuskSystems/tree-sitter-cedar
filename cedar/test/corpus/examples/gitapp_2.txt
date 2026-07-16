@@ -1,0 +1,79 @@
+================================================================================
+gitapp_2
+================================================================================
+
+// a repo admin can addIssue, editIssue,
+// assignIssue, closeIssue, deleteIssue
+@id("resource.admins_Issue")
+permit (
+  principal,
+  action in
+    [GitApp::Action::"addIssue",
+     GitApp::Action::"editIssue",
+     GitApp::Action::"assignIssue",
+     GitApp::Action::"closeIssue",
+     GitApp::Action::"deleteIssue"],
+  resource in GitApp::Application::"GitApp"
+)
+when { principal in resource.admins };
+
+--------------------------------------------------------------------------------
+(policy_set
+  (comment)
+  (comment)
+  (policy
+    (annotation
+      (identifier)
+      (string
+        (string_content)))
+    (effect)
+    (scope
+      (principal)
+      (action
+        (scope_constraint
+          (entity_list
+            (entity_reference
+              (identifier)
+              (identifier)
+              (string
+                (string_content)))
+            (entity_reference
+              (identifier)
+              (identifier)
+              (string
+                (string_content)))
+            (entity_reference
+              (identifier)
+              (identifier)
+              (string
+                (string_content)))
+            (entity_reference
+              (identifier)
+              (identifier)
+              (string
+                (string_content)))
+            (entity_reference
+              (identifier)
+              (identifier)
+              (string
+                (string_content))))))
+      (resource
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (identifier)
+            (string
+              (string_content))))))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)))
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier)))))))))))

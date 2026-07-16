@@ -1,0 +1,73 @@
+================================================================================
+policies_33
+================================================================================
+
+permit (
+  principal == User::"alice",
+  action == TableOp::"read",
+  resource == Table::"customers"
+)
+unless {
+  context.query.columns.containsAny(["email_address", "billing_address"])
+};
+
+--------------------------------------------------------------------------------
+(policy_set
+  (policy
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (action
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (resource
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content))))))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))
+                  (field_access
+                    (identifier))
+                  (method_call
+                    (identifier)
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (list_expression
+                                  (expression
+                                    (or_expression
+                                      (and_expression
+                                        (relation_expression
+                                          (unary_expression
+                                            (member_expression
+                                              (string
+                                                (string_content))))))))
+                                  (expression
+                                    (or_expression
+                                      (and_expression
+                                        (relation_expression
+                                          (unary_expression
+                                            (member_expression
+                                              (string
+                                                (string_content)))))))))))))))))))))))))

@@ -1,0 +1,31 @@
+================================================================================
+tags_n_roles_8
+================================================================================
+
+action ReadWorkspace in ["Role-A Actions", "Role-B Actions"] appliesTo {
+  principal: User,
+  resource: Workspace,
+};
+
+--------------------------------------------------------------------------------
+(schema
+  (action_declaration
+    (action_name_list
+      (identifier))
+    (action_parents
+      (qualified_name_list
+        (qualified_name
+          (string
+            (string_content)))
+        (qualified_name
+          (string
+            (string_content)))))
+    (applies_to
+      (principal_types
+        (type_list
+          (name
+            (identifier))))
+      (resource_types
+        (type_list
+          (name
+            (identifier)))))))

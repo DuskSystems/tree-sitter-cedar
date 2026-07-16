@@ -1,0 +1,52 @@
+================================================================================
+is
+================================================================================
+
+// https://docs.cedarpolicy.com/policies/syntax-operators.html#operator-is
+permit (
+  principal is User in Group::"friends",
+  action,
+  resource in Group::"friends"
+)
+unless
+{
+  // false - `ExampleCo::User` and `User` are different entity types
+  ExampleCo::User::"alice" is User
+};
+
+--------------------------------------------------------------------------------
+(policy_set
+  (comment)
+  (policy
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (name
+            (identifier))
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (action)
+      (resource
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content))))))
+    (condition
+      (comment)
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (entity_reference
+                    (identifier)
+                    (identifier)
+                    (string
+                      (string_content)))))
+              (name
+                (identifier)))))))))

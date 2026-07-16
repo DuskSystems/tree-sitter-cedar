@@ -1,0 +1,67 @@
+================================================================================
+namespaces_1
+================================================================================
+
+// nicely formatted with spaces
+namespace N1 {
+  type C = {
+    a: String
+  };
+  entity E;
+  action a1 appliesTo {
+    principal: [E],
+    resource: [E],
+    context: {}
+  };
+  action a2 appliesTo {
+    principal: [N2::E],
+    resource: [N2::E],
+    context: {}
+  };
+}
+
+--------------------------------------------------------------------------------
+(schema
+  (comment)
+  (namespace
+    (name
+      (identifier))
+    (common_type_declaration
+      (identifier)
+      (record_type
+        (attribute_declaration
+          (identifier)
+          (primitive_type))))
+    (entity_declaration
+      (identifier_list
+        (identifier)))
+    (action_declaration
+      (action_name_list
+        (identifier))
+      (applies_to
+        (principal_types
+          (type_list
+            (name
+              (identifier))))
+        (resource_types
+          (type_list
+            (name
+              (identifier))))
+        (context_type
+          (record_type))))
+    (action_declaration
+      (action_name_list
+        (identifier))
+      (applies_to
+        (principal_types
+          (type_list
+            (name
+              (identifier)
+              (identifier))))
+        (resource_types
+          (type_list
+            (name
+              (identifier)
+              (identifier))))
+        (context_type
+          (record_type))))))

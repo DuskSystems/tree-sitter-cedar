@@ -1,0 +1,57 @@
+================================================================================
+numeronym
+================================================================================
+
+// inspired by https://www.cedarpolicy.com/blog/cedar-for-kubernetes
+forbid (
+    principal is k8s::User,
+    action in [k8s::Action::"list", k8s::Action::"update"],
+    resource is k8s::Resource
+) when {
+    principal in k8s::Group::"block-list"
+};
+
+--------------------------------------------------------------------------------
+(policy_set
+  (comment)
+  (policy
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (name
+            (identifier)
+            (identifier))))
+      (action
+        (scope_constraint
+          (entity_list
+            (entity_reference
+              (identifier)
+              (identifier)
+              (string
+                (string_content)))
+            (entity_reference
+              (identifier)
+              (identifier)
+              (string
+                (string_content))))))
+      (resource
+        (scope_constraint
+          (name
+            (identifier)
+            (identifier)))))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)))
+              (unary_expression
+                (member_expression
+                  (entity_reference
+                    (identifier)
+                    (identifier)
+                    (string
+                      (string_content))))))))))))

@@ -1,0 +1,126 @@
+================================================================================
+policies_21
+================================================================================
+
+permit(
+  principal,
+  action == AlbumOp::"addPhoto",
+  resource in Account::"jane"
+)
+when {
+  (context.photo.filetype in ["JPEG", "PNG"] &&
+   context.photo.filesize_mb <= 1)
+  ||
+  (context.photo.filetype == "RAW" &&
+   context.photo.filesize_mb <= 100 &&
+   principal in Group::"AVTeam")
+};
+
+--------------------------------------------------------------------------------
+(policy_set
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (resource
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content))))))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (parenthesized_expression
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (variable)
+                                (field_access
+                                  (identifier))
+                                (field_access
+                                  (identifier))))
+                            (unary_expression
+                              (member_expression
+                                (list_expression
+                                  (expression
+                                    (or_expression
+                                      (and_expression
+                                        (relation_expression
+                                          (unary_expression
+                                            (member_expression
+                                              (string
+                                                (string_content))))))))
+                                  (expression
+                                    (or_expression
+                                      (and_expression
+                                        (relation_expression
+                                          (unary_expression
+                                            (member_expression
+                                              (string
+                                                (string_content))))))))))))
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (variable)
+                                (field_access
+                                  (identifier))
+                                (field_access
+                                  (identifier))))
+                            (unary_expression
+                              (member_expression
+                                (integer))))))))))))
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (parenthesized_expression
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (variable)
+                                (field_access
+                                  (identifier))
+                                (field_access
+                                  (identifier))))
+                            (unary_expression
+                              (member_expression
+                                (string
+                                  (string_content)))))
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (variable)
+                                (field_access
+                                  (identifier))
+                                (field_access
+                                  (identifier))))
+                            (unary_expression
+                              (member_expression
+                                (integer))))
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (variable)))
+                            (unary_expression
+                              (member_expression
+                                (entity_reference
+                                  (identifier)
+                                  (string
+                                    (string_content)))))))))))))))))))

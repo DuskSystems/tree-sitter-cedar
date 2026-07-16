@@ -1,0 +1,19 @@
+================================================================================
+policies_37
+:error
+================================================================================
+
+// The owner of every forum can add up to N = 5 new custom roles
+// for their forum.
+permit(
+  principal,
+  action == Forum::"addRole",
+  resource:Forum
+)
+when {
+  principal == resource.owner &&
+  size(resource.roles) <= 5
+};
+
+--------------------------------------------------------------------------------
+(ERROR)

@@ -1,0 +1,22 @@
+================================================================================
+schema_b_2
+================================================================================
+
+entity User in [UserGroup] { department: String, jobLevel: Long };
+
+--------------------------------------------------------------------------------
+(schema
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (entity_parents
+      (type_list
+        (name
+          (identifier))))
+    (record_type
+      (attribute_declaration
+        (identifier)
+        (primitive_type))
+      (attribute_declaration
+        (identifier)
+        (primitive_type)))))

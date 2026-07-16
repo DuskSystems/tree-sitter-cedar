@@ -1,0 +1,35 @@
+================================================================================
+policies_6
+================================================================================
+
+// Solution #1: Using multiple policies
+permit(
+  principal == User::"alice",
+  action in PhotoflashRole::"admin",
+  resource in Album::"jane_vacation"
+);
+
+--------------------------------------------------------------------------------
+(policy_set
+  (comment)
+  (policy
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (action
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (resource
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content))))))))

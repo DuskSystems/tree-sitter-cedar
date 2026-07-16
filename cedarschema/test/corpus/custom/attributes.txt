@@ -1,0 +1,55 @@
+================================================================================
+attributes
+================================================================================
+
+action ViewDocument in [ReadActions]
+  appliesTo {
+    principal: [User, Public],
+    resource: Document,
+    context: {
+        network: ipaddr,
+        browser: String
+    }
+  }
+  attributes {
+    version: 1,
+    group: "meta"
+  };
+
+--------------------------------------------------------------------------------
+(schema
+  (action_declaration
+    (action_name_list
+      (identifier))
+    (action_parents
+      (qualified_name_list
+        (qualified_name
+          (identifier))))
+    (applies_to
+      (principal_types
+        (type_list
+          (name
+            (identifier))
+          (name
+            (identifier))))
+      (resource_types
+        (type_list
+          (name
+            (identifier))))
+      (context_type
+        (record_type
+          (attribute_declaration
+            (identifier)
+            (name
+              (identifier)))
+          (attribute_declaration
+            (identifier)
+            (primitive_type)))))
+    (action_attributes
+      (attribute_entry
+        (identifier)
+        (integer))
+      (attribute_entry
+        (identifier)
+        (string
+          (string_content))))))

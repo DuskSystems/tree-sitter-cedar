@@ -1,0 +1,24 @@
+================================================================================
+policies_49
+================================================================================
+
+permit (
+  principal == IAM::Principal::"arn:aws:iam::123456789012:user/alice",
+  action,
+  resource
+);
+
+--------------------------------------------------------------------------------
+(policy_set
+  (policy
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (identifier)
+            (string
+              (string_content)))))
+      (action)
+      (resource))))

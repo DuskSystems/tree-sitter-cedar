@@ -1,0 +1,34 @@
+================================================================================
+policies_17
+================================================================================
+
+permit(
+  principal,
+  action,
+  resource
+)
+when {
+  principal == resource.owner
+};
+
+--------------------------------------------------------------------------------
+(policy_set
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action)
+      (resource))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)))
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier)))))))))))

@@ -1,0 +1,22 @@
+================================================================================
+policies_26
+:error
+================================================================================
+
+forbid (
+  principal == User::"alice",
+  action,
+  resource
+)
+unless {
+  action.readOnly
+}
+when {
+  context.time.now < timestamp("2022-01-01T10:15:00.021-05:00")
+}
+advice {
+  "Go to sleep! Remember to feed the cat in the morning."
+};
+
+--------------------------------------------------------------------------------
+(ERROR)

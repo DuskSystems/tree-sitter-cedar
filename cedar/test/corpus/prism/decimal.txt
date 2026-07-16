@@ -1,0 +1,176 @@
+================================================================================
+decimal
+================================================================================
+
+// decimal(), lessThan, lessThanOrEqual, greaterThan, greaterThanOrEqual
+// see https://docs.cedarpolicy.com/policies/syntax-operators.html#decimal-parse-string-and-convert-to-decimal
+permit (principal, action, resource)
+when
+{
+  (decimal("1.23").lessThan(decimal("1.24")) &&
+   decimal("1.23").lessThanOrEqual(decimal("1.24"))) ||
+  (decimal("1.24").greaterThan(decimal("1.23")) &&
+   decimal("1.24").greaterThanOrEqual(decimal("1.23")))
+};
+
+--------------------------------------------------------------------------------
+(policy_set
+  (comment)
+  (comment)
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action)
+      (resource))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (parenthesized_expression
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (extension_call
+                                  (name
+                                    (identifier))
+                                  (expression
+                                    (or_expression
+                                      (and_expression
+                                        (relation_expression
+                                          (unary_expression
+                                            (member_expression
+                                              (string
+                                                (string_content)))))))))
+                                (method_call
+                                  (identifier)
+                                  (expression
+                                    (or_expression
+                                      (and_expression
+                                        (relation_expression
+                                          (unary_expression
+                                            (member_expression
+                                              (extension_call
+                                                (name
+                                                  (identifier))
+                                                (expression
+                                                  (or_expression
+                                                    (and_expression
+                                                      (relation_expression
+                                                        (unary_expression
+                                                          (member_expression
+                                                            (string
+                                                              (string_content)))))))))))))))))))
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (extension_call
+                                  (name
+                                    (identifier))
+                                  (expression
+                                    (or_expression
+                                      (and_expression
+                                        (relation_expression
+                                          (unary_expression
+                                            (member_expression
+                                              (string
+                                                (string_content)))))))))
+                                (method_call
+                                  (identifier)
+                                  (expression
+                                    (or_expression
+                                      (and_expression
+                                        (relation_expression
+                                          (unary_expression
+                                            (member_expression
+                                              (extension_call
+                                                (name
+                                                  (identifier))
+                                                (expression
+                                                  (or_expression
+                                                    (and_expression
+                                                      (relation_expression
+                                                        (unary_expression
+                                                          (member_expression
+                                                            (string
+                                                              (string_content)))))))))))))))))))))))))))
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (parenthesized_expression
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (extension_call
+                                  (name
+                                    (identifier))
+                                  (expression
+                                    (or_expression
+                                      (and_expression
+                                        (relation_expression
+                                          (unary_expression
+                                            (member_expression
+                                              (string
+                                                (string_content)))))))))
+                                (method_call
+                                  (identifier)
+                                  (expression
+                                    (or_expression
+                                      (and_expression
+                                        (relation_expression
+                                          (unary_expression
+                                            (member_expression
+                                              (extension_call
+                                                (name
+                                                  (identifier))
+                                                (expression
+                                                  (or_expression
+                                                    (and_expression
+                                                      (relation_expression
+                                                        (unary_expression
+                                                          (member_expression
+                                                            (string
+                                                              (string_content)))))))))))))))))))
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (extension_call
+                                  (name
+                                    (identifier))
+                                  (expression
+                                    (or_expression
+                                      (and_expression
+                                        (relation_expression
+                                          (unary_expression
+                                            (member_expression
+                                              (string
+                                                (string_content)))))))))
+                                (method_call
+                                  (identifier)
+                                  (expression
+                                    (or_expression
+                                      (and_expression
+                                        (relation_expression
+                                          (unary_expression
+                                            (member_expression
+                                              (extension_call
+                                                (name
+                                                  (identifier))
+                                                (expression
+                                                  (or_expression
+                                                    (and_expression
+                                                      (relation_expression
+                                                        (unary_expression
+                                                          (member_expression
+                                                            (string
+                                                              (string_content))))))))))))))))))))))))))))))))

@@ -1,0 +1,25 @@
+================================================================================
+schema_a_8
+================================================================================
+
+action listPhotos
+  appliesTo { principal: [User], resource: [Album, Photo, Video] };
+
+--------------------------------------------------------------------------------
+(schema
+  (action_declaration
+    (action_name_list
+      (identifier))
+    (applies_to
+      (principal_types
+        (type_list
+          (name
+            (identifier))))
+      (resource_types
+        (type_list
+          (name
+            (identifier))
+          (name
+            (identifier))
+          (name
+            (identifier)))))))

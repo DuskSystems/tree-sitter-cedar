@@ -1,0 +1,21 @@
+================================================================================
+tags_2
+================================================================================
+
+entity Document = {
+  owner: User,
+} tags Set<String>;
+
+--------------------------------------------------------------------------------
+(schema
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (record_type
+      (attribute_declaration
+        (identifier)
+        (name
+          (identifier))))
+    (entity_tags
+      (set_type
+        (primitive_type)))))

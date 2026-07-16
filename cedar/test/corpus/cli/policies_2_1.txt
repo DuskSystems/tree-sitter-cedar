@@ -1,0 +1,49 @@
+================================================================================
+policies_2_1
+================================================================================
+
+// Alice can view, edit, or delete any photo in the "jane_vacation" album
+@id("alice's access policy")
+permit (
+  principal == User::"alice",
+  action in [Action::"view", Action::"edit", Action::"delete"],
+  resource in Album::"jane_vacation"
+);
+
+--------------------------------------------------------------------------------
+(policy_set
+  (comment)
+  (policy
+    (annotation
+      (identifier)
+      (string
+        (string_content)))
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (action
+        (scope_constraint
+          (entity_list
+            (entity_reference
+              (identifier)
+              (string
+                (string_content)))
+            (entity_reference
+              (identifier)
+              (string
+                (string_content)))
+            (entity_reference
+              (identifier)
+              (string
+                (string_content))))))
+      (resource
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content))))))))

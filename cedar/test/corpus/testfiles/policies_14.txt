@@ -1,0 +1,17 @@
+================================================================================
+policies_14
+:error
+================================================================================
+
+permit(
+  principal == User::"alice",
+  action == PhotoOp::"view",
+  resource:Photo
+)
+when {
+  resource.fileType == "JPEG" &&
+  (context.time.now - resource.creationDate).getDays() <= 7
+};
+
+--------------------------------------------------------------------------------
+(ERROR)

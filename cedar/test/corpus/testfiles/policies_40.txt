@@ -1,0 +1,74 @@
+================================================================================
+policies_40
+================================================================================
+
+// Both JuniorModerators and SeniorModerators can remove themselves
+// from the role.
+permit(
+  principal,
+  action == ForumOp::"removeMemberFromRole",
+  resource == Forum::"nature_photography"
+)
+when {
+  context.removedMember == principal &&
+  context.role in ["SeniorModerator", "JuniorModerator"]
+};
+
+--------------------------------------------------------------------------------
+(policy_set
+  (comment)
+  (comment)
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (resource
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content))))))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (variable))))
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (list_expression
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (string
+                                  (string_content))))))))
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (string
+                                  (string_content))))))))))))))))))

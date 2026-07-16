@@ -1,0 +1,27 @@
+================================================================================
+template_3
+================================================================================
+
+template(?allowed: Set<Action>) =>
+  permit(principal, action in ?allowed, resource);
+
+--------------------------------------------------------------------------------
+(policy_set
+  (policy
+    (template_declaration
+      (slot
+        (identifier)
+        (type_reference
+          (name
+            (identifier))
+          (type_reference
+            (name
+              (identifier))))))
+    (effect)
+    (scope
+      (principal)
+      (action
+        (scope_constraint
+          (slot
+            (identifier))))
+      (resource))))

@@ -1,0 +1,35 @@
+================================================================================
+policies_55
+================================================================================
+
+permit (
+  principal == IAM::Principal::"arn:aws:iam::12345678901:user/Dave",
+  action == S3::Action::"GetAccountPublicAccessBlock",
+  resource == Account::"12345678901"
+);
+
+--------------------------------------------------------------------------------
+(policy_set
+  (policy
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (identifier)
+            (string
+              (string_content)))))
+      (action
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (identifier)
+            (string
+              (string_content)))))
+      (resource
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content))))))))

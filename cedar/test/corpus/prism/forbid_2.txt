@@ -1,0 +1,130 @@
+================================================================================
+forbid_2
+================================================================================
+
+// see https://docs.cedarpolicy.com/policies/syntax-operators.html
+@id("F2")
+forbid (principal, action, resource)
+when
+{
+  (true == false || true == !true || true != true) &&
+  (1 > 2 || 1 >= 2) &&
+  (2 < 1 || 2 <= 1) &&
+  (1 == -1) &&
+  "true" like "false"
+};
+
+--------------------------------------------------------------------------------
+(policy_set
+  (comment)
+  (policy
+    (annotation
+      (identifier)
+      (string
+        (string_content)))
+    (effect)
+    (scope
+      (principal)
+      (action)
+      (resource))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (parenthesized_expression
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (true)))
+                            (unary_expression
+                              (member_expression
+                                (false)))))
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (true)))
+                            (unary_expression
+                              (unary_expression
+                                (member_expression
+                                  (true))))))
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (true)))
+                            (unary_expression
+                              (member_expression
+                                (true)))))))))))
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (parenthesized_expression
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (integer)))
+                            (unary_expression
+                              (member_expression
+                                (integer)))))
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (integer)))
+                            (unary_expression
+                              (member_expression
+                                (integer)))))))))))
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (parenthesized_expression
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (integer)))
+                            (unary_expression
+                              (member_expression
+                                (integer)))))
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (integer)))
+                            (unary_expression
+                              (member_expression
+                                (integer)))))))))))
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (parenthesized_expression
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (integer)))
+                            (unary_expression
+                              (unary_expression
+                                (member_expression
+                                  (integer))))))))))))
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (string
+                    (string_content))))
+              (string
+                (string_content)))))))))
