@@ -1,4 +1,4 @@
-#!/usr/bin/env -S nix develop --command nu
+#!/usr/bin/env -S nix develop .#ci --command nu
 
 # Run all linters and formatters.
 def main []: nothing -> nothing {
@@ -15,6 +15,9 @@ def main []: nothing -> nothing {
     if $base != (git rev-parse HEAD | str trim) {
         committed $"($base)..HEAD"
     }
+
+    # GitHub
+    zizmor --pedantic .github
 
     # Spellchecking
     typos

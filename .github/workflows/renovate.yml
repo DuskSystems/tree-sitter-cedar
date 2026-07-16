@@ -1,0 +1,35 @@
+name: Renovate
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 0 * * 0" # weekly
+
+concurrency:
+  group: "${{ github.workflow }}"
+  cancel-in-progress: true
+
+permissions: {}
+
+env:
+  RENOVATE_REPOSITORIES: ${{ github.repository }}
+
+jobs:
+  renovate:
+    name: Renovate
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      issues: write # renovate
+    steps:
+      - name: Checkout
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+
+      - name: Renovate
+        uses: renovatebot/github-action@22e0a16091fc706b04affe6ae53d5e3358ac4023 # v46.1.19
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
