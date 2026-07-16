@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+      url = "github:NixOS/nixpkgs/nixos-unstable-small";
     };
   };
 
@@ -53,17 +53,43 @@
             # NOTE: Ensure `tree-sitter --version` matches version in `package.json`.
             tree-sitter
 
-            # GitHub
-            zizmor
+            # Policy
+            cedar
+
+            # Nix
+            deadnix
+            nil
+            nixd
+            nixfmt
 
             # Spellchecking
             typos
             typos-lsp
 
-            # Nix
-            nixfmt
-            nixd
-            nil
+            # Markdown
+            lychee
+
+            # TOML
+            tombi
+
+            # YAML
+            yaml-language-server
+
+            # JSON
+            jq
+            vscode-langservers-extracted
+
+            # Nushell
+            nushell
+            nufmt
+
+            # Git
+            committed
+
+            # GitHub
+            gh
+            pinact
+            zizmor
           ];
         };
       });
