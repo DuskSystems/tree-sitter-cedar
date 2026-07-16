@@ -4,6 +4,9 @@ logs
 # Node
 node_modules
 
+# Lychee
+.lycheecache
+
 # Nix
 result
 result-*

@@ -2,10 +2,7 @@
   "remove_trailing_whitespace_on_save": true,
   "ensure_final_newline_on_save": true,
 
-  "file_scan_exclusions": [
-    "**/.direnv",
-    "**/.git",
-  ],
+  "file_scan_exclusions": ["**/.direnv", "**/.git"],
 
   "languages": {
     "JavaScript": {
@@ -16,6 +13,49 @@
 
     "Nix": {
       "language_servers": ["nixd", "nil"],
+      "format_on_save": "on",
+      "formatter": "language_server"
+    },
+
+    "Nu": {
+      "language_servers": ["nu"],
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "command": "nufmt",
+          "arguments": ["--stdin"]
+        }
+      }
+    },
+
+    "Markdown": {
+      "language_servers": ["typos"],
+      "soft_wrap": "none"
+    },
+
+    "TOML": {
+      "language_servers": ["tombi"],
+      "format_on_save": "on",
+      "formatter": "language_server"
+    },
+
+    "YAML": {
+      "language_servers": ["yaml-language-server"],
+      "format_on_save": "off"
+    },
+
+    "JSON": {
+      "language_servers": ["json-language-server"],
+      "format_on_save": "off"
+    },
+
+    "JSONC": {
+      "language_servers": ["json-language-server"],
+      "format_on_save": "off"
+    },
+
+    "Cedar": {
+      "language_servers": ["cedar-language-server"],
       "format_on_save": "on",
       "formatter": "language_server"
     }
@@ -47,9 +87,43 @@
       }
     },
 
+    "nu": {
+      "binary": {
+        "path": "nu",
+        "arguments": ["--lsp"]
+      }
+    },
+
     "typos": {
       "binary": {
         "path": "typos-lsp"
+      }
+    },
+
+    "tombi": {
+      "binary": {
+        "path": "tombi",
+        "arguments": ["lsp"]
+      }
+    },
+
+    "yaml-language-server": {
+      "binary": {
+        "path": "yaml-language-server",
+        "arguments": ["--stdio"]
+      }
+    },
+
+    "json-language-server": {
+      "binary": {
+        "path": "vscode-json-language-server",
+        "arguments": ["--stdio"]
+      }
+    },
+
+    "cedar-language-server": {
+      "binary": {
+        "path": "cedar-language-server"
       }
     }
   }

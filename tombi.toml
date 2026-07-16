@@ -1,0 +1,10 @@
+# https://tombi-toml.github.io/tombi/docs/configuration
+
+[files]
+exclude = []
+
+[lsp]
+formatting.enabled = false
+
+[lint.rules]
+tables-out-of-order = "off"
