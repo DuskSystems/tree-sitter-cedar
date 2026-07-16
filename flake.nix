@@ -92,6 +92,45 @@
             zizmor
           ];
         };
+
+        # nix develop .#ci
+        ci = pkgs.mkShell {
+          name = "tree-sitter-cedar-ci-shell";
+
+          buildInputs = with pkgs; [
+            # Node
+            nodejs
+
+            # Tree Sitter
+            tree-sitter
+
+            # Nix
+            deadnix
+            nixfmt
+
+            # Spellchecking
+            typos
+
+            # Markdown
+            lychee
+
+            # TOML
+            tombi
+
+            # JSON
+            jq
+
+            # Nushell
+            nushell
+            nufmt
+
+            # Git
+            committed
+
+            # GitHub
+            zizmor
+          ];
+        };
       });
     };
 }
