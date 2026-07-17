@@ -4,12 +4,12 @@ Cedar grammars for tree-sitter.
 
 ## Cedar
 
-![Cedar syntax highlighting](cedar/test/snapshots/examples/gitapp_1.png)
+<img src="cedar/test/snapshots/examples/gitapp_5.png" alt="Cedar syntax highlighting" width="707">
 
 ## Cedar Schema
 
-![Cedar Schema syntax highlighting](cedarschema/test/snapshots/examples/gitapp.png)
+<img src="cedarschema/test/snapshots/examples/gitapp.png" alt="Cedar Schema syntax highlighting" width="681">
 
 ## Cedar Entities
 
-![Cedar Entities syntax highlighting](cedarentities/test/snapshots/examples/gitapp.png)
+<img src="cedarentities/test/snapshots/examples/gitapp.png" alt="Cedar Entities syntax highlighting" width="555">
