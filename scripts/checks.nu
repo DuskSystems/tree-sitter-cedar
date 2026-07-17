@@ -49,6 +49,7 @@ def main []: nothing -> nothing {
 
     # Nix
     nix flake check
+    nix build --no-link .#tree-sitter-cedar .#tree-sitter-cedarschema .#tree-sitter-cedarentities
     nixfmt --check --width=120 ...(git ls-files "*.nix" | lines)
     deadnix --fail .
 }

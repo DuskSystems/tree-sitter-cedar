@@ -12,12 +12,16 @@ def main []: nothing -> nothing {
     }
 
     npm ci
+    ./scripts/wasm.nu
 
     (
         npx release-please github-release
             --repo-url DuskSystems/tree-sitter-cedar
             --token $env.GITHUB_TOKEN
     )
+
+    let version: string = open package.json | get version
+    gh release upload $"v($version)" ...(glob "tree-sitter-*.wasm") --clobber
 
     npm publish --provenance --access public
 }

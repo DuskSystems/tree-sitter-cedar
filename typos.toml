@@ -2,6 +2,7 @@
 
 [files]
 extend-exclude = [
+  "CHANGELOG.md",
   "cedar/test",
   "cedarentities/test",
   "cedarschema/test",
