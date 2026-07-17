@@ -12,4 +12,4 @@ Cedar grammars for tree-sitter.
 
 ## Cedar Entities
 
-![Cedar Entities syntax highlighting](cedarentities/test/snapshots/rfc/entity_data_syntax_1.png)
+![Cedar Entities syntax highlighting](cedarentities/test/snapshots/examples/gitapp.png)

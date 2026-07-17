@@ -1,0 +1,167 @@
+================================================================================
+tinytodo
+================================================================================
+
+// https://github.com/cedar-policy/cedar-examples/blob/c251f7d1ad171bd12dee5d1d7a1cceaec994518f/tinytodo/entities.json
+
+instance User::"kesha" in [Application::"TinyTodo", Team::"temp"] {
+  location: "ABC17",
+  joblevel: 5
+};
+instance User::"aaron" in [Team::"interns", Application::"TinyTodo"] {
+  location: "ABC17",
+  joblevel: 5
+};
+instance User::"emina" in [Application::"TinyTodo", Team::"admin"] {
+  location: "DEF33",
+  joblevel: 8
+};
+instance User::"andrew" in [Application::"TinyTodo", Team::"admin", Team::"temp"] {
+  location: "XYZ77",
+  joblevel: 5
+};
+instance Team::"temp" in Application::"TinyTodo";
+instance Team::"admin" in Application::"TinyTodo";
+instance Team::"interns" in [Application::"TinyTodo", Team::"temp"];
+instance Application::"TinyTodo";
+
+--------------------------------------------------------------------------------
+
+(entities
+  (comment)
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (entity_list
+        (entity_reference
+          (identifier)
+          (string
+            (string_content)))
+        (entity_reference
+          (identifier)
+          (string
+            (string_content)))))
+    (record
+      (record_entry
+        (identifier)
+        (string
+          (string_content)))
+      (record_entry
+        (identifier)
+        (integer))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (entity_list
+        (entity_reference
+          (identifier)
+          (string
+            (string_content)))
+        (entity_reference
+          (identifier)
+          (string
+            (string_content)))))
+    (record
+      (record_entry
+        (identifier)
+        (string
+          (string_content)))
+      (record_entry
+        (identifier)
+        (integer))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (entity_list
+        (entity_reference
+          (identifier)
+          (string
+            (string_content)))
+        (entity_reference
+          (identifier)
+          (string
+            (string_content)))))
+    (record
+      (record_entry
+        (identifier)
+        (string
+          (string_content)))
+      (record_entry
+        (identifier)
+        (integer))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (entity_list
+        (entity_reference
+          (identifier)
+          (string
+            (string_content)))
+        (entity_reference
+          (identifier)
+          (string
+            (string_content)))
+        (entity_reference
+          (identifier)
+          (string
+            (string_content)))))
+    (record
+      (record_entry
+        (identifier)
+        (string
+          (string_content)))
+      (record_entry
+        (identifier)
+        (integer))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (entity_reference
+        (identifier)
+        (string
+          (string_content)))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (entity_reference
+        (identifier)
+        (string
+          (string_content)))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (entity_list
+        (entity_reference
+          (identifier)
+          (string
+            (string_content)))
+        (entity_reference
+          (identifier)
+          (string
+            (string_content))))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))))

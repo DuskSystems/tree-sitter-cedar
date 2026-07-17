@@ -1,0 +1,70 @@
+================================================================================
+sandbox_c
+================================================================================
+
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-cli/sample-data/sandbox_c/entities.json
+
+instance User::"alice";
+instance User::"jane";
+instance User::"bob" {
+  department: "research"
+};
+instance Album::"jane";
+instance Photo::"VacationPhoto94.jpg" in Album::"jane";
+instance Photo::"Skyline.jpg" in Album::"jane" {
+  public: true
+};
+
+--------------------------------------------------------------------------------
+
+(entities
+  (comment)
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (record
+      (record_entry
+        (identifier)
+        (string
+          (string_content)))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (entity_reference
+        (identifier)
+        (string
+          (string_content)))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (entity_reference
+        (identifier)
+        (string
+          (string_content))))
+    (record
+      (record_entry
+        (identifier)
+        (true)))))

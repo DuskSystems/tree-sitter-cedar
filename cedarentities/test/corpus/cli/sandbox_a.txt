@@ -1,0 +1,154 @@
+================================================================================
+sandbox_a
+================================================================================
+
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-cli/sample-data/sandbox_a/entities.json
+
+instance User::"alice" in UserGroup::"jane_friends";
+instance User::"bob";
+instance User::"tim" in UserGroup::"jane_friends";
+instance UserGroup::"jane_friends";
+instance Administrator::"ahmad";
+instance Action::"view";
+instance Action::"comment";
+instance Action::"edit";
+instance Action::"delete";
+instance Action::"listAlbums";
+instance Action::"listPhotos";
+instance Photo::"VacationPhoto94.jpg" in Album::"jane_vacation";
+instance Photo::"passportscan.jpg" in Account::"jane";
+instance Video::"surf.mp4" in Album::"jane_vacation";
+instance Photo::"selfie.jpg" in Account::"bob";
+instance Album::"jane_vacation" in Account::"jane";
+instance Account::"jane";
+instance Account::"bob";
+
+--------------------------------------------------------------------------------
+
+(entities
+  (comment)
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (entity_reference
+        (identifier)
+        (string
+          (string_content)))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (entity_reference
+        (identifier)
+        (string
+          (string_content)))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (entity_reference
+        (identifier)
+        (string
+          (string_content)))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (entity_reference
+        (identifier)
+        (string
+          (string_content)))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (entity_reference
+        (identifier)
+        (string
+          (string_content)))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (entity_reference
+        (identifier)
+        (string
+          (string_content)))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (entity_reference
+        (identifier)
+        (string
+          (string_content)))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))))

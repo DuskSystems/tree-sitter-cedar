@@ -1,0 +1,41 @@
+================================================================================
+sample_3
+================================================================================
+
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-cli/sample-data/tiny_sandboxes/sample3/entity.json
+
+instance User::"bob";
+instance Action::"view";
+instance Action::"edit";
+instance Photo::"VacationPhoto94.jpg";
+instance Album::"jane_vacation";
+
+--------------------------------------------------------------------------------
+
+(entities
+  (comment)
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))))

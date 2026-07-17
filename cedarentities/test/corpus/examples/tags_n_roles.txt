@@ -1,0 +1,161 @@
+================================================================================
+tags_n_roles
+================================================================================
+
+// https://github.com/cedar-policy/cedar-examples/blob/c251f7d1ad171bd12dee5d1d7a1cceaec994518f/cedar-example-use-cases/tags_n_roles/entities.json
+
+instance Role::"Role-A";
+instance Role::"Role-B";
+instance User::"Joe" in [Role::"Role-A", Role::"Role-B"] {
+  allowedTagsForRole: {
+    "Role-A": {
+      production_status: ["production"],
+      country: ["germany"],
+      stage: ["reporting"]
+    },
+    "Role-B": {
+      production_status: ["test"],
+      country: ["italy"],
+      stage: ["valuation"]
+    }
+  }
+};
+instance User::"Alice" in Role::"Role-B" {
+  allowedTagsForRole: {
+    "Role-B": {
+      production_status: ["production"],
+      country: ["ALL"],
+      stage: ["valuation"]
+    }
+  }
+};
+instance Workspace::"workspace-1" {
+  tags: {
+    production_status: ["production"],
+    country: ["germany"]
+  }
+};
+
+--------------------------------------------------------------------------------
+
+(entities
+  (comment)
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (entity_list
+        (entity_reference
+          (identifier)
+          (string
+            (string_content)))
+        (entity_reference
+          (identifier)
+          (string
+            (string_content)))))
+    (record
+      (record_entry
+        (identifier)
+        (record
+          (record_entry
+            (string
+              (string_content))
+            (record
+              (record_entry
+                (identifier)
+                (set
+                  (string
+                    (string_content))))
+              (record_entry
+                (identifier)
+                (set
+                  (string
+                    (string_content))))
+              (record_entry
+                (identifier)
+                (set
+                  (string
+                    (string_content))))))
+          (record_entry
+            (string
+              (string_content))
+            (record
+              (record_entry
+                (identifier)
+                (set
+                  (string
+                    (string_content))))
+              (record_entry
+                (identifier)
+                (set
+                  (string
+                    (string_content))))
+              (record_entry
+                (identifier)
+                (set
+                  (string
+                    (string_content))))))))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (entity_reference
+        (identifier)
+        (string
+          (string_content))))
+    (record
+      (record_entry
+        (identifier)
+        (record
+          (record_entry
+            (string
+              (string_content))
+            (record
+              (record_entry
+                (identifier)
+                (set
+                  (string
+                    (string_content))))
+              (record_entry
+                (identifier)
+                (set
+                  (string
+                    (string_content))))
+              (record_entry
+                (identifier)
+                (set
+                  (string
+                    (string_content))))))))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (record
+      (record_entry
+        (identifier)
+        (record
+          (record_entry
+            (identifier)
+            (set
+              (string
+                (string_content))))
+          (record_entry
+            (identifier)
+            (set
+              (string
+                (string_content)))))))))

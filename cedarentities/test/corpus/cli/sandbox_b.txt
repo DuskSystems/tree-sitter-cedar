@@ -1,0 +1,396 @@
+================================================================================
+sandbox_b
+================================================================================
+
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-cli/sample-data/sandbox_b/entities.json
+
+instance User::"alice" in [UserGroup::"alice_friends", UserGroup::"AVTeam"] {
+  department: "HardwareEngineering",
+  jobLevel: 5
+};
+instance User::"ahmad" {
+  department: "HardwareEngineering",
+  jobLevel: 4
+};
+instance User::"stacey" in UserGroup::"alice_friends" {
+  department: "Sales",
+  jobLevel: 6
+};
+instance User::"giuseppe" in UserGroup::"AVTeam" {
+  department: "CustomerSupport",
+  jobLevel: 7
+};
+instance UserGroup::"alice_friends";
+instance Action::"view" {
+  readOnly: true,
+  appliesTo: "Photo"
+};
+instance Action::"edit" {
+  readOnly: false,
+  appliesTo: "Photo"
+};
+instance Action::"listPhotos" {
+  readOnly: true,
+  appliesTo: "Album"
+};
+instance Action::"addPhoto" {
+  readOnly: false,
+  appliesTo: "Album"
+};
+instance Action::"listAlbums" {
+  readOnly: true,
+  appliesTo: "Account"
+};
+instance Photo::"prototype_v0.jpg" in Album::"device_prototypes" {
+  private: false,
+  account: Account::"ahmad"
+};
+instance Photo::"vacation.jpg" in Album::"alice_vacation" {
+  private: false,
+  account: Account::"alice"
+};
+instance Photo::"alice_w2.jpg" in Account::"alice" {
+  private: true,
+  account: Account::"alice"
+};
+instance Photo::"sales_projections.jpg" in Account::"stacey" {
+  private: false,
+  account: Account::"stacey",
+  admins: [User::"giuseppe"]
+};
+instance Album::"device_prototypes" {
+  owner: AccountGroup::"GeronimoTeam"
+};
+instance Album::"alice_vacation" in Account::"alice" {
+  owner: Account::"alice"
+};
+instance Account::"alice" in AccountGroup::"GeronimoTeam" {
+  owner: User::"alice"
+};
+instance Account::"ahmad" in AccountGroup::"GeronimoTeam" {
+  owner: User::"ahmad"
+};
+instance Account::"stacey" {
+  owner: User::"stacey"
+};
+instance UserGroup::"AVTeam";
+instance AccountGroup::"GeronimoTeam";
+
+--------------------------------------------------------------------------------
+
+(entities
+  (comment)
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (entity_list
+        (entity_reference
+          (identifier)
+          (string
+            (string_content)))
+        (entity_reference
+          (identifier)
+          (string
+            (string_content)))))
+    (record
+      (record_entry
+        (identifier)
+        (string
+          (string_content)))
+      (record_entry
+        (identifier)
+        (integer))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (record
+      (record_entry
+        (identifier)
+        (string
+          (string_content)))
+      (record_entry
+        (identifier)
+        (integer))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (entity_reference
+        (identifier)
+        (string
+          (string_content))))
+    (record
+      (record_entry
+        (identifier)
+        (string
+          (string_content)))
+      (record_entry
+        (identifier)
+        (integer))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (entity_reference
+        (identifier)
+        (string
+          (string_content))))
+    (record
+      (record_entry
+        (identifier)
+        (string
+          (string_content)))
+      (record_entry
+        (identifier)
+        (integer))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (record
+      (record_entry
+        (identifier)
+        (true))
+      (record_entry
+        (identifier)
+        (string
+          (string_content)))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (record
+      (record_entry
+        (identifier)
+        (false))
+      (record_entry
+        (identifier)
+        (string
+          (string_content)))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (record
+      (record_entry
+        (identifier)
+        (true))
+      (record_entry
+        (identifier)
+        (string
+          (string_content)))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (record
+      (record_entry
+        (identifier)
+        (false))
+      (record_entry
+        (identifier)
+        (string
+          (string_content)))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (record
+      (record_entry
+        (identifier)
+        (true))
+      (record_entry
+        (identifier)
+        (string
+          (string_content)))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (entity_reference
+        (identifier)
+        (string
+          (string_content))))
+    (record
+      (record_entry
+        (identifier)
+        (false))
+      (record_entry
+        (identifier)
+        (entity_reference
+          (identifier)
+          (string
+            (string_content))))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (entity_reference
+        (identifier)
+        (string
+          (string_content))))
+    (record
+      (record_entry
+        (identifier)
+        (false))
+      (record_entry
+        (identifier)
+        (entity_reference
+          (identifier)
+          (string
+            (string_content))))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (entity_reference
+        (identifier)
+        (string
+          (string_content))))
+    (record
+      (record_entry
+        (identifier)
+        (true))
+      (record_entry
+        (identifier)
+        (entity_reference
+          (identifier)
+          (string
+            (string_content))))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (entity_reference
+        (identifier)
+        (string
+          (string_content))))
+    (record
+      (record_entry
+        (identifier)
+        (false))
+      (record_entry
+        (identifier)
+        (entity_reference
+          (identifier)
+          (string
+            (string_content))))
+      (record_entry
+        (identifier)
+        (set
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (record
+      (record_entry
+        (identifier)
+        (entity_reference
+          (identifier)
+          (string
+            (string_content))))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (entity_reference
+        (identifier)
+        (string
+          (string_content))))
+    (record
+      (record_entry
+        (identifier)
+        (entity_reference
+          (identifier)
+          (string
+            (string_content))))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (entity_reference
+        (identifier)
+        (string
+          (string_content))))
+    (record
+      (record_entry
+        (identifier)
+        (entity_reference
+          (identifier)
+          (string
+            (string_content))))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (entity_reference
+        (identifier)
+        (string
+          (string_content))))
+    (record
+      (record_entry
+        (identifier)
+        (entity_reference
+          (identifier)
+          (string
+            (string_content))))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (record
+      (record_entry
+        (identifier)
+        (entity_reference
+          (identifier)
+          (string
+            (string_content))))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))))
