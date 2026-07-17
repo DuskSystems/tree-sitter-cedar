@@ -3,7 +3,7 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
 
   "dependencyDashboard": true,
-  "enabledManagers": ["github-actions", "nix"],
+  "enabledManagers": ["github-actions", "nix", "npm"],
 
   // https://docs.renovatebot.com/modules/manager/github-actions
   "github-actions": {
@@ -12,6 +12,11 @@
 
   // https://docs.renovatebot.com/modules/manager/nix
   "nix": {
+    "enabled": true
+  },
+
+  // https://docs.renovatebot.com/modules/manager/npm
+  "npm": {
     "enabled": true
   },
 

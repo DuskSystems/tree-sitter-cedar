@@ -28,9 +28,7 @@
       perSystemPkgs = f: perSystem (system: f (systemPkgs.${system}));
     in
     {
-      devShells = perSystemPkgs (pkgs:
-
-      {
+      devShells = perSystemPkgs (pkgs: {
         # nix develop
         default = pkgs.mkShell {
           name = "tree-sitter-cedar-shell";
@@ -57,9 +55,6 @@
 
             # Policy
             cedar
-
-            # Snapshots
-            pngquant
 
             # Nix
             deadnix
@@ -117,9 +112,6 @@
             # Tree Sitter
             tree-sitter
             ts_query_ls
-
-            # Snapshots
-            pngquant
 
             # Nix
             deadnix
