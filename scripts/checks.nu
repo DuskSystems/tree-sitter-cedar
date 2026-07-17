@@ -27,7 +27,9 @@ def main []: nothing -> nothing {
 
     # Tree Sitter
     tree-sitter-check
-    snapshot-check
+
+    npm ci
+    npx vitest run
 
     # Nushell
     let scripts: list<string> = glob "scripts/**/*.nu"
@@ -77,17 +79,5 @@ def tree-sitter-check []: nothing -> nothing {
 
     for grammar in $grammars {
         ts_query_ls check --format $"($grammar)/queries"
-    }
-}
-
-def snapshot-check []: nothing -> nothing {
-    npm ci
-    ./scripts/snapshots.mjs
-
-    let dirty = git status --porcelain -- "*/test/snapshots/*" | str trim
-    if $dirty != "" {
-        print "snapshots are stale:"
-        print $dirty
-        exit 1
     }
 }

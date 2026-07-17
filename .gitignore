@@ -4,6 +4,9 @@ logs
 # Node
 node_modules
 
+# Vitest
+.vitest-attachments
+
 # Lychee
 .lycheecache
 
