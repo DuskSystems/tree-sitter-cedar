@@ -11,15 +11,41 @@ const tmp = mkdtempSync(join(tmpdir(), "tree-sitter-cedar-"));
 const separator = "=".repeat(80);
 const divider = "-".repeat(80);
 
+const config = {
+  "theme": {
+    "attribute": 0,
+    "boolean": 0,
+    "comment": 0,
+    "function": 0,
+    "keyword": 0,
+    "module": 0,
+    "number": 0,
+    "operator": 0,
+    "property": 0,
+    "punctuation.bracket": 0,
+    "punctuation.delimiter": 0,
+    "punctuation.special": 0,
+    "string": 0,
+    "string.escape": 0,
+    "type": 0,
+    "variable": 0,
+    "variable.parameter": 0
+  }
+};
+
+const configDir = join(tmp, "config");
+mkdirSync(configDir);
+writeFileSync(join(configDir, "config.json"), JSON.stringify(config));
+
 const browser = await chromium.launch();
 const page = await browser.newPage({
   deviceScaleFactor: 2,
 });
 
-const config = JSON.parse(readFileSync("tree-sitter.json", "utf8"));
+const { grammars } = JSON.parse(readFileSync("tree-sitter.json", "utf8"));
 const style = readFileSync("scripts/snapshots.css", "utf8");
 
-for (const grammar of config.grammars) {
+for (const grammar of grammars) {
   const corpusDir = join(grammar.path, "test", "corpus");
   const snapshotDir = join(grammar.path, "test", "snapshots");
 
@@ -61,7 +87,8 @@ for (const grammar of config.grammars) {
 
     const html = execFileSync("tree-sitter", ["highlight", "--html", "--css-classes", sourceFile], {
       encoding: "utf8",
-      stdio: ["ignore", "pipe", "ignore"]
+      stdio: ["ignore", "pipe", "ignore"],
+      env: { ...process.env, TREE_SITTER_DIR: configDir }
     });
 
     const [table] = html.match(/<table>.*<\/table>/s);

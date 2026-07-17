@@ -59,8 +59,6 @@
   "@" @punctuation.special
   (identifier) @attribute)
 
-(namespace (name (identifier) @module))
-
 (entity_declaration (identifier_list (identifier) @type))
 
 (action_declaration (action_name_list (identifier) @function))
@@ -74,3 +72,5 @@
 (name (identifier) @type)
 
 (qualified_name (identifier) @type)
+
+(namespace (name (identifier) @module))
