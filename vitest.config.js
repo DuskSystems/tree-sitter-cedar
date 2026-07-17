@@ -21,9 +21,12 @@ export default defineConfig({
             "--disable-lcd-text",
             "--disable-skia-runtime-opts",
             "--font-render-hinting=none",
-            "--force-color-profile=srgb",
-            "--force-device-scale-factor=2",
+            "--force-color-profile=srgb"
           ]
+        },
+
+        contextOptions: {
+          deviceScaleFactor: 2,
         },
       }),
 
