@@ -3,11 +3,11 @@ import { resolve } from "path";
 import { playwright } from "@vitest/browser-playwright";
 import { defineConfig } from "vitest/config";
 
-import { corpus, highlight } from "./tests/commands.mjs";
+import { corpus, highlight } from "./tests/commands.js";
 
 export default defineConfig({
   test: {
-    include: ["tests/*.spec.mjs"],
+    include: ["tests/*.spec.js"],
 
     browser: {
       enabled: true,

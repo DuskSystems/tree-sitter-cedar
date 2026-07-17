@@ -1,15 +1,9 @@
-/// <reference types="tree-sitter-cli/dsl" />
+/// <reference path="../dsl.d.ts" />
 // @ts-check
 
-function commaSep1(rule) {
-  return seq(rule, repeat(seq(',', rule)));
-}
+import { commaSep, commaSep1, common, annotation } from '../common.js';
 
-function commaSep(rule) {
-  return optional(commaSep1(rule));
-}
-
-module.exports = grammar({
+export default grammar({
   name: 'cedar',
 
   word: $ => $.identifier,
@@ -35,11 +29,7 @@ module.exports = grammar({
 
     effect: _ => choice('permit', 'forbid'),
 
-    annotation: $ => seq(
-      '@',
-      $.identifier,
-      optional(seq('(', $.string, ')')),
-    ),
+    annotation,
 
     scope: $ => seq(
       $.principal,
@@ -188,7 +178,7 @@ module.exports = grammar({
       $.entity_reference,
       $.extension_call,
       $.parenthesized_expression,
-      $.list_expression,
+      $.set_expression,
       $.record_expression,
       $.variable,
       $.identifier,
@@ -205,7 +195,7 @@ module.exports = grammar({
 
     parenthesized_expression: $ => seq('(', $.expression, ')'),
 
-    list_expression: $ => seq(
+    set_expression: $ => seq(
       '[',
       commaSep($.expression),
       optional(','),
@@ -259,45 +249,11 @@ module.exports = grammar({
       ']',
     ),
 
-    name: $ => prec.right(seq(
-      $.identifier,
-      repeat(seq('::', $.identifier)),
-    )),
-
     slot: $ => seq('?', $.identifier, optional(seq(':', $.type_reference))),
     type_reference: $ => prec.left(seq($.name, optional(seq('<', commaSep1($.type_reference), '>')))),
 
     variable: _ => choice('principal', 'action', 'resource', 'context'),
 
-    true: _ => 'true',
-    false: _ => 'false',
-
-    integer: _ => token(/[0-9]+/),
-
-    string_content: _ => token.immediate(/[^"\\]+/),
-    string: $ => seq(
-      '"',
-      repeat(
-        choice(
-          $.string_content,
-          $.escape_sequence,
-        ),
-      ),
-      optional(token.immediate('"')),
-    ),
-
-    escape_sequence: _ => token.immediate(
-      seq(
-        '\\',
-        choice(
-          /[^xu]/,
-          /x[0-9a-fA-F]{2}/,
-          /u\{[0-9a-fA-F]+\}/,
-        ),
-      ),
-    ),
-
-    identifier: _ => token(/[_a-zA-Z][_a-zA-Z0-9]*/),
-    comment: _ => token(seq('//', /.*/)),
+    ...common,
   },
 });

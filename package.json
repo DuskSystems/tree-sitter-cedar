@@ -2,6 +2,7 @@
   "name": "@dusksystems/tree-sitter-cedar",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "description": "Cedar grammars for tree-sitter",
   "keywords": [
     "cedar",
@@ -22,7 +23,6 @@
   "devDependencies": {
     "@vitest/browser-playwright": "4.1.10",
     "playwright": "1.61.1",
-    "tree-sitter-cli": "0.26.9",
     "vitest": "4.1.10"
   }
 }

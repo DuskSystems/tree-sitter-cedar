@@ -1021,7 +1021,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "list_expression"
+          "name": "set_expression"
         },
         {
           "type": "SYMBOL",
@@ -1108,7 +1108,7 @@
         }
       ]
     },
-    "list_expression": {
+    "set_expression": {
       "type": "SEQ",
       "members": [
         {
@@ -1438,35 +1438,6 @@
         }
       ]
     },
-    "name": {
-      "type": "PREC_RIGHT",
-      "value": 0,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "identifier"
-          },
-          {
-            "type": "REPEAT",
-            "content": {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "::"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "identifier"
-                }
-              ]
-            }
-          }
-        ]
-      }
-    },
     "slot": {
       "type": "SEQ",
       "members": [
@@ -1581,6 +1552,35 @@
         }
       ]
     },
+    "name": {
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "identifier"
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "::"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "identifier"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
     "true": {
       "type": "STRING",
       "value": "true"
@@ -1594,13 +1594,6 @@
       "content": {
         "type": "PATTERN",
         "value": "[0-9]+"
-      }
-    },
-    "string_content": {
-      "type": "IMMEDIATE_TOKEN",
-      "content": {
-        "type": "PATTERN",
-        "value": "[^\"\\\\]+"
       }
     },
     "string": {
@@ -1642,6 +1635,13 @@
           ]
         }
       ]
+    },
+    "string_content": {
+      "type": "IMMEDIATE_TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[^\"\\\\]+"
+      }
     },
     "escape_sequence": {
       "type": "IMMEDIATE_TOKEN",

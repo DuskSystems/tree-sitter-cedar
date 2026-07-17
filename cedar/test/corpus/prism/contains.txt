@@ -34,7 +34,7 @@ when
             (relation_expression
               (unary_expression
                 (member_expression
-                  (list_expression
+                  (set_expression
                     (expression
                       (or_expression
                         (and_expression
@@ -69,7 +69,7 @@ when
             (relation_expression
               (unary_expression
                 (member_expression
-                  (list_expression
+                  (set_expression
                     (expression
                       (or_expression
                         (and_expression
@@ -100,7 +100,7 @@ when
                           (relation_expression
                             (unary_expression
                               (member_expression
-                                (list_expression
+                                (set_expression
                                   (expression
                                     (or_expression
                                       (and_expression
@@ -119,7 +119,7 @@ when
             (relation_expression
               (unary_expression
                 (member_expression
-                  (list_expression
+                  (set_expression
                     (expression
                       (or_expression
                         (and_expression
@@ -143,7 +143,7 @@ when
                           (relation_expression
                             (unary_expression
                               (member_expression
-                                (list_expression
+                                (set_expression
                                   (expression
                                     (or_expression
                                       (and_expression
@@ -169,6 +169,6 @@ when
             (relation_expression
               (unary_expression
                 (member_expression
-                  (list_expression)
+                  (set_expression)
                   (method_call
                     (identifier)))))))))))

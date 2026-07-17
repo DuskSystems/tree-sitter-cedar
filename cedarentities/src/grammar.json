@@ -516,13 +516,6 @@
         "value": "[0-9]+"
       }
     },
-    "string_content": {
-      "type": "IMMEDIATE_TOKEN",
-      "content": {
-        "type": "PATTERN",
-        "value": "[^\"\\\\]+"
-      }
-    },
     "string": {
       "type": "SEQ",
       "members": [
@@ -562,6 +555,13 @@
           ]
         }
       ]
+    },
+    "string_content": {
+      "type": "IMMEDIATE_TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[^\"\\\\]+"
+      }
     },
     "escape_sequence": {
       "type": "IMMEDIATE_TOKEN",

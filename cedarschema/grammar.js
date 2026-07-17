@@ -1,15 +1,9 @@
-/// <reference types="tree-sitter-cli/dsl" />
+/// <reference path="../dsl.d.ts" />
 // @ts-check
 
-function commaSep1(rule) {
-  return seq(rule, repeat(seq(',', rule)));
-}
+import { commaSep, commaSep1, common, annotation } from '../common.js';
 
-function commaSep(rule) {
-  return optional(commaSep1(rule));
-}
-
-module.exports = grammar({
+export default grammar({
   name: 'cedarschema',
 
   word: $ => $.identifier,
@@ -86,10 +80,6 @@ module.exports = grammar({
       $.integer,
       $.string,
     ),
-
-    true: _ => 'true',
-    false: _ => 'false',
-    integer: _ => token(/[0-9]+/),
 
     common_type_declaration: $ => seq(
       repeat($.annotation),
@@ -194,11 +184,7 @@ module.exports = grammar({
       $._type_expression,
     ),
 
-    annotation: $ => seq(
-      '@',
-      $.identifier,
-      optional(seq('(', $.string, ')')),
-    ),
+    annotation,
 
     type_list: $ => choice(
       seq('[', commaSep($.name), optional(','), ']'),
@@ -215,11 +201,6 @@ module.exports = grammar({
       $.qualified_name,
     ),
 
-    name: $ => prec.right(seq(
-      $.identifier,
-      repeat(seq('::', $.identifier)),
-    )),
-
     identifier_list: $ => commaSep1($.identifier),
     action_name_list: $ => commaSep1($._attribute_name),
 
@@ -228,30 +209,6 @@ module.exports = grammar({
       $.string,
     ),
 
-    string_content: _ => token.immediate(/[^"\\]+/),
-    string: $ => seq(
-      '"',
-      repeat(
-        choice(
-          $.string_content,
-          $.escape_sequence,
-        ),
-      ),
-      optional(token.immediate('"')),
-    ),
-
-    escape_sequence: _ => token.immediate(
-      seq(
-        '\\',
-        choice(
-          /[^xu]/,
-          /x[0-9a-fA-F]{2}/,
-          /u\{[0-9a-fA-F]+\}/,
-        ),
-      ),
-    ),
-
-    identifier: _ => token(/[_a-zA-Z][_a-zA-Z0-9]*/),
-    comment: _ => token(seq('//', /.*/)),
+    ...common,
   },
 });

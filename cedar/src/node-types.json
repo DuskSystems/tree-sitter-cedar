@@ -224,21 +224,6 @@
     }
   },
   {
-    "type": "list_expression",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "expression",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "member_expression",
     "named": true,
     "fields": {},
@@ -275,10 +260,6 @@
           "named": true
         },
         {
-          "type": "list_expression",
-          "named": true
-        },
-        {
           "type": "method_call",
           "named": true
         },
@@ -288,6 +269,10 @@
         },
         {
           "type": "record_expression",
+          "named": true
+        },
+        {
+          "type": "set_expression",
           "named": true
         },
         {
@@ -599,6 +584,21 @@
         },
         {
           "type": "slot",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "set_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "expression",
           "named": true
         }
       ]
