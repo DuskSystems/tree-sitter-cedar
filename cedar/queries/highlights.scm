@@ -30,17 +30,17 @@
   "has"
   "like"
   "is"
-] @keyword.operator
+] @operator
 
 [
   "principal"
   "action"
   "resource"
   "context"
-] @variable
+] @variable.builtin
 
 (slot
-  "?" @variable.parameter
+  "?" @punctuation.special
   (identifier) @variable.parameter)
 
 [
@@ -125,3 +125,7 @@
   "is"
   (name
     (identifier) @type))
+
+(relation_expression
+  "like"
+  (string) @string.special)
