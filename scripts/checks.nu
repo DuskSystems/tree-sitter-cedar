@@ -27,6 +27,7 @@ def main []: nothing -> nothing {
 
     # Tree Sitter
     tree-sitter-check
+    snapshot-check
 
     # Nushell
     let scripts: list<string> = glob "scripts/**/*.nu"
@@ -62,7 +63,7 @@ def tree-sitter-check []: nothing -> nothing {
 
     let dirty = git status --porcelain -- "*/src/*" | str trim
     if $dirty != "" {
-        print "committed parsers are stale:"
+        print "parsers are stale:"
         print $dirty
         exit 1
     }
@@ -72,5 +73,17 @@ def tree-sitter-check []: nothing -> nothing {
             cd $grammar
             tree-sitter test
         }
+    }
+}
+
+def snapshot-check []: nothing -> nothing {
+    npm ci
+    ./scripts/snapshots.mjs
+
+    let dirty = git status --porcelain -- "*/test/snapshots/*" | str trim
+    if $dirty != "" {
+        print "snapshots are stale:"
+        print $dirty
+        exit 1
     }
 }
