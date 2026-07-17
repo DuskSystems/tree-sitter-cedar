@@ -53,6 +53,7 @@
 
             # Tree Sitter
             tree-sitter
+            ts_query_ls
 
             # Policy
             cedar
@@ -115,6 +116,7 @@
 
             # Tree Sitter
             tree-sitter
+            ts_query_ls
 
             # Snapshots
             pngquant
