@@ -1,28 +1,28 @@
 body {
   display: inline-block;
-  min-width: 680px;
   background: #1e1e2e;
   color: #cdd6f4;
   font-family: JuliaMono;
   font-size: 14px;
   line-height: 1.5;
-  padding-top: 16px;
-  padding-right: 24px;
-  padding-bottom: 16px;
-  padding-left: 24px;
+  padding: 16px 24px;
   border-radius: 8px;
 }
 
+.line {
+  white-space: pre;
+}
+
 .line-number {
+  padding: 0 10px;
+  text-align: right;
   color: #6c7086;
   opacity: 0.6;
 }
 
-.attribute {
-  color: #fab387;
-}
-
-.boolean {
+.attribute,
+.boolean,
+.number {
   color: #fab387;
 }
 
@@ -31,7 +31,8 @@ body {
   font-style: italic;
 }
 
-.function {
+.function,
+.property {
   color: #89b4fa;
 }
 
@@ -44,22 +45,11 @@ body {
   font-style: italic;
 }
 
-.number {
-  color: #fab387;
-}
-
 .operator {
   color: #89dceb;
 }
 
-.property {
-  color: #89b4fa;
-}
-
-.punctuation.bracket {
-  color: #9399b2;
-}
-
+.punctuation.bracket,
 .punctuation.delimiter {
   color: #9399b2;
 }
@@ -74,8 +64,4 @@ body {
 
 .type {
   color: #f9e2af;
-}
-
-.variable {
-  color: #cdd6f4;
 }

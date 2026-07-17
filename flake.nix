@@ -28,7 +28,9 @@
       perSystemPkgs = f: perSystem (system: f (systemPkgs.${system}));
     in
     {
-      devShells = perSystemPkgs (pkgs: {
+      devShells = perSystemPkgs (pkgs:
+
+      {
         # nix develop
         default = pkgs.mkShell {
           name = "tree-sitter-cedar-shell";
@@ -37,7 +39,7 @@
             # Nix
             NIX_PATH = "nixpkgs=${nixpkgs.outPath}";
 
-            # Screenshots
+            # Snapshots
             PLAYWRIGHT_BROWSERS_PATH = pkgs.playwright-driver.browsers;
             FONTCONFIG_FILE = pkgs.makeFontsConf {
               fontDirectories = [ pkgs.julia-mono ];
@@ -50,11 +52,13 @@
             vtsls
 
             # Tree Sitter
-            # NOTE: Ensure `tree-sitter --version` matches version in `package.json`.
             tree-sitter
 
             # Policy
             cedar
+
+            # Snapshots
+            pngquant
 
             # Nix
             deadnix
@@ -97,12 +101,23 @@
         ci = pkgs.mkShell {
           name = "tree-sitter-cedar-ci-shell";
 
+          env = {
+            # Snapshots
+            PLAYWRIGHT_BROWSERS_PATH = pkgs.playwright-driver.browsers;
+            FONTCONFIG_FILE = pkgs.makeFontsConf {
+              fontDirectories = [ pkgs.julia-mono ];
+            };
+          };
+
           buildInputs = with pkgs; [
             # Node
             nodejs
 
             # Tree Sitter
             tree-sitter
+
+            # Snapshots
+            pngquant
 
             # Nix
             deadnix

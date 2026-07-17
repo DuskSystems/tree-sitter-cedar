@@ -18,10 +18,6 @@
     "cedarschema"
   ],
   "devDependencies": {
-    "playwright-core": "1.61.1",
-    "tree-sitter-cli": "0.26.9"
-  },
-  "allowScripts": {
-    "tree-sitter-cli@0.26.9": true
+    "playwright-core": "1.61.1"
   }
 }
