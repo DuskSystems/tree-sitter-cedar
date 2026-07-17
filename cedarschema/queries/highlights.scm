@@ -26,7 +26,7 @@
   "principal"
   "resource"
   "context"
-] @variable
+] @variable.builtin
 
 [
   "Bool"

@@ -14,6 +14,7 @@ const config = {
     "boolean": 0,
     "comment": 0,
     "function": 0,
+    "function.method": 0,
     "keyword": 0,
     "module": 0,
     "number": 0,
@@ -24,8 +25,10 @@ const config = {
     "punctuation.special": 0,
     "string": 0,
     "string.escape": 0,
+    "string.special": 0,
     "type": 0,
     "variable": 0,
+    "variable.builtin": 0,
     "variable.parameter": 0
   }
 };
