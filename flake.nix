@@ -10,6 +10,7 @@
   # nix flake show
   outputs =
     {
+      self,
       nixpkgs,
       ...
     }:
@@ -22,12 +23,35 @@
 
         import nixpkgs {
           inherit system;
+
+          overlays = [
+            self.overlays.default
+          ];
         }
       );
 
       perSystemPkgs = f: perSystem (system: f (systemPkgs.${system}));
+
+      tree-sitter-json = nixpkgs.lib.importJSON ./tree-sitter.json;
+      version = tree-sitter-json.metadata.version;
     in
     {
+      overlays = {
+        default = final: _prev: {
+          tree-sitter-cedar = final.callPackage ./nix/pkgs/tree-sitter-cedar/package.nix { inherit version; };
+          tree-sitter-cedarschema = final.callPackage ./nix/pkgs/tree-sitter-cedarschema/package.nix { inherit version; };
+          tree-sitter-cedarentities = final.callPackage ./nix/pkgs/tree-sitter-cedarentities/package.nix { inherit version; };
+        };
+      };
+
+      packages = perSystemPkgs (pkgs: {
+        inherit (pkgs)
+          tree-sitter-cedar
+          tree-sitter-cedarschema
+          tree-sitter-cedarentities
+          ;
+      });
+
       devShells = perSystemPkgs (pkgs: {
         # nix develop
         default = pkgs.mkShell {
