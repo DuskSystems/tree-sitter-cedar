@@ -11,21 +11,22 @@
       "formatter": "language_server"
     },
 
-    "Nix": {
-      "language_servers": ["nixd", "nil"],
+    "Tree-sitter Query": {
+      "language_servers": ["ts_query_ls"],
       "format_on_save": "on",
       "formatter": "language_server"
     },
 
-    "Nu": {
-      "language_servers": ["nu"],
+    "Cedar": {
+      "language_servers": ["cedar-language-server"],
       "format_on_save": "on",
-      "formatter": {
-        "external": {
-          "command": "nufmt",
-          "arguments": ["--stdin"]
-        }
-      }
+      "formatter": "language_server"
+    },
+
+    "Nix": {
+      "language_servers": ["nixd", "nil"],
+      "format_on_save": "on",
+      "formatter": "language_server"
     },
 
     "Markdown": {
@@ -54,10 +55,15 @@
       "format_on_save": "off"
     },
 
-    "Cedar": {
-      "language_servers": ["cedar-language-server"],
+    "Nu": {
+      "language_servers": ["nu"],
       "format_on_save": "on",
-      "formatter": "language_server"
+      "formatter": {
+        "external": {
+          "command": "nufmt",
+          "arguments": ["--stdin"]
+        }
+      }
     }
   },
 
@@ -66,6 +72,18 @@
       "binary": {
         "path": "vtsls",
         "arguments": ["--stdio"]
+      }
+    },
+
+    "ts_query_ls": {
+      "binary": {
+        "path": "ts_query_ls"
+      }
+    },
+
+    "cedar-language-server": {
+      "binary": {
+        "path": "cedar-language-server"
       }
     },
 
@@ -84,13 +102,6 @@
     "nil": {
       "binary": {
         "path": "nil"
-      }
-    },
-
-    "nu": {
-      "binary": {
-        "path": "nu",
-        "arguments": ["--lsp"]
       }
     },
 
@@ -121,9 +132,10 @@
       }
     },
 
-    "cedar-language-server": {
+    "nu": {
       "binary": {
-        "path": "cedar-language-server"
+        "path": "nu",
+        "arguments": ["--lsp"]
       }
     }
   }

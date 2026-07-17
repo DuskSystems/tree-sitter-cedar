@@ -74,6 +74,10 @@ def tree-sitter-check []: nothing -> nothing {
             tree-sitter test
         }
     }
+
+    for grammar in $grammars {
+        ts_query_ls check --format $"($grammar)/queries"
+    }
 }
 
 def snapshot-check []: nothing -> nothing {
