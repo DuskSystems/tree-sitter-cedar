@@ -1,13 +1,12 @@
 ================================================================================
 generalized_templates_4
-:error
 ================================================================================
 
 // https://github.com/cedar-policy/rfcs/blob/a58f491fdb5a6681860c1c8f0cfc2501cce0bd50/text/0098-generalized-templates.md?plain=1#L120-L129
 
 template(?department1: University::Department, ?department2: University::Department) =>
 permit(
-  principal == ?principal
+  principal == ?principal,
   action == Action::"View",
   resource
 ) when {
@@ -17,4 +16,72 @@ permit(
 };
 
 --------------------------------------------------------------------------------
-(ERROR)
+
+(policy_set
+  (comment)
+  (policy
+    (template_declaration
+      (slot
+        (identifier)
+        (type_reference
+          (name
+            (identifier)
+            (identifier))))
+      (slot
+        (identifier)
+        (type_reference
+          (name
+            (identifier)
+            (identifier)))))
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (slot
+            (identifier))))
+      (action
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (resource))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (parenthesized_expression
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (variable)))
+                            (unary_expression
+                              (member_expression
+                                (slot
+                                  (identifier))))))
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (variable)))
+                            (unary_expression
+                              (member_expression
+                                (slot
+                                  (identifier))))))))))))
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier)))))))))))
