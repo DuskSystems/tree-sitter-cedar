@@ -1,3 +1,1 @@
-(policy
-  (annotation
-    (string) @name)) @definition.policy
+(policy (annotation (string) @name)) @definition.policy

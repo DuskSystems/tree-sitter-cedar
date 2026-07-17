@@ -55,9 +55,7 @@
   ">"
 ] @punctuation.bracket
 
-(annotation
-  "@" @punctuation.special
-  (identifier) @attribute)
+(annotation "@" @punctuation.special (identifier) @attribute)
 
 (entity_declaration (identifier_list (identifier) @type))
 
