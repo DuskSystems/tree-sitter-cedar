@@ -2,6 +2,8 @@
 policies_27
 ================================================================================
 
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-core/src/parser/testfiles/policies.cedar#L237-L245
+
 // Allow everyone who used MFA
 permit (
   principal,
@@ -13,7 +15,9 @@ when {
 };
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (comment)
   (policy
     (effect)

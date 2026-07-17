@@ -1,0 +1,32 @@
+================================================================================
+sample_11_invalid
+================================================================================
+
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-cli/sample-data/tiny_sandboxes/sample11/invalid_policy.cedar#L1-L5
+
+permit (
+  principal == User::"Alice",
+  action == Action::"Invalid",
+  resource
+);
+
+--------------------------------------------------------------------------------
+
+(policy_set
+  (comment)
+  (policy
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (action
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (resource))))

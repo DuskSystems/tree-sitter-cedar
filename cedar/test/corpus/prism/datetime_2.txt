@@ -2,6 +2,8 @@
 datetime_2
 ================================================================================
 
+// https://github.com/cedar-policy/prism-cedar/blob/v0.5.0/test/data/datetime.cedar#L13-L21
+
 permit (principal, action, resource)
 when
 {
@@ -13,7 +15,9 @@ when
 };
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (policy
     (effect)
     (scope

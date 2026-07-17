@@ -1,0 +1,46 @@
+================================================================================
+entity_tags_2
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/d51ecf5ec1717609783977a4e45f60a644c52618/text/0082-entity-tags.md?plain=1#L198-L205
+
+entity User {
+  roles: Set<String>,
+  accessLevels: IntTags
+} tags StringTags;
+entity StringTags {
+} tags String;
+entity IntTags {
+} tags Long;
+
+--------------------------------------------------------------------------------
+
+(schema
+  (comment)
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (record_type
+      (attribute_declaration
+        (identifier)
+        (set_type
+          (primitive_type)))
+      (attribute_declaration
+        (identifier)
+        (name
+          (identifier))))
+    (entity_tags
+      (name
+        (identifier))))
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (record_type)
+    (entity_tags
+      (primitive_type)))
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (record_type)
+    (entity_tags
+      (primitive_type))))

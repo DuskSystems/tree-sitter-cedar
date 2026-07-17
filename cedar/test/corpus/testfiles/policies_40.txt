@@ -2,6 +2,8 @@
 policies_40
 ================================================================================
 
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-core/src/parser/testfiles/policies.cedar#L372-L382
+
 // Both JuniorModerators and SeniorModerators can remove themselves
 // from the role.
 permit(
@@ -15,7 +17,9 @@ when {
 };
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (comment)
   (comment)
   (policy

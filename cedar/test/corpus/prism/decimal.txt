@@ -2,6 +2,8 @@
 decimal
 ================================================================================
 
+// https://github.com/cedar-policy/prism-cedar/blob/v0.5.0/test/data/decimal.cedar#L1-L10
+
 // decimal(), lessThan, lessThanOrEqual, greaterThan, greaterThanOrEqual
 // see https://docs.cedarpolicy.com/policies/syntax-operators.html#decimal-parse-string-and-convert-to-decimal
 permit (principal, action, resource)
@@ -14,7 +16,9 @@ when
 };
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (comment)
   (comment)
   (policy

@@ -1,0 +1,123 @@
+================================================================================
+sample_7
+================================================================================
+
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-cli/sample-data/tiny_sandboxes/sample7/policy.cedar#L1-L12
+
+permit (
+  principal == PhotoFlash::Data::User::"alice",
+  action == PhotoFlash::Data::Action::"view",
+  resource in PhotoFlash::Data::Album::"jane_vacation"
+)
+when
+{
+  context.role.contains("admin") &&
+  context.person.age > 17 &&
+  context.addr.city == "DC" ||
+  context.addr == { city: "DC", street: "main" }
+};
+
+--------------------------------------------------------------------------------
+
+(policy_set
+  (comment)
+  (policy
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (identifier)
+            (identifier)
+            (string
+              (string_content)))))
+      (action
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (identifier)
+            (identifier)
+            (string
+              (string_content)))))
+      (resource
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (identifier)
+            (identifier)
+            (string
+              (string_content))))))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))
+                  (method_call
+                    (identifier)
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (string
+                                  (string_content))))))))))))
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (integer))))
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (string
+                    (string_content))))))
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (record_expression
+                    (record_entry
+                      (identifier)
+                      (expression
+                        (or_expression
+                          (and_expression
+                            (relation_expression
+                              (unary_expression
+                                (member_expression
+                                  (string
+                                    (string_content)))))))))
+                    (record_entry
+                      (identifier)
+                      (expression
+                        (or_expression
+                          (and_expression
+                            (relation_expression
+                              (unary_expression
+                                (member_expression
+                                  (string
+                                    (string_content)))))))))))))))))))

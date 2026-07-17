@@ -1,0 +1,146 @@
+================================================================================
+schema_annotations_1
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/d51ecf5ec1717609783977a4e45f60a644c52618/text/0048-schema-annotations.md?plain=1#L27-L56
+
+@doc("this is the namespace")
+namespace TinyTodo {
+    @doc("a common type representing a task")
+    type Task = {
+        @doc("task id")
+        "id": Long,
+        "name": String,
+        "state": String,
+    };
+    @doc("a common type representing a set of tasks")
+    type Tasks = Set<Task>;
+
+    @doc("an entity type representing a list")
+    @docComment("any entity type is a child of type `Application`")
+    entity List in [Application] = {
+        @doc("editors of a list")
+        "editors": Team,
+        "name": String,
+        "owner": User,
+        @doc("readers of a list")
+        "readers": Team,
+        "tasks": Tasks,
+    };
+
+    @doc("actions that a user can operate on a list")
+    action DeleteList, GetList, UpdateList appliesTo {
+        principal: [User],
+        resource: [List]
+    };
+}
+
+--------------------------------------------------------------------------------
+
+(schema
+  (comment)
+  (namespace
+    (annotation
+      (identifier)
+      (string
+        (string_content)))
+    (name
+      (identifier))
+    (common_type_declaration
+      (annotation
+        (identifier)
+        (string
+          (string_content)))
+      (identifier)
+      (record_type
+        (attribute_declaration
+          (annotation
+            (identifier)
+            (string
+              (string_content)))
+          (string
+            (string_content))
+          (primitive_type))
+        (attribute_declaration
+          (string
+            (string_content))
+          (primitive_type))
+        (attribute_declaration
+          (string
+            (string_content))
+          (primitive_type))))
+    (common_type_declaration
+      (annotation
+        (identifier)
+        (string
+          (string_content)))
+      (identifier)
+      (set_type
+        (name
+          (identifier))))
+    (entity_declaration
+      (annotation
+        (identifier)
+        (string
+          (string_content)))
+      (annotation
+        (identifier)
+        (string
+          (string_content)))
+      (identifier_list
+        (identifier))
+      (entity_parents
+        (type_list
+          (name
+            (identifier))))
+      (record_type
+        (attribute_declaration
+          (annotation
+            (identifier)
+            (string
+              (string_content)))
+          (string
+            (string_content))
+          (name
+            (identifier)))
+        (attribute_declaration
+          (string
+            (string_content))
+          (primitive_type))
+        (attribute_declaration
+          (string
+            (string_content))
+          (name
+            (identifier)))
+        (attribute_declaration
+          (annotation
+            (identifier)
+            (string
+              (string_content)))
+          (string
+            (string_content))
+          (name
+            (identifier)))
+        (attribute_declaration
+          (string
+            (string_content))
+          (name
+            (identifier)))))
+    (action_declaration
+      (annotation
+        (identifier)
+        (string
+          (string_content)))
+      (action_name_list
+        (identifier)
+        (identifier)
+        (identifier))
+      (applies_to
+        (principal_types
+          (type_list
+            (name
+              (identifier))))
+        (resource_types
+          (type_list
+            (name
+              (identifier))))))))

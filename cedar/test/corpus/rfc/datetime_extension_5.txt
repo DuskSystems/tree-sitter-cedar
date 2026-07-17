@@ -1,0 +1,83 @@
+================================================================================
+datetime_extension_5
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/d51ecf5ec1717609783977a4e45f60a644c52618/text/0080-datetime-extension.md?plain=1#L102-L111
+
+permit(
+  principal,
+  action == Action::"redeem",
+  resource is Prize
+) when {
+  principal.birthDate.day == 29 &&
+  principal.birthDate.month == 2 &&
+  context.now.day == 29 &&
+  context.now.month == 2
+};
+
+--------------------------------------------------------------------------------
+
+(policy_set
+  (comment)
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (resource
+        (scope_constraint
+          (name
+            (identifier)))))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (integer))))
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (integer))))
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (integer))))
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (integer))))))))))

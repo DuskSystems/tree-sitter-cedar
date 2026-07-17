@@ -2,6 +2,8 @@
 forbid_1
 ================================================================================
 
+// https://github.com/cedar-policy/prism-cedar/blob/v0.5.0/test/data/forbid.cedar#L1-L5
+
 // see https://docs.cedarpolicy.com/policies/syntax-policy.html
 @id("F1")
 forbid (principal, action, resource)
@@ -9,7 +11,9 @@ when { resource.private }
 unless { principal == resource.owner };
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (comment)
   (policy
     (annotation

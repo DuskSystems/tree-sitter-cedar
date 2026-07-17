@@ -1,0 +1,49 @@
+================================================================================
+disallow_empty_namespace_shadowing_1
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/d51ecf5ec1717609783977a4e45f60a644c52618/text/0070-disallow-empty-namespace-shadowing.md?plain=1#L28-L40
+
+entity User {
+    email: String,
+};
+
+namespace Demo {
+    entity User {
+        id: String,
+    };
+
+    entity Account {
+        owner: User,
+    };
+}
+
+--------------------------------------------------------------------------------
+
+(schema
+  (comment)
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (record_type
+      (attribute_declaration
+        (identifier)
+        (primitive_type))))
+  (namespace
+    (name
+      (identifier))
+    (entity_declaration
+      (identifier_list
+        (identifier))
+      (record_type
+        (attribute_declaration
+          (identifier)
+          (primitive_type))))
+    (entity_declaration
+      (identifier_list
+        (identifier))
+      (record_type
+        (attribute_declaration
+          (identifier)
+          (name
+            (identifier)))))))

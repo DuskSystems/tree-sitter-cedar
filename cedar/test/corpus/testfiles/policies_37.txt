@@ -3,6 +3,8 @@ policies_37
 :error
 ================================================================================
 
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-core/src/parser/testfiles/policies.cedar#L333-L343
+
 // The owner of every forum can add up to N = 5 new custom roles
 // for their forum.
 permit(

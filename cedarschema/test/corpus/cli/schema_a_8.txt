@@ -2,11 +2,15 @@
 schema_a_8
 ================================================================================
 
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-cli/sample-data/sandbox_a/schema.cedarschema#L9-L10
+
 action listPhotos
   appliesTo { principal: [User], resource: [Album, Photo, Video] };
 
 --------------------------------------------------------------------------------
+
 (schema
+  (comment)
   (action_declaration
     (action_name_list
       (identifier))

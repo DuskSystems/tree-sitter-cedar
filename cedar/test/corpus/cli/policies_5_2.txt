@@ -2,6 +2,8 @@
 policies_5_2
 ================================================================================
 
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-cli/sample-data/sandbox_b/policies_5.cedar#L9-L14
+
 // but, as a general rule, anything marked private can only be viewed by the
 // account owner
 @id("privacy rule")
@@ -10,7 +12,9 @@ when { resource.private }
 unless { resource.account has owner && resource.account.owner == principal };
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (comment)
   (comment)
   (policy

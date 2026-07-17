@@ -1,0 +1,78 @@
+================================================================================
+entity_slice_validation_1
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/d51ecf5ec1717609783977a4e45f60a644c52618/text/0076-entity-slice-validation.md?plain=1#L106-L119
+
+entity User {
+    manager: User,
+    age: Long,
+};
+action getDetails appliesTo {
+    principal: User,
+    resource: User,
+    context: {
+        admin: User,
+        building: { location: Long, ITDeptHead: User },
+        foo: { inner: User },
+        bar: { inner: User }
+    }
+};
+
+--------------------------------------------------------------------------------
+
+(schema
+  (comment)
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (record_type
+      (attribute_declaration
+        (identifier)
+        (name
+          (identifier)))
+      (attribute_declaration
+        (identifier)
+        (primitive_type))))
+  (action_declaration
+    (action_name_list
+      (identifier))
+    (applies_to
+      (principal_types
+        (type_list
+          (name
+            (identifier))))
+      (resource_types
+        (type_list
+          (name
+            (identifier))))
+      (context_type
+        (record_type
+          (attribute_declaration
+            (identifier)
+            (name
+              (identifier)))
+          (attribute_declaration
+            (identifier)
+            (record_type
+              (attribute_declaration
+                (identifier)
+                (primitive_type))
+              (attribute_declaration
+                (identifier)
+                (name
+                  (identifier)))))
+          (attribute_declaration
+            (identifier)
+            (record_type
+              (attribute_declaration
+                (identifier)
+                (name
+                  (identifier)))))
+          (attribute_declaration
+            (identifier)
+            (record_type
+              (attribute_declaration
+                (identifier)
+                (name
+                  (identifier))))))))))

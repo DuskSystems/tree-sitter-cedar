@@ -2,6 +2,8 @@
 gitapp
 ================================================================================
 
+// https://github.com/cedar-policy/cedar-examples/blob/c251f7d1ad171bd12dee5d1d7a1cceaec994518f/cedar-policy-language-in-action/GitApp/gitapp.cedarschema#L1-L25
+
 namespace GitApp {
   entity Issue, User, Application;
   entity Repo in [Application] = {
@@ -29,7 +31,9 @@ namespace GitApp {
 }
 
 --------------------------------------------------------------------------------
+
 (schema
+  (comment)
   (namespace
     (name
       (identifier))

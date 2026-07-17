@@ -2,6 +2,8 @@
 tinytodo_1
 ================================================================================
 
+// https://github.com/cedar-policy/cedar-examples/blob/c251f7d1ad171bd12dee5d1d7a1cceaec994518f/tinytodo/policies-templates.cedar#L1-L6
+
 // Policy 0: Any User can create a list and see what lists they own
 permit (
     principal,
@@ -10,7 +12,9 @@ permit (
 );
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (comment)
   (policy
     (effect)

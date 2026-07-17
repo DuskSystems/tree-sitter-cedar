@@ -2,6 +2,8 @@
 gitapp_5
 ================================================================================
 
+// https://github.com/cedar-policy/cedar-examples/blob/c251f7d1ad171bd12dee5d1d7a1cceaec994518f/cedar-policy-language-in-action/GitApp/gitapp.cedar#L55-L65
+
 // a repo contributor can pushRepo, pullRepo, forkRepo
 @id("resource.contributors_Repo")
 permit (
@@ -15,7 +17,9 @@ permit (
 when { resource has contributors && principal in resource.contributors };
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (comment)
   (policy
     (annotation

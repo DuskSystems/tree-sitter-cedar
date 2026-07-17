@@ -1,0 +1,33 @@
+================================================================================
+schema_syntax_6
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/d51ecf5ec1717609783977a4e45f60a644c52618/text/0024-schema-syntax.md?plain=1#L166-L169
+
+action "Delete Document $$" in ["Write Actions"] appliesTo {
+    principal: [User],
+    resource: [Document]
+};
+
+--------------------------------------------------------------------------------
+
+(schema
+  (comment)
+  (action_declaration
+    (action_name_list
+      (string
+        (string_content)))
+    (action_parents
+      (qualified_name_list
+        (qualified_name
+          (string
+            (string_content)))))
+    (applies_to
+      (principal_types
+        (type_list
+          (name
+            (identifier))))
+      (resource_types
+        (type_list
+          (name
+            (identifier)))))))

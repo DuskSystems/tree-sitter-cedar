@@ -2,6 +2,8 @@
 policies_42
 ================================================================================
 
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-core/src/parser/testfiles/policies.cedar#L394-L402
+
 // SeniorModerators can delete forum posts and update the forum configuration
 permit(
   principal,
@@ -13,7 +15,9 @@ when {
 };
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (comment)
   (policy
     (effect)

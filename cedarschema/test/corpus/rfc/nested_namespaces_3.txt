@@ -1,0 +1,19 @@
+================================================================================
+nested_namespaces_3
+:error
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/8d341e0b0e7925809d45ef3baf0323503aca5c2f/text/0101-nested-namespaces.md?plain=1#L216-L224
+
+namespace Foo {
+  entity User; // (1)
+  namespace Bar {
+    entity User; // (2)
+
+    namespace Baz {
+      type MyUser = User;
+    }
+  }
+
+--------------------------------------------------------------------------------
+(ERROR)

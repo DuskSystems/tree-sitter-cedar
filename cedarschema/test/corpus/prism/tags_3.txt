@@ -2,6 +2,8 @@
 tags_3
 ================================================================================
 
+// https://github.com/cedar-policy/prism-cedar/blob/v0.5.0/test/data/tags.cedarschema#L7-L11
+
 action "writeDoc" appliesTo {
   principal: [User],
   resource: [Document],
@@ -9,7 +11,9 @@ action "writeDoc" appliesTo {
 };
 
 --------------------------------------------------------------------------------
+
 (schema
+  (comment)
   (action_declaration
     (action_name_list
       (string

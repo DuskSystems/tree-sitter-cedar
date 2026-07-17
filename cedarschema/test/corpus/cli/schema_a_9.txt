@@ -2,11 +2,15 @@
 schema_a_9
 ================================================================================
 
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-cli/sample-data/sandbox_a/schema.cedarschema#L11-L12
+
 action view, delete, edit
   appliesTo { principal: [User], resource: [Photo, Video, Album] };
 
 --------------------------------------------------------------------------------
+
 (schema
+  (comment)
   (action_declaration
     (action_name_list
       (identifier)

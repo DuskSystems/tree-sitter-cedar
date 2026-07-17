@@ -1,0 +1,20 @@
+================================================================================
+generalized_templates_4
+:error
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/a58f491fdb5a6681860c1c8f0cfc2501cce0bd50/text/0098-generalized-templates.md?plain=1#L120-L129
+
+template(?department1: University::Department, ?department2: University::Department) =>
+permit(
+  principal == ?principal
+  action == Action::"View",
+  resource
+) when {
+    (resource in ?department1 ||
+    resource in ?department2) &&
+    context.date < principal.graduationDate
+};
+
+--------------------------------------------------------------------------------
+(ERROR)

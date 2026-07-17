@@ -1,0 +1,89 @@
+================================================================================
+datetime_extension_7
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/d51ecf5ec1717609783977a4e45f60a644c52618/text/0080-datetime-extension.md?plain=1#L307-L314
+
+permit(
+  principal == User::"alice",
+  action == PhotoOp::"view",
+  resource is Photo
+) when {
+  resource.fileType == "JPEG" &&
+  resource.creationDate <= (context.currentTime - (7 * 24 * 60 * 60))
+};
+
+--------------------------------------------------------------------------------
+
+(policy_set
+  (comment)
+  (policy
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (action
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (resource
+        (scope_constraint
+          (name
+            (identifier)))))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (string
+                    (string_content)))))
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (parenthesized_expression
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (variable)
+                                (field_access
+                                  (identifier))))
+                            (unary_expression
+                              (member_expression
+                                (parenthesized_expression
+                                  (expression
+                                    (or_expression
+                                      (and_expression
+                                        (relation_expression
+                                          (unary_expression
+                                            (member_expression
+                                              (integer)))
+                                          (unary_expression
+                                            (member_expression
+                                              (integer)))
+                                          (unary_expression
+                                            (member_expression
+                                              (integer)))
+                                          (unary_expression
+                                            (member_expression
+                                              (integer))))))))))))))))))))))))

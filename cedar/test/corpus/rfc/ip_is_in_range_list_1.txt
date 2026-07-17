@@ -1,0 +1,150 @@
+================================================================================
+ip_is_in_range_list_1
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/d51ecf5ec1717609783977a4e45f60a644c52618/text/0099-ip-is-in-range-list.md?plain=1#L23-L34
+
+// Policy to allow access only from corporate IP ranges (current method)
+permit (
+  principal,
+  action == Action::"accessAdminDashboard",
+  resource
+)
+when {
+  context.network.source_ip.isInRange(ip("198.51.100.0/24")) ||
+  context.network.source_ip.isInRange(ip("203.0.113.0/24")) ||
+  context.network.source_ip.isInRange(ip("192.0.2.0/25")) ||
+  context.network.source_ip.isInRange(ip("2001:db8:a001::/48"))
+};
+
+--------------------------------------------------------------------------------
+
+(policy_set
+  (comment)
+  (comment)
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (resource))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))
+                  (field_access
+                    (identifier))
+                  (method_call
+                    (identifier)
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (extension_call
+                                  (name
+                                    (identifier))
+                                  (expression
+                                    (or_expression
+                                      (and_expression
+                                        (relation_expression
+                                          (unary_expression
+                                            (member_expression
+                                              (string
+                                                (string_content))))))))))))))))))))
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))
+                  (field_access
+                    (identifier))
+                  (method_call
+                    (identifier)
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (extension_call
+                                  (name
+                                    (identifier))
+                                  (expression
+                                    (or_expression
+                                      (and_expression
+                                        (relation_expression
+                                          (unary_expression
+                                            (member_expression
+                                              (string
+                                                (string_content))))))))))))))))))))
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))
+                  (field_access
+                    (identifier))
+                  (method_call
+                    (identifier)
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (extension_call
+                                  (name
+                                    (identifier))
+                                  (expression
+                                    (or_expression
+                                      (and_expression
+                                        (relation_expression
+                                          (unary_expression
+                                            (member_expression
+                                              (string
+                                                (string_content))))))))))))))))))))
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))
+                  (field_access
+                    (identifier))
+                  (method_call
+                    (identifier)
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (extension_call
+                                  (name
+                                    (identifier))
+                                  (expression
+                                    (or_expression
+                                      (and_expression
+                                        (relation_expression
+                                          (unary_expression
+                                            (member_expression
+                                              (string
+                                                (string_content)))))))))))))))))))))))))

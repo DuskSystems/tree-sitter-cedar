@@ -2,6 +2,8 @@
 contains
 ================================================================================
 
+// https://github.com/cedar-policy/prism-cedar/blob/v0.5.0/test/data/contains.cedar#L1-L10
+
 // contains, containsAll, containsAny
 // see https://docs.cedarpolicy.com/policies/syntax-operators.html
 permit (principal, action, resource)
@@ -14,7 +16,9 @@ when
 };
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (comment)
   (comment)
   (policy

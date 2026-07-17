@@ -1,0 +1,54 @@
+================================================================================
+sample_6
+================================================================================
+
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-cli/sample-data/tiny_sandboxes/sample6/policy.cedar#L1-L6
+
+permit (
+  principal in UserGroup::"guardians",
+  action in [Action::"view"],
+  resource == ScreenTime::"activity"
+)
+when { principal.account.age >= 18 };
+
+--------------------------------------------------------------------------------
+
+(policy_set
+  (comment)
+  (policy
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (action
+        (scope_constraint
+          (entity_list
+            (entity_reference
+              (identifier)
+              (string
+                (string_content))))))
+      (resource
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content))))))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (integer))))))))))

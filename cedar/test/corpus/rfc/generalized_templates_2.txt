@@ -1,0 +1,42 @@
+================================================================================
+generalized_templates_2
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/a58f491fdb5a6681860c1c8f0cfc2501cce0bd50/text/0098-generalized-templates.md?plain=1#L90-L92
+
+permit(principal, action == Action::"AccessDocument", resource in ?resource) when {
+    ?resource in principal.owned_folders
+};
+
+--------------------------------------------------------------------------------
+
+(policy_set
+  (comment)
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (resource
+        (scope_constraint
+          (slot
+            (identifier)))))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (slot
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier)))))))))))

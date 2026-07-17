@@ -1,0 +1,129 @@
+================================================================================
+sample_7
+================================================================================
+
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-cli/sample-data/tiny_sandboxes/sample7/schema.cedarschema#L1-L20
+
+namespace PhotoFlash::Data {
+  entity Album in [Album];
+  entity ScreenTime;
+  entity User in [UserGroup] { account: Account };
+  entity UserGroup;
+  entity Account { age: Long };
+  entity Photo in [Album] { owner: User };
+
+  action edit appliesTo { principal: [User], resource: [Photo] };
+  action view
+    appliesTo {
+      principal: [User],
+      resource: [Photo, ScreenTime],
+      context: {
+        addr: { city: String, street: String },
+        person: { age: Long, name: String },
+        role: Set<String>
+      }
+    };
+}
+
+--------------------------------------------------------------------------------
+
+(schema
+  (comment)
+  (namespace
+    (name
+      (identifier)
+      (identifier))
+    (entity_declaration
+      (identifier_list
+        (identifier))
+      (entity_parents
+        (type_list
+          (name
+            (identifier)))))
+    (entity_declaration
+      (identifier_list
+        (identifier)))
+    (entity_declaration
+      (identifier_list
+        (identifier))
+      (entity_parents
+        (type_list
+          (name
+            (identifier))))
+      (record_type
+        (attribute_declaration
+          (identifier)
+          (name
+            (identifier)))))
+    (entity_declaration
+      (identifier_list
+        (identifier)))
+    (entity_declaration
+      (identifier_list
+        (identifier))
+      (record_type
+        (attribute_declaration
+          (identifier)
+          (primitive_type))))
+    (entity_declaration
+      (identifier_list
+        (identifier))
+      (entity_parents
+        (type_list
+          (name
+            (identifier))))
+      (record_type
+        (attribute_declaration
+          (identifier)
+          (name
+            (identifier)))))
+    (action_declaration
+      (action_name_list
+        (identifier))
+      (applies_to
+        (principal_types
+          (type_list
+            (name
+              (identifier))))
+        (resource_types
+          (type_list
+            (name
+              (identifier))))))
+    (action_declaration
+      (action_name_list
+        (identifier))
+      (applies_to
+        (principal_types
+          (type_list
+            (name
+              (identifier))))
+        (resource_types
+          (type_list
+            (name
+              (identifier))
+            (name
+              (identifier))))
+        (context_type
+          (record_type
+            (attribute_declaration
+              (identifier)
+              (record_type
+                (attribute_declaration
+                  (identifier)
+                  (primitive_type))
+                (attribute_declaration
+                  (identifier)
+                  (primitive_type))))
+            (attribute_declaration
+              (identifier)
+              (record_type
+                (attribute_declaration
+                  (identifier)
+                  (primitive_type))
+                (attribute_declaration
+                  (identifier)
+                  (primitive_type))))
+            (attribute_declaration
+              (identifier)
+              (set_type
+                (primitive_type)))))))))

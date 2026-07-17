@@ -2,6 +2,8 @@
 tinytodo_4
 ================================================================================
 
+// https://github.com/cedar-policy/cedar-examples/blob/c251f7d1ad171bd12dee5d1d7a1cceaec994518f/tinytodo/policies-templates.cedar#L20-L57
+
 // Policy 3: Users who are members of [?principal] are editors of [?resource]
 @id("editor-template")
 permit (
@@ -42,7 +44,9 @@ permit (
 // };
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (comment)
   (policy
     (annotation

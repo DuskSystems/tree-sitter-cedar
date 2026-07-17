@@ -2,6 +2,8 @@
 policies_43
 ================================================================================
 
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-core/src/parser/testfiles/policies.cedar#L404-L408
+
 permit (
   principal,
   action,
@@ -9,7 +11,9 @@ permit (
 );
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (policy
     (effect)
     (scope

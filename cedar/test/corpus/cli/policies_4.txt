@@ -2,6 +2,8 @@
 policies_4
 ================================================================================
 
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-cli/sample-data/sandbox_b/policies_4.cedar#L1-L10
+
 // Only members of the HardwareEngineering department with job level >= 5 can
 // view photos in device_prototypes
 @id("prototypes access policy")
@@ -14,7 +16,9 @@ when
 { principal.department == "HardwareEngineering" && principal.jobLevel >= 5 };
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (comment)
   (comment)
   (policy

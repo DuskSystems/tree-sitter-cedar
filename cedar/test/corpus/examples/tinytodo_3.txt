@@ -2,6 +2,8 @@
 tinytodo_3
 ================================================================================
 
+// https://github.com/cedar-policy/cedar-examples/blob/c251f7d1ad171bd12dee5d1d7a1cceaec994518f/tinytodo/policies-templates.cedar#L12-L18
+
 // Policy 2: Users who are members of [?principal] are readers of [?resource]
 @id("reader-template")
 permit (
@@ -11,7 +13,9 @@ permit (
 );
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (comment)
   (policy
     (annotation

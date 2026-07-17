@@ -2,6 +2,8 @@
 policies_3
 ================================================================================
 
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-cli/sample-data/sandbox_a/policies_3.cedar#L1-L8
+
 // Everyone can view the photos in the "jane_vacation" album
 // (and list the photos in the album)
 @id("jane_vacation public")
@@ -12,7 +14,9 @@ permit (
 );
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (comment)
   (comment)
   (policy

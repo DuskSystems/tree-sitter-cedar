@@ -2,6 +2,8 @@
 policies_6_1
 ================================================================================
 
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-cli/sample-data/sandbox_b/policies_6.cedar#L1-L7
+
 // Alice's friends can view all of her photos
 @id("alice's friends view policy")
 permit (
@@ -11,7 +13,9 @@ permit (
 );
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (comment)
   (policy
     (annotation

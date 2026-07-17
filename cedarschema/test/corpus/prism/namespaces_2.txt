@@ -2,6 +2,8 @@
 namespaces_2
 ================================================================================
 
+// https://github.com/cedar-policy/prism-cedar/blob/v0.5.0/test/data/namespaces.cedarschema#L19-L34
+
 // no spaces still valid and should highlight
 namespace N2 {
   type C={"a":String};
@@ -20,7 +22,9 @@ namespace N2 {
 }
 
 --------------------------------------------------------------------------------
+
 (schema
+  (comment)
   (comment)
   (namespace
     (name

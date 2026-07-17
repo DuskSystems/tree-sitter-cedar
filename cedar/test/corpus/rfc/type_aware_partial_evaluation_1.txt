@@ -1,0 +1,151 @@
+================================================================================
+type_aware_partial_evaluation_1
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/d51ecf5ec1717609783977a4e45f60a644c52618/text/0095-type-aware-partial-evaluation.md?plain=1#L23-L52
+
+// Users can view public documents.
+permit (
+  principal,
+  action == Action::"View",
+  resource
+) when {
+  resource.isPublic
+};
+
+// Users can view owned documents if they are mfa-authenticated.
+permit (
+  principal,
+  action == Action::"View",
+  resource
+) when {
+  context.hasMFA &&
+  resource.owner == principal
+};
+
+// Users can delete owned documents if they are mfa-authenticated
+// and on the company network.
+permit (
+  principal,
+  action == Action::"Delete",
+  resource
+) when {
+  context.hasMFA &&
+  resource.owner == principal &&
+  context.srcIP.isInRange(ip("1.1.1.0/24"))
+};
+
+--------------------------------------------------------------------------------
+
+(policy_set
+  (comment)
+  (comment)
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (resource))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))))))))))
+  (comment)
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (resource))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier)))))
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (variable)))))))))
+  (comment)
+  (comment)
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (resource))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier)))))
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (variable))))
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))
+                  (method_call
+                    (identifier)
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (extension_call
+                                  (name
+                                    (identifier))
+                                  (expression
+                                    (or_expression
+                                      (and_expression
+                                        (relation_expression
+                                          (unary_expression
+                                            (member_expression
+                                              (string
+                                                (string_content)))))))))))))))))))))))))

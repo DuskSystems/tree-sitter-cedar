@@ -1,0 +1,68 @@
+================================================================================
+level_validation
+================================================================================
+
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-cli/sample-data/tiny_sandboxes/level-validation/schema.cedarschema#L1-L16
+
+entity User in Group {
+    jobLevel: Long,
+    manager: User
+};
+entity Group;
+entity Document;
+
+action view appliesTo {
+    principal: User,
+    resource: Document,
+    context: {
+        token: {
+            is_secure: Bool
+        }
+    }
+};
+
+--------------------------------------------------------------------------------
+
+(schema
+  (comment)
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (entity_parents
+      (type_list
+        (name
+          (identifier))))
+    (record_type
+      (attribute_declaration
+        (identifier)
+        (primitive_type))
+      (attribute_declaration
+        (identifier)
+        (name
+          (identifier)))))
+  (entity_declaration
+    (identifier_list
+      (identifier)))
+  (entity_declaration
+    (identifier_list
+      (identifier)))
+  (action_declaration
+    (action_name_list
+      (identifier))
+    (applies_to
+      (principal_types
+        (type_list
+          (name
+            (identifier))))
+      (resource_types
+        (type_list
+          (name
+            (identifier))))
+      (context_type
+        (record_type
+          (attribute_declaration
+            (identifier)
+            (record_type
+              (attribute_declaration
+                (identifier)
+                (primitive_type)))))))))

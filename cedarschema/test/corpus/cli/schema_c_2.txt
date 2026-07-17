@@ -2,10 +2,14 @@
 schema_c_2
 ================================================================================
 
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-cli/sample-data/sandbox_c/schema.cedarschema#L2
+
 entity Video in [Account, Album];
 
 --------------------------------------------------------------------------------
+
 (schema
+  (comment)
   (entity_declaration
     (identifier_list
       (identifier))

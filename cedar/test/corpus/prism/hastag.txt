@@ -2,7 +2,8 @@
 hastag
 ================================================================================
 
-// https://github.com/cedar-policy/rfcs/blob/main/text/0082-entity-tags.md
+// https://github.com/cedar-policy/prism-cedar/blob/v0.5.0/test/data/hastag.cedar#L2-L14
+
 permit (
   principal is User,
   action == Action::"writeDoc",

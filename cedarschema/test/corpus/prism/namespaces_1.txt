@@ -2,6 +2,8 @@
 namespaces_1
 ================================================================================
 
+// https://github.com/cedar-policy/prism-cedar/blob/v0.5.0/test/data/namespaces.cedarschema#L1-L17
+
 // nicely formatted with spaces
 namespace N1 {
   type C = {
@@ -21,7 +23,9 @@ namespace N1 {
 }
 
 --------------------------------------------------------------------------------
+
 (schema
+  (comment)
   (comment)
   (namespace
     (name

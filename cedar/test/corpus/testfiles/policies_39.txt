@@ -2,6 +2,8 @@
 policies_39
 ================================================================================
 
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-core/src/parser/testfiles/policies.cedar#L359-L370
+
 // The owner and Senior Moderators can add / remove members of the "JuniorModerator"
 // role, as long as the total number of Junior Moderators is at most 10.
 permit(
@@ -16,7 +18,9 @@ when {
 };
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (comment)
   (comment)
   (policy

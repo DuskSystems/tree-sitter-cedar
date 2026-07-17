@@ -2,6 +2,8 @@
 policies_48
 ================================================================================
 
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-core/src/parser/testfiles/policies.cedar#L435-L439
+
 permit (
   principal == IAM::User::{awsAccountId: "123456789012", userName: "alice"},
   action,
@@ -9,7 +11,9 @@ permit (
 );
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (policy
     (effect)
     (scope

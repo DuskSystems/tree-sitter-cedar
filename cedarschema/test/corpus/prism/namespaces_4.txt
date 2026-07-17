@@ -2,6 +2,8 @@
 namespaces_4
 ================================================================================
 
+// https://github.com/cedar-policy/prism-cedar/blob/v0.5.0/test/data/namespaces.cedarschema#L39-L58
+
 // numeronym namespace (like k8s or i18n)
 namespace k8s {
   entity User in Group;
@@ -24,7 +26,9 @@ namespace k8s {
 }
 
 --------------------------------------------------------------------------------
+
 (schema
+  (comment)
   (comment)
   (namespace
     (name

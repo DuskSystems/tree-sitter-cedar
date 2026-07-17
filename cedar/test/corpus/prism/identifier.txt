@@ -2,6 +2,8 @@
 identifier
 ================================================================================
 
+// https://github.com/cedar-policy/prism-cedar/blob/v0.5.0/test/data/identifier.cedar#L1-L7
+
 // poorly formed: This identifier is reserved and cannot be used: XX
 permit (principal, action, resource)
 when { resource.ip == ip("127.0.0.1") }
@@ -11,7 +13,9 @@ when { resource.principal.resource.action.context }
 when { resource.permit.forbid.when.unless };
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (comment)
   (policy
     (effect)

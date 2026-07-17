@@ -2,6 +2,8 @@
 policies_21
 ================================================================================
 
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-core/src/parser/testfiles/policies.cedar#L168-L180
+
 permit(
   principal,
   action == AlbumOp::"addPhoto",
@@ -17,7 +19,9 @@ when {
 };
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (policy
     (effect)
     (scope

@@ -1,0 +1,119 @@
+================================================================================
+schema_syntax_1
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/d51ecf5ec1717609783977a4e45f60a644c52618/text/0024-schema-syntax.md?plain=1#L32-L47
+
+entity Application;
+entity User in [Team,Application] { name: String };
+entity Team in [Team,Application];
+entity List in [Application] {
+    owner: User,
+    name: String,
+    readers: Team,
+    editors: Team,
+    tasks: Set<{name: String, id: Long, state: String}>
+};
+
+action CreateList, GetLists
+    appliesTo { principal: [User], resource: [Application] };
+
+action GetList, UpdateList, DeleteList, CreateTask, UpdateTask, DeleteTask, EditShares
+    appliesTo { principal: [User], resource:[List] };
+
+--------------------------------------------------------------------------------
+
+(schema
+  (comment)
+  (entity_declaration
+    (identifier_list
+      (identifier)))
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (entity_parents
+      (type_list
+        (name
+          (identifier))
+        (name
+          (identifier))))
+    (record_type
+      (attribute_declaration
+        (identifier)
+        (primitive_type))))
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (entity_parents
+      (type_list
+        (name
+          (identifier))
+        (name
+          (identifier)))))
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (entity_parents
+      (type_list
+        (name
+          (identifier))))
+    (record_type
+      (attribute_declaration
+        (identifier)
+        (name
+          (identifier)))
+      (attribute_declaration
+        (identifier)
+        (primitive_type))
+      (attribute_declaration
+        (identifier)
+        (name
+          (identifier)))
+      (attribute_declaration
+        (identifier)
+        (name
+          (identifier)))
+      (attribute_declaration
+        (identifier)
+        (set_type
+          (record_type
+            (attribute_declaration
+              (identifier)
+              (primitive_type))
+            (attribute_declaration
+              (identifier)
+              (primitive_type))
+            (attribute_declaration
+              (identifier)
+              (primitive_type)))))))
+  (action_declaration
+    (action_name_list
+      (identifier)
+      (identifier))
+    (applies_to
+      (principal_types
+        (type_list
+          (name
+            (identifier))))
+      (resource_types
+        (type_list
+          (name
+            (identifier))))))
+  (action_declaration
+    (action_name_list
+      (identifier)
+      (identifier)
+      (identifier)
+      (identifier)
+      (identifier)
+      (identifier)
+      (identifier))
+    (applies_to
+      (principal_types
+        (type_list
+          (name
+            (identifier))))
+      (resource_types
+        (type_list
+          (name
+            (identifier)))))))

@@ -1,0 +1,65 @@
+================================================================================
+sample_8
+================================================================================
+
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-cli/sample-data/tiny_sandboxes/sample8/schema.cedarschema#L1-L6
+
+entity Album in [Album];
+entity User in [UserGroup] { score: __cedar::decimal };
+entity UserGroup;
+entity Photo in [Album] { owner: User };
+
+action edit, view appliesTo { principal: [User], resource: [Photo] };
+
+--------------------------------------------------------------------------------
+
+(schema
+  (comment)
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (entity_parents
+      (type_list
+        (name
+          (identifier)))))
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (entity_parents
+      (type_list
+        (name
+          (identifier))))
+    (record_type
+      (attribute_declaration
+        (identifier)
+        (name
+          (identifier)
+          (identifier)))))
+  (entity_declaration
+    (identifier_list
+      (identifier)))
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (entity_parents
+      (type_list
+        (name
+          (identifier))))
+    (record_type
+      (attribute_declaration
+        (identifier)
+        (name
+          (identifier)))))
+  (action_declaration
+    (action_name_list
+      (identifier)
+      (identifier))
+    (applies_to
+      (principal_types
+        (type_list
+          (name
+            (identifier))))
+      (resource_types
+        (type_list
+          (name
+            (identifier)))))))
