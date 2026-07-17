@@ -34,6 +34,16 @@
       "highlights": "cedarschema/queries/highlights.scm",
       "tags": "cedarschema/queries/tags.scm",
       "injection-regex": "^cedarschema$"
+    },
+    {
+      "name": "cedarentities",
+      "camelcase": "CedarEntities",
+      "scope": "source.cedarentities",
+      "path": "cedarentities",
+      "file-types": ["cedarentities"],
+      "highlights": "cedarentities/queries/highlights.scm",
+      "tags": "cedarentities/queries/tags.scm",
+      "injection-regex": "^cedarentities$"
     }
   ]
 }

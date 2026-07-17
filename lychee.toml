@@ -13,5 +13,6 @@ exclude_private = true
 exclude = []
 exclude_path = [
   "cedar/test",
+  "cedarentities/test",
   "cedarschema/test",
 ]

@@ -9,3 +9,7 @@ Cedar grammars for tree-sitter.
 ## Cedar Schema
 
 ![Cedar Schema syntax highlighting](cedarschema/test/snapshots/examples/gitapp.png)
+
+## Cedar Entities
+
+![Cedar Entities syntax highlighting](cedarentities/test/snapshots/rfc/entity_data_syntax_1.png)

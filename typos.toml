@@ -3,5 +3,6 @@
 [files]
 extend-exclude = [
   "cedar/test",
+  "cedarentities/test",
   "cedarschema/test",
 ]
