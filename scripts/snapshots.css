@@ -62,6 +62,10 @@ body {
   color: #a6e3a1;
 }
 
+.string.escape {
+  color: #f5c2e7;
+}
+
 .type {
   color: #f9e2af;
 }

@@ -83,20 +83,9 @@
   "@" @punctuation.special
   (identifier) @attribute)
 
-((extension_call
-  (name (identifier) @function))
-  (#any-of? @function "ip" "decimal" "datetime" "duration"))
+(extension_call (name (identifier) @function))
 
-((method_call
-  (identifier) @function.method)
-  (#any-of? @function.method
-    "contains" "containsAll" "containsAny"
-    "isEmpty"
-    "getTag" "hasTag"
-    "isIpv4" "isIpv6" "isLoopback" "isMulticast" "isInRange"
-    "lessThan" "lessThanOrEqual" "greaterThan" "greaterThanOrEqual"
-    "offset" "durationSince" "toDate" "toTime"
-    "toMilliseconds" "toSeconds" "toMinutes" "toHours" "toDays"))
+(method_call (identifier) @function.method)
 
 (field_access (identifier) @property)
 (record_entry (identifier) @property)
