@@ -27,7 +27,7 @@ module.exports = grammar({
       '(',
       $.scope,
       ')',
-      repeat($.condition),
+      repeat(choice($.condition, $.advice)),
       ';',
     ),
 
@@ -47,11 +47,14 @@ module.exports = grammar({
       $.action,
       ',',
       $.resource,
+      optional(','),
     ),
 
-    principal: $ => seq('principal', optional($.scope_constraint)),
-    action: $ => seq('action', optional($.scope_constraint)),
-    resource: $ => seq('resource', optional($.scope_constraint)),
+    principal: $ => seq('principal', optional($._type_annotation), optional($.scope_constraint)),
+    action: $ => seq('action', optional($._type_annotation), optional($.scope_constraint)),
+    resource: $ => seq('resource', optional($._type_annotation), optional($.scope_constraint)),
+
+    _type_annotation: $ => seq(':', $.type_reference),
 
     scope_constraint: $ => choice(
       seq('==', choice($.entity_reference, $.slot)),
@@ -61,6 +64,13 @@ module.exports = grammar({
 
     condition: $ => seq(
       choice('when', 'unless'),
+      '{',
+      $.expression,
+      '}',
+    ),
+
+    advice: $ => seq(
+      'advice',
       '{',
       $.expression,
       '}',
@@ -264,7 +274,7 @@ module.exports = grammar({
 
     integer: _ => token(/[0-9]+/),
 
-    string_content: _ => token.immediate(/[^"\\\r\n]+/),
+    string_content: _ => token.immediate(/[^"\\]+/),
     string: $ => seq(
       '"',
       repeat(

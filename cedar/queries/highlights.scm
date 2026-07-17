@@ -13,6 +13,7 @@
   "forbid"
   "when"
   "unless"
+  "advice"
   "template"
 ] @keyword
 
