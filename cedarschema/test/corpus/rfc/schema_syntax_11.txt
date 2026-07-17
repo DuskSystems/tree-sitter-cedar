@@ -1,0 +1,139 @@
+================================================================================
+schema_syntax_11
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/d51ecf5ec1717609783977a4e45f60a644c52618/text/0024-schema-syntax.md?plain=1#L365-L388
+
+namespace GitHub {
+    entity User in [UserGroup,Team];
+    entity UserGroup in [UserGroup];
+    entity Repository {
+        readers: UserGroup,
+        triagers: UserGroup,
+        writers: UserGroup,
+        maintainers: UserGroup,
+        admins: UserGroup
+    };
+    entity Issue {
+        repo: Repository,
+        reporter: User
+    };
+    entity Org {
+        members: UserGroup,
+        owners: UserGroup,
+        memberOfTypes: UserGroup
+    };
+    action pull, fork, push, add_reader, add_triager, add_writer, add_maintainer, add_admin
+        appliesTo { principal: [User], resource: [Repository] };
+    action delete_issue, edit_issue, assign_issue
+        appliesTo { principal: [User], resource: [Issue] };
+}
+
+--------------------------------------------------------------------------------
+
+(schema
+  (comment)
+  (namespace
+    (name
+      (identifier))
+    (entity_declaration
+      (identifier_list
+        (identifier))
+      (entity_parents
+        (type_list
+          (name
+            (identifier))
+          (name
+            (identifier)))))
+    (entity_declaration
+      (identifier_list
+        (identifier))
+      (entity_parents
+        (type_list
+          (name
+            (identifier)))))
+    (entity_declaration
+      (identifier_list
+        (identifier))
+      (record_type
+        (attribute_declaration
+          (identifier)
+          (name
+            (identifier)))
+        (attribute_declaration
+          (identifier)
+          (name
+            (identifier)))
+        (attribute_declaration
+          (identifier)
+          (name
+            (identifier)))
+        (attribute_declaration
+          (identifier)
+          (name
+            (identifier)))
+        (attribute_declaration
+          (identifier)
+          (name
+            (identifier)))))
+    (entity_declaration
+      (identifier_list
+        (identifier))
+      (record_type
+        (attribute_declaration
+          (identifier)
+          (name
+            (identifier)))
+        (attribute_declaration
+          (identifier)
+          (name
+            (identifier)))))
+    (entity_declaration
+      (identifier_list
+        (identifier))
+      (record_type
+        (attribute_declaration
+          (identifier)
+          (name
+            (identifier)))
+        (attribute_declaration
+          (identifier)
+          (name
+            (identifier)))
+        (attribute_declaration
+          (identifier)
+          (name
+            (identifier)))))
+    (action_declaration
+      (action_name_list
+        (identifier)
+        (identifier)
+        (identifier)
+        (identifier)
+        (identifier)
+        (identifier)
+        (identifier)
+        (identifier))
+      (applies_to
+        (principal_types
+          (type_list
+            (name
+              (identifier))))
+        (resource_types
+          (type_list
+            (name
+              (identifier))))))
+    (action_declaration
+      (action_name_list
+        (identifier)
+        (identifier)
+        (identifier))
+      (applies_to
+        (principal_types
+          (type_list
+            (name
+              (identifier))))
+        (resource_types
+          (type_list
+            (name
+              (identifier))))))))

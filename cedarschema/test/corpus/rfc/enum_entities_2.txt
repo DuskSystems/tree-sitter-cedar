@@ -1,0 +1,40 @@
+================================================================================
+enum_entities_2
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/d51ecf5ec1717609783977a4e45f60a644c52618/text/0053-enum-entities.md?plain=1#L79-L82
+
+entity Application enum [ "TinyTodo" ];
+entity User in [ Application ];
+action CreateList
+    appliesTo { principal: [User], resource: [Application] };
+
+--------------------------------------------------------------------------------
+
+(schema
+  (comment)
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (enum_type
+      (string
+        (string_content))))
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (entity_parents
+      (type_list
+        (name
+          (identifier)))))
+  (action_declaration
+    (action_name_list
+      (identifier))
+    (applies_to
+      (principal_types
+        (type_list
+          (name
+            (identifier))))
+      (resource_types
+        (type_list
+          (name
+            (identifier)))))))

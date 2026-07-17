@@ -2,7 +2,8 @@
 is
 ================================================================================
 
-// https://docs.cedarpolicy.com/policies/syntax-operators.html#operator-is
+// https://github.com/cedar-policy/prism-cedar/blob/v0.5.0/test/data/is.cedar#L2-L11
+
 permit (
   principal is User in Group::"friends",
   action,

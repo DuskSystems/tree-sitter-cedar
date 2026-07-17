@@ -1,0 +1,52 @@
+================================================================================
+unique_record_keys_1
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/d51ecf5ec1717609783977a4e45f60a644c52618/text/0020-unique-record-keys.md?plain=1#L26-L29
+
+permit(principal, action, resource)
+when {
+    resource.data == { foo: 2, foo: 3 }
+};
+
+--------------------------------------------------------------------------------
+
+(policy_set
+  (comment)
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action)
+      (resource))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (record_expression
+                    (record_entry
+                      (identifier)
+                      (expression
+                        (or_expression
+                          (and_expression
+                            (relation_expression
+                              (unary_expression
+                                (member_expression
+                                  (integer))))))))
+                    (record_entry
+                      (identifier)
+                      (expression
+                        (or_expression
+                          (and_expression
+                            (relation_expression
+                              (unary_expression
+                                (member_expression
+                                  (integer))))))))))))))))))

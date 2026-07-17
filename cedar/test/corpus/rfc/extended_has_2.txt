@@ -1,0 +1,67 @@
+================================================================================
+extended_has_2
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/d51ecf5ec1717609783977a4e45f60a644c52618/text/0062-extended-has.md?plain=1#L40-L47
+
+permit(
+  principal is User,
+  action == Action::"preview",
+  resource == Movie::"Blockbuster"
+) when {
+  principal has contactInfo.address.zip &&
+  principal.contactInfo.address.zip == "90210"
+};
+
+--------------------------------------------------------------------------------
+
+(policy_set
+  (comment)
+  (policy
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (name
+            (identifier))))
+      (action
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (resource
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content))))))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)))
+              (unary_expression
+                (member_expression
+                  (identifier)
+                  (field_access
+                    (identifier))
+                  (field_access
+                    (identifier)))))
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))
+                  (field_access
+                    (identifier))
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (string
+                    (string_content)))))))))))

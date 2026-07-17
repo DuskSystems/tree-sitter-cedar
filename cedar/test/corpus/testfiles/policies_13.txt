@@ -3,6 +3,8 @@ policies_13
 :error
 ================================================================================
 
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-core/src/parser/testfiles/policies.cedar#L90-L99
+
 permit(
   principal:User,
   action in [AlbumOp::"listPhotos", PhotoOp::"view"],

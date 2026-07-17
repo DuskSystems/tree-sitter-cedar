@@ -51,7 +51,10 @@ for (const grammar of config.grammars) {
 
     const start = lines.indexOf(separator, 1) + 1;
     const end = lines.indexOf(divider);
-    const source = lines.slice(start, end).join("\n");
+    const source = lines
+      .slice(start, end)
+      .filter((line) => !line.startsWith("// https://"))
+      .join("\n");
 
     const sourceFile = join(tmp, `${basename(name)}.${grammar.name}`);
     writeFileSync(sourceFile, `${source.trim()}\n`);

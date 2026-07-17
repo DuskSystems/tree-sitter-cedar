@@ -1,0 +1,64 @@
+================================================================================
+generalized_templates_1
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/a58f491fdb5a6681860c1c8f0cfc2501cce0bd50/text/0098-generalized-templates.md?plain=1#L53-L58
+
+template(?startTime: datetime, ?endTime: datetime) =>
+permit(principal == ?principal,
+action,
+resource == ?resource) when
+{ ?startTime <= context.now &&
+context.now <= ?endTime };
+
+--------------------------------------------------------------------------------
+
+(policy_set
+  (comment)
+  (policy
+    (template_declaration
+      (slot
+        (identifier)
+        (type_reference
+          (name
+            (identifier))))
+      (slot
+        (identifier)
+        (type_reference
+          (name
+            (identifier)))))
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (slot
+            (identifier))))
+      (action)
+      (resource
+        (scope_constraint
+          (slot
+            (identifier)))))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (slot
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier)))))
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (slot
+                    (identifier)))))))))))

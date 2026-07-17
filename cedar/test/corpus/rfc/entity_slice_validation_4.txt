@@ -1,0 +1,59 @@
+================================================================================
+entity_slice_validation_4
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/d51ecf5ec1717609783977a4e45f60a644c52618/text/0076-entity-slice-validation.md?plain=1#L383-L389
+
+// Fails because a Team-typed entity is on the LHS of `in`,
+//   but entity Team has no legal RHS expressions per the schema
+permit(principal,action == Action::"GetList",resource)
+when { resource.editors in Team::"admin" };
+
+// Fails because Team::"temp" is not a legal RHS expression for User
+permit(principal in Team::"temp",action,resource);
+
+--------------------------------------------------------------------------------
+
+(policy_set
+  (comment)
+  (comment)
+  (comment)
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (resource))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (entity_reference
+                    (identifier)
+                    (string
+                      (string_content)))))))))))
+  (comment)
+  (policy
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (action)
+      (resource))))

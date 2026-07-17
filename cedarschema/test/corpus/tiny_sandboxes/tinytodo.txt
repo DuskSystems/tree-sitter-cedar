@@ -1,0 +1,181 @@
+================================================================================
+tinytodo
+================================================================================
+
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-cli/sample-data/tiny_sandboxes/translate-schema/tinytodo.cedarschema#L1-L35
+
+type Task = {
+    "id": Long,
+    "name": String,
+    "state": String,
+};
+type Tasks = Set<Task>;
+entity List in [Application] = {
+  "editors": Team,
+  "name": String,
+  "owner": User,
+  "readers": Team,
+  "tasks": Tasks,
+};
+entity Application;
+entity User in [Team, Application] = {
+  "joblevel": Long,
+  "location": String,
+};
+entity Team in [Team, Application];
+action DeleteList, GetList, UpdateList appliesTo {
+  principal: [User],
+  resource: [List]
+};
+action CreateList, GetLists appliesTo {
+  principal: [User],
+  resource: [Application]
+};
+action CreateTask, UpdateTask, DeleteTask appliesTo {
+  principal: [User],
+  resource: [List]
+};
+action EditShare appliesTo {
+  principal: [User],
+  resource: [List]
+};
+
+--------------------------------------------------------------------------------
+
+(schema
+  (comment)
+  (common_type_declaration
+    (identifier)
+    (record_type
+      (attribute_declaration
+        (string
+          (string_content))
+        (primitive_type))
+      (attribute_declaration
+        (string
+          (string_content))
+        (primitive_type))
+      (attribute_declaration
+        (string
+          (string_content))
+        (primitive_type))))
+  (common_type_declaration
+    (identifier)
+    (set_type
+      (name
+        (identifier))))
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (entity_parents
+      (type_list
+        (name
+          (identifier))))
+    (record_type
+      (attribute_declaration
+        (string
+          (string_content))
+        (name
+          (identifier)))
+      (attribute_declaration
+        (string
+          (string_content))
+        (primitive_type))
+      (attribute_declaration
+        (string
+          (string_content))
+        (name
+          (identifier)))
+      (attribute_declaration
+        (string
+          (string_content))
+        (name
+          (identifier)))
+      (attribute_declaration
+        (string
+          (string_content))
+        (name
+          (identifier)))))
+  (entity_declaration
+    (identifier_list
+      (identifier)))
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (entity_parents
+      (type_list
+        (name
+          (identifier))
+        (name
+          (identifier))))
+    (record_type
+      (attribute_declaration
+        (string
+          (string_content))
+        (primitive_type))
+      (attribute_declaration
+        (string
+          (string_content))
+        (primitive_type))))
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (entity_parents
+      (type_list
+        (name
+          (identifier))
+        (name
+          (identifier)))))
+  (action_declaration
+    (action_name_list
+      (identifier)
+      (identifier)
+      (identifier))
+    (applies_to
+      (principal_types
+        (type_list
+          (name
+            (identifier))))
+      (resource_types
+        (type_list
+          (name
+            (identifier))))))
+  (action_declaration
+    (action_name_list
+      (identifier)
+      (identifier))
+    (applies_to
+      (principal_types
+        (type_list
+          (name
+            (identifier))))
+      (resource_types
+        (type_list
+          (name
+            (identifier))))))
+  (action_declaration
+    (action_name_list
+      (identifier)
+      (identifier)
+      (identifier))
+    (applies_to
+      (principal_types
+        (type_list
+          (name
+            (identifier))))
+      (resource_types
+        (type_list
+          (name
+            (identifier))))))
+  (action_declaration
+    (action_name_list
+      (identifier))
+    (applies_to
+      (principal_types
+        (type_list
+          (name
+            (identifier))))
+      (resource_types
+        (type_list
+          (name
+            (identifier)))))))

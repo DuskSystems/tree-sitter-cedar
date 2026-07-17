@@ -1,0 +1,21 @@
+================================================================================
+schema_syntax_12
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/d51ecf5ec1717609783977a4e45f60a644c52618/text/0024-schema-syntax.md?plain=1#L528-L530
+
+action read appliesTo {
+  context : A
+};
+
+--------------------------------------------------------------------------------
+
+(schema
+  (comment)
+  (action_declaration
+    (action_name_list
+      (identifier))
+    (applies_to
+      (context_type
+        (name
+          (identifier))))))

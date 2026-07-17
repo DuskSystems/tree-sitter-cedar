@@ -2,6 +2,8 @@
 tags_n_roles_1
 ================================================================================
 
+// https://github.com/cedar-policy/cedar-examples/blob/c251f7d1ad171bd12dee5d1d7a1cceaec994518f/cedar-example-use-cases/tags_n_roles/policies.cedar#L1-L84
+
 @id("Role-A policy")
 permit (
   principal in Role::"Role-A",
@@ -19,9 +21,7 @@ when
        resource.tags has production_status
      then
        principal.allowedTagsForRole
-         [
-         "Role-A"
-         ]
+         ["Role-A"]
          .production_status
          .contains
          (
@@ -29,9 +29,7 @@ when
          ) ||
        resource.tags.production_status.contains("ALL") ||
        principal.allowedTagsForRole
-         [
-         "Role-A"
-         ]
+         ["Role-A"]
          .production_status
          .containsAll
          (
@@ -55,9 +53,7 @@ when
        principal.allowedTagsForRole["Role-A"].country.contains("ALL") ||
        resource.tags.country.contains("ALL") ||
        principal.allowedTagsForRole
-         [
-         "Role-A"
-         ]
+         ["Role-A"]
          .country
          .containsAll
          (
@@ -81,9 +77,7 @@ when
        principal.allowedTagsForRole["Role-A"].stage.contains("ALL") ||
        resource.tags.stage.contains("ALL") ||
        principal.allowedTagsForRole
-         [
-         "Role-A"
-         ]
+         ["Role-A"]
          .stage
          .containsAll
          (
@@ -96,7 +90,9 @@ when
 };
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (policy
     (annotation
       (identifier)

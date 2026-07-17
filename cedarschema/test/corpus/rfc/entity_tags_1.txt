@@ -1,0 +1,38 @@
+================================================================================
+entity_tags_1
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/d51ecf5ec1717609783977a4e45f60a644c52618/text/0082-entity-tags.md?plain=1#L36-L41
+
+entity User = {
+  jobLevel: Long,
+} tags Set<String>;
+entity Document = {
+  owner: User,
+} tags Set<String>;
+
+--------------------------------------------------------------------------------
+
+(schema
+  (comment)
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (record_type
+      (attribute_declaration
+        (identifier)
+        (primitive_type)))
+    (entity_tags
+      (set_type
+        (primitive_type))))
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (record_type
+      (attribute_declaration
+        (identifier)
+        (name
+          (identifier))))
+    (entity_tags
+      (set_type
+        (primitive_type)))))

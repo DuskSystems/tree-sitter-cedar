@@ -2,6 +2,8 @@
 policies_20
 ================================================================================
 
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-core/src/parser/testfiles/policies.cedar#L158-L166
+
 permit(
   principal == User::"alice",
   action in PhotoflashRole::"viewer",
@@ -13,7 +15,9 @@ when {
 };
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (policy
     (effect)
     (scope

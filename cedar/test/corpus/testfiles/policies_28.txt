@@ -3,6 +3,8 @@ policies_28
 :error
 ================================================================================
 
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-core/src/parser/testfiles/policies.cedar#L247-L259
+
 // If no MFA and before Jan 1, allow with a warning
 permit (
   principal,

@@ -2,8 +2,9 @@
 gitapp_1
 ================================================================================
 
-// a repo admin can pushRepo, pullRepo, forkRepo,
-// addRepoReporter, addRepoContributor, addRepoAdmin
+// https://github.com/cedar-policy/cedar-examples/blob/c251f7d1ad171bd12dee5d1d7a1cceaec994518f/cedar-policy-language-in-action/GitApp/gitapp.cedar#L1-L14
+
+// a repo admin can pushRepo, pullRepo, forkRepo, addRepoReporter, addRepoContributor, addRepoAdmin
 @id("resource.admins_Repo")
 permit (
   principal,
@@ -19,6 +20,7 @@ permit (
 when { principal in resource.admins };
 
 --------------------------------------------------------------------------------
+
 (policy_set
   (comment)
   (comment)

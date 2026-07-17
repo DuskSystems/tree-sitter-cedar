@@ -2,6 +2,8 @@
 policies_23
 ================================================================================
 
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-core/src/parser/testfiles/policies.cedar#L194-L202
+
 forbid (
   principal,
   action,
@@ -13,7 +15,9 @@ unless {
 };
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (policy
     (effect)
     (scope

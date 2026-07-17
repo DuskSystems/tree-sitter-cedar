@@ -2,6 +2,8 @@
 policies_8
 ================================================================================
 
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-core/src/parser/testfiles/policies.cedar#L51-L64
+
 // Solution #2: Using conditions in a single policy.
 // Note - depending on the implementation of a backend datastore,
 // shifting rules into the conditions may result in changes to
@@ -18,7 +20,9 @@ when {
 };
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (comment)
   (comment)
   (comment)

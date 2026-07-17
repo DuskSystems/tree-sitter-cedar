@@ -2,6 +2,8 @@
 policies_36
 ================================================================================
 
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-core/src/parser/testfiles/policies.cedar#L327-L331
+
 permit (
   principal in Group::"Forum.NaturePhotography.Member",
   action in [ForumOp::"post", ForumOp::"comment"],
@@ -9,7 +11,9 @@ permit (
 );
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (policy
     (effect)
     (scope

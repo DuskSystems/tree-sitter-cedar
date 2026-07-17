@@ -1,4 +1,7 @@
 # https://github.com/crate-ci/typos/blob/master/docs/reference.md
 
 [files]
-extend-exclude = []
+extend-exclude = [
+  "cedar/test",
+  "cedarschema/test",
+]

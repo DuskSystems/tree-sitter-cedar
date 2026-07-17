@@ -2,12 +2,16 @@
 tags_2
 ================================================================================
 
+// https://github.com/cedar-policy/prism-cedar/blob/v0.5.0/test/data/tags.cedarschema#L4-L6
+
 entity Document = {
   owner: User,
 } tags Set<String>;
 
 --------------------------------------------------------------------------------
+
 (schema
+  (comment)
   (entity_declaration
     (identifier_list
       (identifier))

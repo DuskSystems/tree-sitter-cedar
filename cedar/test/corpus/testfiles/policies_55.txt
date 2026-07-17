@@ -2,6 +2,8 @@
 policies_55
 ================================================================================
 
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-core/src/parser/testfiles/policies.cedar#L483-L487
+
 permit (
   principal == IAM::Principal::"arn:aws:iam::12345678901:user/Dave",
   action == S3::Action::"GetAccountPublicAccessBlock",
@@ -9,7 +11,9 @@ permit (
 );
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (policy
     (effect)
     (scope

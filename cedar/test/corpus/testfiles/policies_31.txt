@@ -3,6 +3,8 @@ policies_31
 :error
 ================================================================================
 
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-core/src/parser/testfiles/policies.cedar#L281-L290
+
 permit(
   principal == User::"alice",
   action == TableOp::"read",

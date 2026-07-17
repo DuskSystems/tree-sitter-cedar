@@ -1,0 +1,71 @@
+================================================================================
+generalized_templates_3
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/a58f491fdb5a6681860c1c8f0cfc2501cce0bd50/text/0098-generalized-templates.md?plain=1#L148-L160
+
+namespace FS {
+    entity Disk = {
+        storage: Long,
+    };
+    entity Folder in Disk;
+    entity Document in Folder;
+    entity Person;
+}
+
+action Navigate appliesTo {
+    principal: FS::Person,
+    resource: [FS::Disk, FS::Folder, FS::Document],
+};
+
+--------------------------------------------------------------------------------
+
+(schema
+  (comment)
+  (namespace
+    (name
+      (identifier))
+    (entity_declaration
+      (identifier_list
+        (identifier))
+      (record_type
+        (attribute_declaration
+          (identifier)
+          (primitive_type))))
+    (entity_declaration
+      (identifier_list
+        (identifier))
+      (entity_parents
+        (type_list
+          (name
+            (identifier)))))
+    (entity_declaration
+      (identifier_list
+        (identifier))
+      (entity_parents
+        (type_list
+          (name
+            (identifier)))))
+    (entity_declaration
+      (identifier_list
+        (identifier))))
+  (action_declaration
+    (action_name_list
+      (identifier))
+    (applies_to
+      (principal_types
+        (type_list
+          (name
+            (identifier)
+            (identifier))))
+      (resource_types
+        (type_list
+          (name
+            (identifier)
+            (identifier))
+          (name
+            (identifier)
+            (identifier))
+          (name
+            (identifier)
+            (identifier)))))))

@@ -1,0 +1,49 @@
+================================================================================
+trailing_commas_1
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/d51ecf5ec1717609783977a4e45f60a644c52618/text/0071-trailing-commas.md?plain=1#L26-L28
+
+permit(principal, action, resource) when {
+    { foo : 3, bar : 2, } == context
+};
+
+--------------------------------------------------------------------------------
+
+(policy_set
+  (comment)
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action)
+      (resource))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (record_expression
+                    (record_entry
+                      (identifier)
+                      (expression
+                        (or_expression
+                          (and_expression
+                            (relation_expression
+                              (unary_expression
+                                (member_expression
+                                  (integer))))))))
+                    (record_entry
+                      (identifier)
+                      (expression
+                        (or_expression
+                          (and_expression
+                            (relation_expression
+                              (unary_expression
+                                (member_expression
+                                  (integer)))))))))))
+              (unary_expression
+                (member_expression
+                  (variable))))))))))

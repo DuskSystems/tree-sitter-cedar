@@ -2,10 +2,14 @@
 tags_n_roles_1
 ================================================================================
 
+// https://github.com/cedar-policy/cedar-examples/blob/c251f7d1ad171bd12dee5d1d7a1cceaec994518f/cedar-example-use-cases/tags_n_roles/policies.cedarschema#L1
+
 entity Role;
 
 --------------------------------------------------------------------------------
+
 (schema
+  (comment)
   (entity_declaration
     (identifier_list
       (identifier))))

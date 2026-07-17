@@ -2,6 +2,8 @@
 forbid_2
 ================================================================================
 
+// https://github.com/cedar-policy/prism-cedar/blob/v0.5.0/test/data/forbid.cedar#L7-L17
+
 // see https://docs.cedarpolicy.com/policies/syntax-operators.html
 @id("F2")
 forbid (principal, action, resource)
@@ -15,7 +17,9 @@ when
 };
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (comment)
   (policy
     (annotation

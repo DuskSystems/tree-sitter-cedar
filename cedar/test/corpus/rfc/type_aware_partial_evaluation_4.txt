@@ -1,0 +1,65 @@
+================================================================================
+type_aware_partial_evaluation_4
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/d51ecf5ec1717609783977a4e45f60a644c52618/text/0095-type-aware-partial-evaluation.md?plain=1#L292-L301
+
+permit (principal, action, resource)
+when {
+  resource.isPublic
+};
+
+permit (principal, action, resource)
+when {
+  context.hasMFA &&
+  resource.owner == User::"Alice"
+};
+
+--------------------------------------------------------------------------------
+
+(policy_set
+  (comment)
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action)
+      (resource))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))))))))))
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action)
+      (resource))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier)))))
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (entity_reference
+                    (identifier)
+                    (string
+                      (string_content))))))))))))

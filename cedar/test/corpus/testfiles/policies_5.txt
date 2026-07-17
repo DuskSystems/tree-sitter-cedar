@@ -2,6 +2,8 @@
 policies_5
 ================================================================================
 
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-core/src/parser/testfiles/policies.cedar#L31-L36
+
 // Alice has "admin" permissions on the album
 permit(
   principal == User::"alice",
@@ -10,7 +12,9 @@ permit(
 );
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (comment)
   (policy
     (effect)

@@ -1,0 +1,44 @@
+================================================================================
+enum_entities_3
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/d51ecf5ec1717609783977a4e45f60a644c52618/text/0053-enum-entities.md?plain=1#L126-L132
+
+permit(
+    principal,
+    action == Action::"UpdateTask",
+    resource)
+when {
+    resource.status != Color.Red
+};
+
+--------------------------------------------------------------------------------
+
+(policy_set
+  (comment)
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (resource))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (identifier)
+                  (field_access
+                    (identifier)))))))))))

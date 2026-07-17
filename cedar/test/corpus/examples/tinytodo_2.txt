@@ -2,12 +2,16 @@
 tinytodo_2
 ================================================================================
 
+// https://github.com/cedar-policy/cedar-examples/blob/c251f7d1ad171bd12dee5d1d7a1cceaec994518f/tinytodo/policies-templates.cedar#L8-L10
+
 // Policy 1: A User can perform any action on a List they own
 permit (principal, action, resource)
 when { resource is List && resource.owner == principal };
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (comment)
   (policy
     (effect)

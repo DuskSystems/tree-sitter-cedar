@@ -3,6 +3,8 @@ policies_26
 :error
 ================================================================================
 
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-core/src/parser/testfiles/policies.cedar#L222-L235
+
 forbid (
   principal == User::"alice",
   action,

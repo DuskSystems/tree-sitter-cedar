@@ -2,6 +2,8 @@
 tags_n_roles_3
 ================================================================================
 
+// https://github.com/cedar-policy/cedar-examples/blob/c251f7d1ad171bd12dee5d1d7a1cceaec994518f/cedar-example-use-cases/tags_n_roles/policies.cedarschema#L16-L22
+
 entity Workspace {
   tags: {
     production_status?: Set<String>,
@@ -11,7 +13,9 @@ entity Workspace {
 };
 
 --------------------------------------------------------------------------------
+
 (schema
+  (comment)
   (entity_declaration
     (identifier_list
       (identifier))

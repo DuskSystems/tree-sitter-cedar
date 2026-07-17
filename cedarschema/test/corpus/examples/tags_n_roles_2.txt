@@ -2,6 +2,8 @@
 tags_n_roles_2
 ================================================================================
 
+// https://github.com/cedar-policy/cedar-examples/blob/c251f7d1ad171bd12dee5d1d7a1cceaec994518f/cedar-example-use-cases/tags_n_roles/policies.cedarschema#L2-L15
+
 entity User in [Role] {
   allowedTagsForRole: {
     "Role-A"?: {
@@ -18,7 +20,9 @@ entity User in [Role] {
 };
 
 --------------------------------------------------------------------------------
+
 (schema
+  (comment)
   (entity_declaration
     (identifier_list
       (identifier))

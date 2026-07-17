@@ -2,6 +2,8 @@
 template
 ================================================================================
 
+// https://github.com/cedar-policy/prism-cedar/blob/v0.5.0/test/data/template.cedar#L1-L9
+
 // see https://docs.cedarpolicy.com/policies/templates.html
 permit (
   principal in ?principal,
@@ -13,7 +15,9 @@ unless {
 };
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (comment)
   (policy
     (effect)

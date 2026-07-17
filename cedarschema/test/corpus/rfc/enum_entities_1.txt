@@ -1,0 +1,60 @@
+================================================================================
+enum_entities_1
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/d51ecf5ec1717609783977a4e45f60a644c52618/text/0053-enum-entities.md?plain=1#L24-L32
+
+entity User;
+entity Color enum ["Red", "Blue", "Green"];
+entity Task {
+    owner: User,
+    name: String,
+    status: Color
+};
+action UpdateTask
+    appliesTo { principal: [User], resource: [Task] };
+
+--------------------------------------------------------------------------------
+
+(schema
+  (comment)
+  (entity_declaration
+    (identifier_list
+      (identifier)))
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (enum_type
+      (string
+        (string_content))
+      (string
+        (string_content))
+      (string
+        (string_content))))
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (record_type
+      (attribute_declaration
+        (identifier)
+        (name
+          (identifier)))
+      (attribute_declaration
+        (identifier)
+        (primitive_type))
+      (attribute_declaration
+        (identifier)
+        (name
+          (identifier)))))
+  (action_declaration
+    (action_name_list
+      (identifier))
+    (applies_to
+      (principal_types
+        (type_list
+          (name
+            (identifier))))
+      (resource_types
+        (type_list
+          (name
+            (identifier)))))))

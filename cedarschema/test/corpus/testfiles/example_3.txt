@@ -2,6 +2,8 @@
 example_3
 ================================================================================
 
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-core/src/validator/cedar_schema/testfiles/example.cedarschema#L15-L40
+
 namespace Ns {
   type Bar = {
     obj: {
@@ -30,7 +32,9 @@ namespace Ns {
 }
 
 --------------------------------------------------------------------------------
+
 (schema
+  (comment)
   (namespace
     (name
       (identifier))

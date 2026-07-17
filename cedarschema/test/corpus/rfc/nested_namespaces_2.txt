@@ -1,0 +1,43 @@
+================================================================================
+nested_namespaces_2
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/8d341e0b0e7925809d45ef3baf0323503aca5c2f/text/0101-nested-namespaces.md?plain=1#L201-L210
+
+namespace Bar {
+  entity Thing; // (1)
+}
+
+namespace Foo {
+  namespace Bar {
+    entity Thing; // (2)
+  }
+  type MyThing = Bar::Thing;
+}
+
+--------------------------------------------------------------------------------
+
+(schema
+  (comment)
+  (namespace
+    (name
+      (identifier))
+    (entity_declaration
+      (identifier_list
+        (identifier)))
+    (comment))
+  (namespace
+    (name
+      (identifier))
+    (namespace
+      (name
+        (identifier))
+      (entity_declaration
+        (identifier_list
+          (identifier)))
+      (comment))
+    (common_type_declaration
+      (identifier)
+      (name
+        (identifier)
+        (identifier)))))

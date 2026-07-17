@@ -2,6 +2,8 @@
 gitapp_4
 ================================================================================
 
+// https://github.com/cedar-policy/cedar-examples/blob/c251f7d1ad171bd12dee5d1d7a1cceaec994518f/cedar-policy-language-in-action/GitApp/gitapp.cedar#L42-L53
+
 // a repo contributor can addIssue, editIssue, assignIssue, closeIssue
 @id("resource.contributors_Issue")
 permit (
@@ -16,7 +18,9 @@ permit (
 when { resource has contributors && principal in resource.contributors };
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (comment)
   (policy
     (annotation

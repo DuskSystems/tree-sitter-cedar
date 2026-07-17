@@ -2,6 +2,8 @@
 policies_38
 ================================================================================
 
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-core/src/parser/testfiles/policies.cedar#L345-L357
+
 // The owner of the "Nature Photography" forum can add / remove members of
 // the "SeniorModerator" role as long as the total number of
 // Senior Moderators is at most 10.
@@ -17,7 +19,9 @@ when {
 };
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (comment)
   (comment)
   (comment)

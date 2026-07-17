@@ -1,0 +1,33 @@
+================================================================================
+enum_entities_2
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/d51ecf5ec1717609783977a4e45f60a644c52618/text/0053-enum-entities.md?plain=1#L86-L90
+
+permit(
+    principal,
+    action in [Action::"CreateList"],
+    resource == Application::"TinyTODO"
+);
+
+--------------------------------------------------------------------------------
+
+(policy_set
+  (comment)
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action
+        (scope_constraint
+          (entity_list
+            (entity_reference
+              (identifier)
+              (string
+                (string_content))))))
+      (resource
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content))))))))

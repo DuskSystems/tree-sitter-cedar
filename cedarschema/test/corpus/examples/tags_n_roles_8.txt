@@ -2,13 +2,17 @@
 tags_n_roles_8
 ================================================================================
 
+// https://github.com/cedar-policy/cedar-examples/blob/c251f7d1ad171bd12dee5d1d7a1cceaec994518f/cedar-example-use-cases/tags_n_roles/policies.cedarschema#L36-L39
+
 action ReadWorkspace in ["Role-A Actions", "Role-B Actions"] appliesTo {
   principal: User,
   resource: Workspace,
 };
 
 --------------------------------------------------------------------------------
+
 (schema
+  (comment)
   (action_declaration
     (action_name_list
       (identifier))

@@ -1,0 +1,100 @@
+================================================================================
+datetime_extension_6
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/d51ecf5ec1717609783977a4e45f60a644c52618/text/0080-datetime-extension.md?plain=1#L292-L301
+
+permit(
+  principal is User,
+  action == Action::"view",
+  resource in Folder::"device_prototypes"
+)
+when {
+  principal.department == "HardwareEngineering" &&
+  principal.jobLevel >= 10 &&
+  (context.currentTime - (365 * 24 * 60 * 60)) >= principal.hireDate
+};
+
+--------------------------------------------------------------------------------
+
+(policy_set
+  (comment)
+  (policy
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (name
+            (identifier))))
+      (action
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (resource
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content))))))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (string
+                    (string_content)))))
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (integer))))
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (parenthesized_expression
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (variable)
+                                (field_access
+                                  (identifier))))
+                            (unary_expression
+                              (member_expression
+                                (parenthesized_expression
+                                  (expression
+                                    (or_expression
+                                      (and_expression
+                                        (relation_expression
+                                          (unary_expression
+                                            (member_expression
+                                              (integer)))
+                                          (unary_expression
+                                            (member_expression
+                                              (integer)))
+                                          (unary_expression
+                                            (member_expression
+                                              (integer)))
+                                          (unary_expression
+                                            (member_expression
+                                              (integer)))))))))))))))))
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier)))))))))))

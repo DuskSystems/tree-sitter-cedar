@@ -1,0 +1,130 @@
+================================================================================
+entity_tags_1
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/d51ecf5ec1717609783977a4e45f60a644c52618/text/0082-entity-tags.md?plain=1#L49-L59
+
+permit (
+  principal is User,
+  action == Action::"writeDoc",
+  resource is Document)
+when {
+  document.owner == principal ||
+    (principal.jobLevel > 6 &&
+    resource.hasTag("write") &&
+    principal.hasTag("write") &&
+    resource.getTag("write").containsAny(principal.getTag("write")))
+};
+
+--------------------------------------------------------------------------------
+
+(policy_set
+  (comment)
+  (policy
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (name
+            (identifier))))
+      (action
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (resource
+        (scope_constraint
+          (name
+            (identifier)))))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (identifier)
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (variable)))))
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (parenthesized_expression
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (variable)
+                                (field_access
+                                  (identifier))))
+                            (unary_expression
+                              (member_expression
+                                (integer))))
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (variable)
+                                (method_call
+                                  (identifier)
+                                  (expression
+                                    (or_expression
+                                      (and_expression
+                                        (relation_expression
+                                          (unary_expression
+                                            (member_expression
+                                              (string
+                                                (string_content))))))))))))
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (variable)
+                                (method_call
+                                  (identifier)
+                                  (expression
+                                    (or_expression
+                                      (and_expression
+                                        (relation_expression
+                                          (unary_expression
+                                            (member_expression
+                                              (string
+                                                (string_content))))))))))))
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (variable)
+                                (method_call
+                                  (identifier)
+                                  (expression
+                                    (or_expression
+                                      (and_expression
+                                        (relation_expression
+                                          (unary_expression
+                                            (member_expression
+                                              (string
+                                                (string_content)))))))))
+                                (method_call
+                                  (identifier)
+                                  (expression
+                                    (or_expression
+                                      (and_expression
+                                        (relation_expression
+                                          (unary_expression
+                                            (member_expression
+                                              (variable)
+                                              (method_call
+                                                (identifier)
+                                                (expression
+                                                  (or_expression
+                                                    (and_expression
+                                                      (relation_expression
+                                                        (unary_expression
+                                                          (member_expression
+                                                            (string
+                                                              (string_content))))))))))))))))))))))))))))))))

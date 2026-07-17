@@ -2,6 +2,8 @@
 policies_1_2
 ================================================================================
 
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-cli/sample-data/sandbox_a/policies_1.cedar#L9-L15
+
 // but Tim is disallowed from viewing the photo
 @id("disallow tim policy")
 forbid (
@@ -11,7 +13,9 @@ forbid (
 );
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (comment)
   (policy
     (annotation

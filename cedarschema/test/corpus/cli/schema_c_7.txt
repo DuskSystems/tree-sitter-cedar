@@ -2,10 +2,14 @@
 schema_c_7
 ================================================================================
 
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-cli/sample-data/sandbox_c/schema.cedarschema#L7
+
 entity Administrator;
 
 --------------------------------------------------------------------------------
+
 (schema
+  (comment)
   (entity_declaration
     (identifier_list
       (identifier))))

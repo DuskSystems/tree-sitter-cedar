@@ -2,6 +2,8 @@
 schema_b_1
 ================================================================================
 
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-cli/sample-data/sandbox_b/schema.cedarschema#L1-L5
+
 entity Photo in [Account, Album] {
   account: Account,
   admins: Set<User>,
@@ -9,7 +11,9 @@ entity Photo in [Account, Album] {
 };
 
 --------------------------------------------------------------------------------
+
 (schema
+  (comment)
   (entity_declaration
     (identifier_list
       (identifier))

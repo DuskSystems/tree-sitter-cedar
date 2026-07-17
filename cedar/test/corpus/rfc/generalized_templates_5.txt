@@ -1,0 +1,18 @@
+================================================================================
+generalized_templates_5
+:error
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/a58f491fdb5a6681860c1c8f0cfc2501cce0bd50/text/0098-generalized-templates.md?plain=1#L187-L194
+
+template(?bound1: Bool) =>
+permit (
+    principal,
+    action,
+    resource,
+) when {
+    1 + ?bound1
+};
+
+--------------------------------------------------------------------------------
+(ERROR)

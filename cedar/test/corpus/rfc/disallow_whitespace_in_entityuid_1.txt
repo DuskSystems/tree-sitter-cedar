@@ -1,0 +1,33 @@
+================================================================================
+disallow_whitespace_in_entityuid_1
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/d51ecf5ec1717609783977a4e45f60a644c52618/text/0009-disallow-whitespace-in-entityuid.md?plain=1#L78-L84
+
+permit(
+  principal == ExampleCo::Photoflash::User:://"alice"
+
+  "bob", //TODO: Try various tricks to obfuscate this line from readers
+  action,
+  resource
+);
+
+--------------------------------------------------------------------------------
+
+(policy_set
+  (comment)
+  (policy
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (identifier)
+            (identifier)
+            (comment)
+            (string
+              (string_content)))))
+      (comment)
+      (action)
+      (resource))))

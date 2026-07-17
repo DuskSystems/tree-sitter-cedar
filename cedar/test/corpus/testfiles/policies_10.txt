@@ -2,6 +2,8 @@
 policies_10
 ================================================================================
 
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-core/src/parser/testfiles/policies.cedar#L72-L76
+
 permit(
   principal,
   action == PhotoOp::"view",
@@ -9,7 +11,9 @@ permit(
 );
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (policy
     (effect)
     (scope

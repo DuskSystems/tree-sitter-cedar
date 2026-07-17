@@ -2,6 +2,8 @@
 example_1
 ================================================================================
 
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-core/src/validator/cedar_schema/testfiles/example.cedarschema#L1-L10
+
 entity TopLevel = {
   obj: {
     String: String,
@@ -14,7 +16,9 @@ entity TopLevel = {
 };
 
 --------------------------------------------------------------------------------
+
 (schema
+  (comment)
   (entity_declaration
     (identifier_list
       (identifier))

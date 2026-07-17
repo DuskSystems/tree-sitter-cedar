@@ -2,6 +2,8 @@
 ip
 ================================================================================
 
+// https://github.com/cedar-policy/prism-cedar/blob/v0.5.0/test/data/ip.cedar#L1-L11
+
 // ip(), isIpv4, isIpv6, isLoopback, isMulticast, isInRange
 // see https://docs.cedarpolicy.com/policies/syntax-operators.html#ip-address-functions
 permit (principal, action, resource)
@@ -15,7 +17,9 @@ when
 };
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (comment)
   (comment)
   (policy

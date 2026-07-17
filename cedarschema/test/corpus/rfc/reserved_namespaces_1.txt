@@ -1,0 +1,20 @@
+================================================================================
+reserved_namespaces_1
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/d51ecf5ec1717609783977a4e45f60a644c52618/text/0052-reserved-namespaces.md?plain=1#L36-L38
+
+namespace __cedar {
+    entity User;
+}
+
+--------------------------------------------------------------------------------
+
+(schema
+  (comment)
+  (namespace
+    (name
+      (identifier))
+    (entity_declaration
+      (identifier_list
+        (identifier)))))

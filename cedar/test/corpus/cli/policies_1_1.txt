@@ -2,6 +2,8 @@
 policies_1_1
 ================================================================================
 
+// https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-cli/sample-data/sandbox_a/policies_1.cedar#L1-L7
+
 // Everyone in the group UserGroup::"jane_friends" can view this specific photo
 @id("jane's friends view-permission policy")
 permit (
@@ -11,7 +13,9 @@ permit (
 );
 
 --------------------------------------------------------------------------------
+
 (policy_set
+  (comment)
   (comment)
   (policy
     (annotation

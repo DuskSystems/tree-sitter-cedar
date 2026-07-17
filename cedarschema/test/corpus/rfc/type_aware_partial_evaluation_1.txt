@@ -1,0 +1,91 @@
+================================================================================
+type_aware_partial_evaluation_1
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/d51ecf5ec1717609783977a4e45f60a644c52618/text/0095-type-aware-partial-evaluation.md?plain=1#L58-L80
+
+entity User;
+
+entity Document  = {
+  "isPublic": Bool,
+  "owner": User
+};
+
+action View appliesTo {
+  principal: [User],
+  resource: [Document],
+  context: {
+    "hasMFA": Bool,
+  }
+};
+
+action Delete appliesTo {
+  principal: [User],
+  resource: [Document],
+  context: {
+    "hasMFA": Bool,
+    "srcIP": ipaddr
+  }
+};
+
+--------------------------------------------------------------------------------
+
+(schema
+  (comment)
+  (entity_declaration
+    (identifier_list
+      (identifier)))
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (record_type
+      (attribute_declaration
+        (string
+          (string_content))
+        (primitive_type))
+      (attribute_declaration
+        (string
+          (string_content))
+        (name
+          (identifier)))))
+  (action_declaration
+    (action_name_list
+      (identifier))
+    (applies_to
+      (principal_types
+        (type_list
+          (name
+            (identifier))))
+      (resource_types
+        (type_list
+          (name
+            (identifier))))
+      (context_type
+        (record_type
+          (attribute_declaration
+            (string
+              (string_content))
+            (primitive_type))))))
+  (action_declaration
+    (action_name_list
+      (identifier))
+    (applies_to
+      (principal_types
+        (type_list
+          (name
+            (identifier))))
+      (resource_types
+        (type_list
+          (name
+            (identifier))))
+      (context_type
+        (record_type
+          (attribute_declaration
+            (string
+              (string_content))
+            (primitive_type))
+          (attribute_declaration
+            (string
+              (string_content))
+            (name
+              (identifier))))))))

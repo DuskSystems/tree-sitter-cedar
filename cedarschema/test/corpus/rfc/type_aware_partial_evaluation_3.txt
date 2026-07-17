@@ -1,0 +1,42 @@
+================================================================================
+type_aware_partial_evaluation_3
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/d51ecf5ec1717609783977a4e45f60a644c52618/text/0095-type-aware-partial-evaluation.md?plain=1#L351-L358
+
+action Delete appliesTo {
+  principal: [User],
+  resource: [Document],
+  context: {
+    "hasMFA": Bool,
+    "srcIP": UnknownIP
+  }
+};
+
+--------------------------------------------------------------------------------
+
+(schema
+  (comment)
+  (action_declaration
+    (action_name_list
+      (identifier))
+    (applies_to
+      (principal_types
+        (type_list
+          (name
+            (identifier))))
+      (resource_types
+        (type_list
+          (name
+            (identifier))))
+      (context_type
+        (record_type
+          (attribute_declaration
+            (string
+              (string_content))
+            (primitive_type))
+          (attribute_declaration
+            (string
+              (string_content))
+            (name
+              (identifier))))))))

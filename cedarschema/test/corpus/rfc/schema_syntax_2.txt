@@ -1,0 +1,84 @@
+================================================================================
+schema_syntax_2
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/d51ecf5ec1717609783977a4e45f60a644c52618/text/0024-schema-syntax.md?plain=1#L83-L97
+
+entity User in [Group] {
+    personalGroup: Group,
+    delegate?: User,
+    blocked: Set<User>,
+};
+entity Document {
+    owner: User,
+    isPrivate: Boolean,
+    publicAccess: String,
+    viewACL: DocumentShare,
+    modifyACL: DocumentShare,
+    manageACL: DocumentShare
+};
+entity DocumentShare;
+entity Public in [DocumentShare];
+
+--------------------------------------------------------------------------------
+
+(schema
+  (comment)
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (entity_parents
+      (type_list
+        (name
+          (identifier))))
+    (record_type
+      (attribute_declaration
+        (identifier)
+        (name
+          (identifier)))
+      (attribute_declaration
+        (identifier)
+        (name
+          (identifier)))
+      (attribute_declaration
+        (identifier)
+        (set_type
+          (name
+            (identifier))))))
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (record_type
+      (attribute_declaration
+        (identifier)
+        (name
+          (identifier)))
+      (attribute_declaration
+        (identifier)
+        (name
+          (identifier)))
+      (attribute_declaration
+        (identifier)
+        (primitive_type))
+      (attribute_declaration
+        (identifier)
+        (name
+          (identifier)))
+      (attribute_declaration
+        (identifier)
+        (name
+          (identifier)))
+      (attribute_declaration
+        (identifier)
+        (name
+          (identifier)))))
+  (entity_declaration
+    (identifier_list
+      (identifier)))
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (entity_parents
+      (type_list
+        (name
+          (identifier))))))

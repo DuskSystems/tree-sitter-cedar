@@ -2,10 +2,14 @@
 tags_n_roles_5
 ================================================================================
 
+// https://github.com/cedar-policy/cedar-examples/blob/c251f7d1ad171bd12dee5d1d7a1cceaec994518f/cedar-example-use-cases/tags_n_roles/policies.cedarschema#L25
+
 action "Role-B Actions";
 
 --------------------------------------------------------------------------------
+
 (schema
+  (comment)
   (action_declaration
     (action_name_list
       (string

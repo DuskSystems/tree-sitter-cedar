@@ -1,0 +1,22 @@
+================================================================================
+type_aware_partial_evaluation_2
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/d51ecf5ec1717609783977a4e45f60a644c52618/text/0095-type-aware-partial-evaluation.md?plain=1#L343-L345
+
+entity UnknownIP {
+  value: ipaddr
+};
+
+--------------------------------------------------------------------------------
+
+(schema
+  (comment)
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (record_type
+      (attribute_declaration
+        (identifier)
+        (name
+          (identifier))))))

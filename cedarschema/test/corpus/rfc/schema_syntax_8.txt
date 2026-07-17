@@ -1,0 +1,65 @@
+================================================================================
+schema_syntax_8
+================================================================================
+
+// https://github.com/cedar-policy/rfcs/blob/d51ecf5ec1717609783977a4e45f60a644c52618/text/0024-schema-syntax.md?plain=1#L197-L208
+
+type authcontext = {
+    ip: ipaddr,
+    is_authenticated: Boolean,
+    timestamp: Long
+};
+entity Ticket {
+  who: String,
+  operation: Long,
+  request: authcontext
+};
+action view appliesTo { context: authcontext };
+action upload appliesTo { context: authcontext };
+
+--------------------------------------------------------------------------------
+
+(schema
+  (comment)
+  (common_type_declaration
+    (identifier)
+    (record_type
+      (attribute_declaration
+        (identifier)
+        (name
+          (identifier)))
+      (attribute_declaration
+        (identifier)
+        (name
+          (identifier)))
+      (attribute_declaration
+        (identifier)
+        (primitive_type))))
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (record_type
+      (attribute_declaration
+        (identifier)
+        (primitive_type))
+      (attribute_declaration
+        (identifier)
+        (primitive_type))
+      (attribute_declaration
+        (identifier)
+        (name
+          (identifier)))))
+  (action_declaration
+    (action_name_list
+      (identifier))
+    (applies_to
+      (context_type
+        (name
+          (identifier)))))
+  (action_declaration
+    (action_name_list
+      (identifier))
+    (applies_to
+      (context_type
+        (name
+          (identifier))))))
