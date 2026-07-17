@@ -18,16 +18,12 @@
     "LICENSE-*",
     "README.md",
     "tree-sitter.json",
-    "common.js",
-    "cedar/grammar.js",
-    "cedar/src",
+    "tree-sitter-cedar.wasm",
+    "tree-sitter-cedarschema.wasm",
+    "tree-sitter-cedarentities.wasm",
     "cedar/queries",
-    "cedarentities/grammar.js",
-    "cedarentities/src",
-    "cedarentities/queries",
-    "cedarschema/grammar.js",
-    "cedarschema/src",
-    "cedarschema/queries"
+    "cedarschema/queries",
+    "cedarentities/queries"
   ],
   "devDependencies": {
     "@vitest/browser-playwright": "4.1.10",

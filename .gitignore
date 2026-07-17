@@ -7,6 +7,9 @@ node_modules
 # Vitest
 .vitest-attachments
 
+# Wasm
+*.wasm
+
 # Lychee
 .lycheecache
 
