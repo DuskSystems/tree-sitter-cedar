@@ -228,7 +228,7 @@ module.exports = grammar({
       $.string,
     ),
 
-    string_content: _ => token.immediate(/[^"\\\r\n]+/),
+    string_content: _ => token.immediate(/[^"\\]+/),
     string: $ => seq(
       '"',
       repeat(

@@ -1,6 +1,5 @@
 ================================================================================
 policies_14
-:error
 ================================================================================
 
 // https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-core/src/parser/testfiles/policies.cedar#L101-L109
@@ -16,4 +15,64 @@ when {
 };
 
 --------------------------------------------------------------------------------
-(ERROR)
+
+(policy_set
+  (comment)
+  (policy
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (action
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (resource
+        (type_reference
+          (name
+            (identifier)))))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (string
+                    (string_content)))))
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (parenthesized_expression
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (variable)
+                                (field_access
+                                  (identifier))
+                                (field_access
+                                  (identifier))))
+                            (unary_expression
+                              (member_expression
+                                (variable)
+                                (field_access
+                                  (identifier)))))))))
+                  (method_call
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (integer))))))))))

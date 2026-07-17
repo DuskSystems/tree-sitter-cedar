@@ -1,6 +1,5 @@
 ================================================================================
 policies_35
-:error
 ================================================================================
 
 // https://github.com/cedar-policy/cedar/blob/v4.11.2/cedar-policy-core/src/parser/testfiles/policies.cedar#L321-L325
@@ -12,4 +11,30 @@ permit (
 );
 
 --------------------------------------------------------------------------------
-(ERROR)
+
+(policy_set
+  (comment)
+  (policy
+    (effect)
+    (scope
+      (principal
+        (type_reference
+          (name
+            (identifier))))
+      (action
+        (scope_constraint
+          (entity_list
+            (entity_reference
+              (identifier)
+              (string
+                (string_content)))
+            (entity_reference
+              (identifier)
+              (string
+                (string_content))))))
+      (resource
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (string
+              (string_content))))))))

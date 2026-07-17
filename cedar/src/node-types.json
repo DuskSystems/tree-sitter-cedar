@@ -4,11 +4,30 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
           "type": "scope_constraint",
+          "named": true
+        },
+        {
+          "type": "type_reference",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "advice",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
           "named": true
         }
       ]
@@ -363,6 +382,10 @@
       "required": true,
       "types": [
         {
+          "type": "advice",
+          "named": true
+        },
+        {
           "type": "annotation",
           "named": true
         },
@@ -406,11 +429,15 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
           "type": "scope_constraint",
+          "named": true
+        },
+        {
+          "type": "type_reference",
           "named": true
         }
       ]
@@ -513,11 +540,15 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
           "type": "scope_constraint",
+          "named": true
+        },
+        {
+          "type": "type_reference",
           "named": true
         }
       ]
@@ -783,6 +814,10 @@
   },
   {
     "type": "action",
+    "named": false
+  },
+  {
+    "type": "advice",
     "named": false
   },
   {

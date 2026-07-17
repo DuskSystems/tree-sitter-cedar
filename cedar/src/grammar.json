@@ -51,8 +51,17 @@
         {
           "type": "REPEAT",
           "content": {
-            "type": "SYMBOL",
-            "name": "condition"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "condition"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "advice"
+              }
+            ]
           }
         },
         {
@@ -188,6 +197,18 @@
         {
           "type": "SYMBOL",
           "name": "resource"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -197,6 +218,18 @@
         {
           "type": "STRING",
           "value": "principal"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_type_annotation"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "CHOICE",
@@ -224,6 +257,18 @@
           "members": [
             {
               "type": "SYMBOL",
+              "name": "_type_annotation"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
               "name": "scope_constraint"
             },
             {
@@ -245,12 +290,37 @@
           "members": [
             {
               "type": "SYMBOL",
+              "name": "_type_annotation"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
               "name": "scope_constraint"
             },
             {
               "type": "BLANK"
             }
           ]
+        }
+      ]
+    },
+    "_type_annotation": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": ":"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "type_reference"
         }
       ]
     },
@@ -356,6 +426,27 @@
               "value": "unless"
             }
           ]
+        },
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "expression"
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "advice": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "advice"
         },
         {
           "type": "STRING",
@@ -1509,7 +1600,7 @@
       "type": "IMMEDIATE_TOKEN",
       "content": {
         "type": "PATTERN",
-        "value": "[^\"\\\\\\r\\n]+"
+        "value": "[^\"\\\\]+"
       }
     },
     "string": {

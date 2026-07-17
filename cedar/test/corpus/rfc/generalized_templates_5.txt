@@ -1,6 +1,5 @@
 ================================================================================
 generalized_templates_5
-:error
 ================================================================================
 
 // https://github.com/cedar-policy/rfcs/blob/a58f491fdb5a6681860c1c8f0cfc2501cce0bd50/text/0098-generalized-templates.md?plain=1#L187-L194
@@ -15,4 +14,30 @@ permit (
 };
 
 --------------------------------------------------------------------------------
-(ERROR)
+
+(policy_set
+  (comment)
+  (policy
+    (template_declaration
+      (slot
+        (identifier)
+        (type_reference
+          (name
+            (identifier)))))
+    (effect)
+    (scope
+      (principal)
+      (action)
+      (resource))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (integer)))
+              (unary_expression
+                (member_expression
+                  (slot
+                    (identifier)))))))))))
