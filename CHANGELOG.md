@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.1](https://github.com/DuskSystems/tree-sitter-cedar/compare/v0.11.0...v0.11.1) (2026-07-18)
+
+
+### Fixes
+
+* Better handle incomplete code ([6ac1706](https://github.com/DuskSystems/tree-sitter-cedar/commit/6ac17062644d1e44e77ef38e4342a1513b3f4143))
+
 ## [0.11.0](https://github.com/DuskSystems/tree-sitter-cedar/compare/v0.10.0...v0.11.0) (2026-07-18)
 
 
