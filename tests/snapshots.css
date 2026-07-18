@@ -21,8 +21,9 @@
 
 .attribute,
 .boolean,
-.function.method,
-.number {
+.function.builtin,
+.number,
+.string.regexp {
   color: #fab387;
 }
 
@@ -36,7 +37,8 @@
   color: #89b4fa;
 }
 
-.keyword {
+.keyword,
+.keyword.operator {
   color: #cba6f7;
 }
 
@@ -54,7 +56,8 @@
   color: #9399b2;
 }
 
-.punctuation.special {
+.punctuation.special,
+.string.escape {
   color: #f5c2e7;
 }
 
@@ -62,18 +65,10 @@
   color: #a6e3a1;
 }
 
-.string.escape {
-  color: #f5c2e7;
-}
-
-.string.special {
-  color: #94e2d5;
-}
-
 .type {
   color: #f9e2af;
 }
 
 .variable.parameter {
-  color: #b4befe;
+  color: #eba0ac;
 }

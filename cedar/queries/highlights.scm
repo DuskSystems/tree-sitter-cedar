@@ -30,14 +30,14 @@
   "has"
   "like"
   "is"
-] @operator
+] @keyword.operator
 
 [
   "principal"
   "action"
   "resource"
   "context"
-] @variable.builtin
+] @variable
 
 (slot
   "?" @punctuation.special
@@ -90,7 +90,7 @@
     (identifier) @function))
 
 (method_call
-  (identifier) @function.method)
+  (identifier) @function.builtin)
 
 (field_access
   (identifier) @property)
@@ -128,4 +128,4 @@
 
 (relation_expression
   "like"
-  (string) @string.special)
+  (string) @string.regexp)
