@@ -45,26 +45,13 @@
 
 (extension_call
   (name
-    (identifier) @module))
-
-(extension_call
-  (name
-    (identifier) @function.builtin .))
+    (identifier) @function.builtin))
 
 (record_entry
   (identifier) @property)
 
-(record_entry
-  .
-  (string) @property)
-
 (entity_reference
-  (identifier) @module)
-
-(entity_reference
-  (identifier) @type
-  .
-  (string))
+  (identifier) @type)
 
 (namespace
   (name

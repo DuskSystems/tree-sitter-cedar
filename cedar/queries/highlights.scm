@@ -89,11 +89,7 @@
 
 (extension_call
   (name
-    (identifier) @module))
-
-(extension_call
-  (name
-    (identifier) @function.builtin .))
+    (identifier) @function.builtin))
 
 (method_call
   (identifier) @function.builtin)
@@ -104,15 +100,8 @@
 (record_entry
   (identifier) @property)
 
-(record_entry
-  .
-  (string) @property)
-
 (attribute_declaration
   (identifier) @property)
-
-(attribute_declaration
-  (string) @property)
 
 (attribute_declaration
   "?" @punctuation.special)
@@ -123,9 +112,6 @@
 (ref_init
   "-" @number)
 
-(index_access
-  (string) @property)
-
 (relation_expression
   "has"
   .
@@ -134,54 +120,22 @@
       .
       (identifier) @property)))
 
-(relation_expression
-  "has"
-  .
-  (unary_expression
-    (member_expression
-      .
-      (string) @property)))
-
 (entity_reference
-  (identifier) @module)
-
-(entity_reference
-  (identifier) @type
-  .
-  (string))
-
-(entity_reference
-  (identifier) @type
-  .
-  (entity_record))
+  (identifier) @type)
 
 (type_reference
   (name
-    (identifier) @module))
-
-(type_reference
-  (name
-    (identifier) @type .))
+    (identifier) @type))
 
 (scope_constraint
   "is"
   (name
-    (identifier) @module))
-
-(scope_constraint
-  "is"
-  (name
-    (identifier) @type .))
+    (identifier) @type))
 
 (relation_expression
   "is"
   (name
-    (identifier) @module))
-
-(relation_expression
-  "is"
-  (name
-    (identifier) @type .))
+    (identifier) @type))
 
 (relation_expression
   "like"
