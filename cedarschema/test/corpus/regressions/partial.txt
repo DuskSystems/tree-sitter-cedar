@@ -1,0 +1,42 @@
+================================================================================
+partial
+================================================================================
+
+entity A, B,
+entity C enum []
+action a,
+action b in []
+type T =
+type U
+entity D { name: };
+
+--------------------------------------------------------------------------------
+
+(schema
+  (entity_declaration
+    (identifier_list
+      (identifier)
+      (identifier)))
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (enum_type))
+  (action_declaration
+    (action_name_list
+      (identifier)))
+  (action_declaration
+    (action_name_list
+      (identifier))
+    (action_parents
+      (qualified_name_list)))
+  (common_type_declaration
+    (identifier))
+  (common_type_declaration
+    (identifier))
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (type_reference
+      (record_type
+        (attribute_declaration
+          (identifier))))))

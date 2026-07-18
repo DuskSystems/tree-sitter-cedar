@@ -1,0 +1,60 @@
+================================================================================
+terminators
+================================================================================
+
+entity User in [Group]
+
+action view appliesTo {
+  principal: [User],
+  resource: [User]
+} attributes {
+  level: 1
+}
+
+action other
+
+type Ctx = { mfa: Bool }
+
+entity Group;
+
+--------------------------------------------------------------------------------
+
+(schema
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (entity_parents
+      (type_list
+        (name
+          (identifier)))))
+  (action_declaration
+    (action_name_list
+      (identifier))
+    (applies_to
+      (principal_types
+        (type_list
+          (name
+            (identifier))))
+      (resource_types
+        (type_list
+          (name
+            (identifier)))))
+    (action_attributes
+      (attribute_entry
+        (identifier)
+        (integer))))
+  (action_declaration
+    (action_name_list
+      (identifier)))
+  (common_type_declaration
+    (identifier)
+    (type_reference
+      (record_type
+        (attribute_declaration
+          (identifier)
+          (type_reference
+            (name
+              (identifier)))))))
+  (entity_declaration
+    (identifier_list
+      (identifier))))

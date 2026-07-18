@@ -19,10 +19,10 @@ export default grammar({
       optional(seq($.template_declaration, repeat($.annotation))),
       $.effect,
       '(',
-      $.scope,
+      optional($.scope),
       ')',
       repeat(choice($.condition, $.advice)),
-      ';',
+      optional(';'),
     ),
 
     template_declaration: $ => seq('template', '(', commaSep($.slot), ')', '=>'),
@@ -30,11 +30,7 @@ export default grammar({
     effect: _ => choice('permit', 'forbid'),
 
     scope: $ => seq(
-      $.principal,
-      ',',
-      $.action,
-      ',',
-      $.resource,
+      commaSep1(choice($.principal, $.action, $.resource)),
       optional(','),
     ),
 
@@ -53,14 +49,14 @@ export default grammar({
     condition: $ => seq(
       choice('when', 'unless'),
       '{',
-      $.expression,
+      optional($.expression),
       '}',
     ),
 
     advice: $ => seq(
       'advice',
       '{',
-      $.expression,
+      optional($.expression),
       '}',
     ),
 
@@ -211,7 +207,7 @@ export default grammar({
     record_entry: $ => seq(
       choice($.identifier, $.string),
       ':',
-      $.expression,
+      optional($.expression),
     ),
 
     entity_reference: $ => seq(
@@ -231,7 +227,7 @@ export default grammar({
     ref_init: $ => seq(
       $.identifier,
       ':',
-      $._literal,
+      optional($._literal),
     ),
 
     entity_list: $ => seq(

@@ -36,7 +36,7 @@ export default grammar({
       optional($.instance_parents),
       optional(seq(optional('='), $.record)),
       optional($.instance_tags),
-      ';',
+      optional(';'),
     ),
 
     instance_parents: $ => seq(
@@ -73,7 +73,7 @@ export default grammar({
     record_entry: $ => seq(
       choice($.identifier, $.string),
       ':',
-      $._value,
+      optional($._value),
     ),
 
     _value: $ => choice(

@@ -1,0 +1,45 @@
+================================================================================
+partial
+================================================================================
+
+permit(principal)
+
+permit(principal, action)
+
+permit()
+
+permit(principal, action, resource) when { };
+
+forbid(principal, action, resource) when {
+}
+advice { }
+
+--------------------------------------------------------------------------------
+
+(policy_set
+  (policy
+    (effect)
+    (scope
+      (principal)))
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action)))
+  (policy
+    (effect))
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action)
+      (resource))
+    (condition))
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action)
+      (resource))
+    (condition)
+    (advice)))

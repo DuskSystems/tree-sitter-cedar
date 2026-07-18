@@ -1,0 +1,29 @@
+================================================================================
+partial
+================================================================================
+
+instance A::"x" = { k: }
+instance B::"y" = { a: 1, b: };
+
+--------------------------------------------------------------------------------
+
+(entities
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (record
+      (record_entry
+        (identifier))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (record
+      (record_entry
+        (identifier)
+        (integer))
+      (record_entry
+        (identifier)))))

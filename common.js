@@ -88,7 +88,7 @@ const types = {
     choice($.identifier, $.string),
     optional('?'),
     ':',
-    $.type_reference,
+    optional($.type_reference),
   ),
 };
 

@@ -44,7 +44,7 @@ export default grammar({
           optional($.entity_parents),
           optional(seq(optional('='), $.type_reference)),
           optional($.entity_tags),
-          ';',
+          optional(';'),
         ),
         $.enum_type,
       ),
@@ -57,7 +57,7 @@ export default grammar({
       optional($.action_parents),
       optional($.applies_to),
       optional($.action_attributes),
-      ';',
+      optional(';'),
     ),
 
     action_attributes: $ => seq(
@@ -71,16 +71,15 @@ export default grammar({
     attribute_entry: $ => seq(
       choice($.identifier, $.string),
       ':',
-      $._literal,
+      optional($._literal),
     ),
 
     common_type_declaration: $ => seq(
       repeat($.annotation),
       'type',
       $.identifier,
-      '=',
-      $.type_reference,
-      ';',
+      optional(seq('=', optional($.type_reference))),
+      optional(';'),
     ),
 
     entity_parents: $ => seq(
@@ -96,10 +95,10 @@ export default grammar({
     enum_type: $ => seq(
       'enum',
       '[',
-      commaSep1($.string),
+      commaSep($.string),
       optional(','),
       ']',
-      ';',
+      optional(';'),
     ),
 
     action_parents: $ => seq(
@@ -150,12 +149,12 @@ export default grammar({
     ),
 
     qualified_name_list: $ => choice(
-      seq('[', commaSep1($.qualified_name), optional(','), ']'),
+      seq('[', commaSep($.qualified_name), optional(','), ']'),
       $.qualified_name,
     ),
 
-    identifier_list: $ => commaSep1($.identifier),
-    action_name_list: $ => commaSep1($._attribute_name),
+    identifier_list: $ => prec.right(seq(commaSep1($.identifier), optional(','))),
+    action_name_list: $ => prec.right(seq(commaSep1($._attribute_name), optional(','))),
 
     _attribute_name: $ => choice(
       $.identifier,

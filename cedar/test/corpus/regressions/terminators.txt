@@ -1,0 +1,45 @@
+================================================================================
+terminators
+================================================================================
+
+permit (principal, action, resource)
+
+forbid (principal, action, resource)
+when { true }
+
+@id("still-parses")
+permit (principal, action, resource);
+
+--------------------------------------------------------------------------------
+
+(policy_set
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action)
+      (resource)))
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action)
+      (resource))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (true)))))))))
+  (policy
+    (annotation
+      (identifier)
+      (string
+        (string_content)))
+    (effect)
+    (scope
+      (principal)
+      (action)
+      (resource))))
