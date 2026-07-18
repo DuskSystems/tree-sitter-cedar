@@ -1,7 +1,7 @@
 {
   "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
   "metadata": {
-    "version": "0.1.0",
+    "version": "0.10.0",
     "license": "MIT OR Apache-2.0",
     "description": "Cedar grammars for tree-sitter",
     "authors": [
@@ -20,7 +20,9 @@
       "camelcase": "Cedar",
       "scope": "source.cedar",
       "path": "cedar",
-      "file-types": ["cedar"],
+      "file-types": [
+        "cedar"
+      ],
       "highlights": "cedar/queries/highlights.scm",
       "tags": "cedar/queries/tags.scm",
       "injection-regex": "^cedar$"
@@ -30,7 +32,9 @@
       "camelcase": "CedarSchema",
       "scope": "source.cedarschema",
       "path": "cedarschema",
-      "file-types": ["cedarschema"],
+      "file-types": [
+        "cedarschema"
+      ],
       "highlights": "cedarschema/queries/highlights.scm",
       "tags": "cedarschema/queries/tags.scm",
       "injection-regex": "^cedarschema$"
@@ -40,7 +44,9 @@
       "camelcase": "CedarEntities",
       "scope": "source.cedarentities",
       "path": "cedarentities",
-      "file-types": ["cedarentities"],
+      "file-types": [
+        "cedarentities"
+      ],
       "highlights": "cedarentities/queries/highlights.scm",
       "tags": "cedarentities/queries/tags.scm",
       "injection-regex": "^cedarentities$"
