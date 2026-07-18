@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.0](https://github.com/DuskSystems/tree-sitter-cedar/compare/v0.10.0...v0.11.0) (2026-07-18)
+
+
+### Features
+
+* Loosen grammars and unify highlighting ([6fc5212](https://github.com/DuskSystems/tree-sitter-cedar/commit/6fc52124e4e87f46aed17ce1dc4b3d5f25a0a7c0))
+
 ## [0.10.0](https://github.com/DuskSystems/tree-sitter-cedar/compare/v0.1.0...v0.10.0) (2026-07-18)
 
 

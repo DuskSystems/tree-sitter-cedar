@@ -1,6 +1,6 @@
 {
   "name": "@dusksystems/tree-sitter-cedar",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "type": "module",
   "description": "Cedar grammars for tree-sitter",
   "keywords": [
