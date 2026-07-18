@@ -49,25 +49,35 @@ namespace GitApp {
         (type_list
           (name
             (identifier))))
-      (record_type
-        (attribute_declaration
-          (string
-            (string_content))
-          (set_type
-            (name
-              (identifier))))
-        (attribute_declaration
-          (string
-            (string_content))
-          (set_type
-            (name
-              (identifier))))
-        (attribute_declaration
-          (string
-            (string_content))
-          (set_type
-            (name
-              (identifier))))))
+      (type_reference
+        (record_type
+          (attribute_declaration
+            (string
+              (string_content))
+            (type_reference
+              (name
+                (identifier))
+              (type_reference
+                (name
+                  (identifier)))))
+          (attribute_declaration
+            (string
+              (string_content))
+            (type_reference
+              (name
+                (identifier))
+              (type_reference
+                (name
+                  (identifier)))))
+          (attribute_declaration
+            (string
+              (string_content))
+            (type_reference
+              (name
+                (identifier))
+              (type_reference
+                (name
+                  (identifier))))))))
     (action_declaration
       (action_name_list
         (identifier)

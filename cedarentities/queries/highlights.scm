@@ -6,6 +6,10 @@
 
 (integer) @number
 
+(decimal) @number
+
+"-" @number
+
 (true) @boolean
 
 (false) @boolean
@@ -35,15 +39,32 @@
   "]"
 ] @punctuation.bracket
 
+(annotation
+  "@" @punctuation.special
+  (identifier) @attribute)
+
 (extension_call
   (name
-    (identifier) @function))
+    (identifier) @module))
+
+(extension_call
+  (name
+    (identifier) @function.builtin .))
 
 (record_entry
   (identifier) @property)
 
+(record_entry
+  .
+  (string) @property)
+
 (entity_reference
-  (identifier) @type)
+  (identifier) @module)
+
+(entity_reference
+  (identifier) @type
+  .
+  (string))
 
 (namespace
   (name

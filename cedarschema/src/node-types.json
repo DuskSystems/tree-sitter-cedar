@@ -138,23 +138,11 @@
           "named": true
         },
         {
-          "type": "name",
-          "named": true
-        },
-        {
-          "type": "primitive_type",
-          "named": true
-        },
-        {
-          "type": "record_type",
-          "named": true
-        },
-        {
-          "type": "set_type",
-          "named": true
-        },
-        {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "type_reference",
           "named": true
         }
       ]
@@ -168,6 +156,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "decimal",
+          "named": true
+        },
         {
           "type": "false",
           "named": true
@@ -208,19 +200,7 @@
           "named": true
         },
         {
-          "type": "name",
-          "named": true
-        },
-        {
-          "type": "primitive_type",
-          "named": true
-        },
-        {
-          "type": "record_type",
-          "named": true
-        },
-        {
-          "type": "set_type",
+          "type": "type_reference",
           "named": true
         }
       ]
@@ -235,11 +215,7 @@
       "required": true,
       "types": [
         {
-          "type": "name",
-          "named": true
-        },
-        {
-          "type": "record_type",
+          "type": "type_reference",
           "named": true
         }
       ]
@@ -274,7 +250,7 @@
           "named": true
         },
         {
-          "type": "record_type",
+          "type": "type_reference",
           "named": true
         }
       ]
@@ -304,19 +280,7 @@
       "required": true,
       "types": [
         {
-          "type": "name",
-          "named": true
-        },
-        {
-          "type": "primitive_type",
-          "named": true
-        },
-        {
-          "type": "record_type",
-          "named": true
-        },
-        {
-          "type": "set_type",
+          "type": "type_reference",
           "named": true
         }
       ]
@@ -401,11 +365,6 @@
         }
       ]
     }
-  },
-  {
-    "type": "primitive_type",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "principal_types",
@@ -515,33 +474,6 @@
     }
   },
   {
-    "type": "set_type",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "name",
-          "named": true
-        },
-        {
-          "type": "primitive_type",
-          "named": true
-        },
-        {
-          "type": "record_type",
-          "named": true
-        },
-        {
-          "type": "set_type",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "string",
     "named": true,
     "fields": {},
@@ -576,6 +508,29 @@
     }
   },
   {
+    "type": "type_reference",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "record_type",
+          "named": true
+        },
+        {
+          "type": "type_reference",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "\"",
     "named": false
   },
@@ -589,6 +544,10 @@
   },
   {
     "type": ",",
+    "named": false
+  },
+  {
+    "type": "-",
     "named": false
   },
   {
@@ -624,22 +583,6 @@
     "named": false
   },
   {
-    "type": "Bool",
-    "named": false
-  },
-  {
-    "type": "Long",
-    "named": false
-  },
-  {
-    "type": "Set",
-    "named": false
-  },
-  {
-    "type": "String",
-    "named": false
-  },
-  {
     "type": "[",
     "named": false
   },
@@ -667,6 +610,10 @@
   {
     "type": "context",
     "named": false
+  },
+  {
+    "type": "decimal",
+    "named": true
   },
   {
     "type": "entity",

@@ -68,6 +68,33 @@
     }
   },
   {
+    "type": "attribute_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "annotation",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "type_reference",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "condition",
     "named": true,
     "fields": {},
@@ -93,7 +120,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "entity_reference",
@@ -231,6 +258,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "decimal",
+          "named": true
+        },
         {
           "type": "entity_reference",
           "named": true
@@ -467,6 +498,21 @@
     }
   },
   {
+    "type": "record_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "attribute_declaration",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "ref_init",
     "named": true,
     "fields": {},
@@ -474,6 +520,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "decimal",
+          "named": true
+        },
         {
           "type": "false",
           "named": true
@@ -670,6 +720,10 @@
           "named": true
         },
         {
+          "type": "record_type",
+          "named": true
+        },
+        {
           "type": "type_reference",
           "named": true
         }
@@ -828,6 +882,10 @@
   {
     "type": "context",
     "named": false
+  },
+  {
+    "type": "decimal",
+    "named": true
   },
   {
     "type": "else",

@@ -32,10 +32,13 @@ namespace N1 {
       (identifier))
     (common_type_declaration
       (identifier)
-      (record_type
-        (attribute_declaration
-          (identifier)
-          (primitive_type))))
+      (type_reference
+        (record_type
+          (attribute_declaration
+            (identifier)
+            (type_reference
+              (name
+                (identifier)))))))
     (entity_declaration
       (identifier_list
         (identifier)))
@@ -52,7 +55,8 @@ namespace N1 {
             (name
               (identifier))))
         (context_type
-          (record_type))))
+          (type_reference
+            (record_type)))))
     (action_declaration
       (action_name_list
         (identifier))
@@ -68,4 +72,5 @@ namespace N1 {
               (identifier)
               (identifier))))
         (context_type
-          (record_type))))))
+          (type_reference
+            (record_type)))))))

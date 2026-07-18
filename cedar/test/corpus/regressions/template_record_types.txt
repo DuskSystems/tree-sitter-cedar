@@ -1,0 +1,54 @@
+================================================================================
+template_record_types
+================================================================================
+
+template(?config: { @doc("threshold") level?: Long, "allowed ips": Set<ipaddr> }) =>
+permit (principal, action, resource)
+when { ?config.level > 3 };
+
+--------------------------------------------------------------------------------
+
+(policy_set
+  (policy
+    (template_declaration
+      (slot
+        (identifier)
+        (type_reference
+          (record_type
+            (attribute_declaration
+              (annotation
+                (identifier)
+                (string
+                  (string_content)))
+              (identifier)
+              (type_reference
+                (name
+                  (identifier))))
+            (attribute_declaration
+              (string
+                (string_content))
+              (type_reference
+                (name
+                  (identifier))
+                (type_reference
+                  (name
+                    (identifier)))))))))
+    (effect)
+    (scope
+      (principal)
+      (action)
+      (resource))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (slot
+                    (identifier))
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (integer))))))))))

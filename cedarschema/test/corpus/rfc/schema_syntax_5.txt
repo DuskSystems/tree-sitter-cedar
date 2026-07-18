@@ -32,18 +32,22 @@ action Ping appliesTo {
           (name
             (identifier))))
       (context_type
-        (record_type))))
+        (type_reference
+          (record_type)))))
   (action_declaration
     (action_name_list
       (identifier))
     (applies_to
       (context_type
-        (record_type
-          (attribute_declaration
-            (identifier)
-            (name
-              (identifier)))
-          (attribute_declaration
-            (identifier)
-            (name
-              (identifier))))))))
+        (type_reference
+          (record_type
+            (attribute_declaration
+              (identifier)
+              (type_reference
+                (name
+                  (identifier))))
+            (attribute_declaration
+              (identifier)
+              (type_reference
+                (name
+                  (identifier))))))))))

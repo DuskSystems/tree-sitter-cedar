@@ -30,9 +30,11 @@ action listPhotos
           (name
             (identifier))))
       (context_type
-        (record_type
-          (attribute_declaration
-            (identifier)
-            (name
+        (type_reference
+          (record_type
+            (attribute_declaration
               (identifier)
-              (identifier))))))))
+              (type_reference
+                (name
+                  (identifier)
+                  (identifier))))))))))

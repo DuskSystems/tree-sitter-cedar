@@ -16,6 +16,7 @@ namespace NS {
 }
 
 --------------------------------------------------------------------------------
+
 (schema
   (comment)
   (namespace
@@ -23,16 +24,20 @@ namespace NS {
       (identifier))
     (common_type_declaration
       (identifier)
-      (record_type
-        (attribute_declaration
-          (string
-            (string_content))
-          (name
+      (type_reference
+        (record_type
+          (attribute_declaration
+            (string
+              (string_content))
+            (type_reference
+              (name
+                (identifier)
+                (identifier))))
+          (attribute_declaration
             (identifier)
-            (identifier)))
-        (attribute_declaration
-          (identifier)
-          (primitive_type))))
+            (type_reference
+              (name
+                (identifier)))))))
     (entity_declaration
       (identifier_list
         (identifier))
@@ -40,10 +45,13 @@ namespace NS {
         (type_list
           (name
             (identifier))))
-      (record_type
-        (attribute_declaration
-          (identifier)
-          (primitive_type))))
+      (type_reference
+        (record_type
+          (attribute_declaration
+            (identifier)
+            (type_reference
+              (name
+                (identifier)))))))
     (entity_declaration
       (identifier_list
         (identifier))
@@ -51,11 +59,13 @@ namespace NS {
         (type_list
           (name
             (identifier))))
-      (record_type
-        (attribute_declaration
-          (identifier)
-          (name
-            (identifier)))))
+      (type_reference
+        (record_type
+          (attribute_declaration
+            (identifier)
+            (type_reference
+              (name
+                (identifier)))))))
     (action_declaration
       (action_name_list
         (string
@@ -72,4 +82,5 @@ namespace NS {
               (identifier)
               (identifier))))
         (context_type
-          (record_type))))))
+          (type_reference
+            (record_type)))))))

@@ -1,3 +1,5 @@
 (policy
   (annotation
-    (string) @name)) @definition.policy
+    (identifier) @_annotation
+    (string) @name
+    (#eq? @_annotation "id"))) @definition.policy

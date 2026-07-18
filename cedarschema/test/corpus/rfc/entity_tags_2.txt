@@ -20,27 +20,40 @@ entity IntTags {
   (entity_declaration
     (identifier_list
       (identifier))
-    (record_type
-      (attribute_declaration
-        (identifier)
-        (set_type
-          (primitive_type)))
-      (attribute_declaration
-        (identifier)
+    (type_reference
+      (record_type
+        (attribute_declaration
+          (identifier)
+          (type_reference
+            (name
+              (identifier))
+            (type_reference
+              (name
+                (identifier)))))
+        (attribute_declaration
+          (identifier)
+          (type_reference
+            (name
+              (identifier))))))
+    (entity_tags
+      (type_reference
         (name
-          (identifier))))
-    (entity_tags
-      (name
-        (identifier))))
+          (identifier)))))
   (entity_declaration
     (identifier_list
       (identifier))
-    (record_type)
+    (type_reference
+      (record_type))
     (entity_tags
-      (primitive_type)))
+      (type_reference
+        (name
+          (identifier)))))
   (entity_declaration
     (identifier_list
       (identifier))
-    (record_type)
+    (type_reference
+      (record_type))
     (entity_tags
-      (primitive_type))))
+      (type_reference
+        (name
+          (identifier))))))

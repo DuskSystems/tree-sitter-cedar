@@ -1,0 +1,42 @@
+================================================================================
+numbers
+================================================================================
+
+entity User;
+action view appliesTo {
+  principal: [User],
+  resource: [User]
+} attributes {
+  level: -5,
+  rating: 2.5,
+  offset: -1.5
+};
+
+--------------------------------------------------------------------------------
+
+(schema
+  (entity_declaration
+    (identifier_list
+      (identifier)))
+  (action_declaration
+    (action_name_list
+      (identifier))
+    (applies_to
+      (principal_types
+        (type_list
+          (name
+            (identifier))))
+      (resource_types
+        (type_list
+          (name
+            (identifier)))))
+    (action_attributes
+      (attribute_entry
+        (identifier)
+        (integer))
+      (attribute_entry
+        (identifier)
+        (decimal))
+      (attribute_entry
+        (identifier)
+        (decimal)))))

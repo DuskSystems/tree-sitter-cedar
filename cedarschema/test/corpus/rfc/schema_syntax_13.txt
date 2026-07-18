@@ -22,5 +22,6 @@ action read appliesTo {
           (name
             (identifier))))
       (context_type
-        (name
-          (identifier))))))
+        (type_reference
+          (name
+            (identifier)))))))

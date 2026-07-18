@@ -46,10 +46,13 @@ namespace k8s {
     (entity_declaration
       (identifier_list
         (identifier))
-      (record_type
-        (attribute_declaration
-          (identifier)
-          (primitive_type))))
+      (type_reference
+        (record_type
+          (attribute_declaration
+            (identifier)
+            (type_reference
+              (name
+                (identifier)))))))
     (action_declaration
       (action_name_list
         (string
@@ -66,7 +69,8 @@ namespace k8s {
               (identifier)
               (identifier))))
         (context_type
-          (record_type))))
+          (type_reference
+            (record_type)))))
     (action_declaration
       (action_name_list
         (string
@@ -83,7 +87,10 @@ namespace k8s {
               (identifier)
               (identifier))))
         (context_type
-          (record_type
-            (attribute_declaration
-              (identifier)
-              (primitive_type))))))))
+          (type_reference
+            (record_type
+              (attribute_declaration
+                (identifier)
+                (type_reference
+                  (name
+                    (identifier)))))))))))

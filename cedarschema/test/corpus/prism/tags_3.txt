@@ -28,4 +28,5 @@ action "writeDoc" appliesTo {
           (name
             (identifier))))
       (context_type
-        (record_type)))))
+        (type_reference
+          (record_type))))))

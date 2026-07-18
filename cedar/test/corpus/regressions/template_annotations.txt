@@ -1,0 +1,54 @@
+================================================================================
+template_annotations
+================================================================================
+
+@id("closeFriendsAccess")
+template(?bound: Long) =>
+@note("linked")
+permit (
+  principal == ?principal,
+  action,
+  resource
+)
+when { context.level >= ?bound };
+
+--------------------------------------------------------------------------------
+
+(policy_set
+  (policy
+    (annotation
+      (identifier)
+      (string
+        (string_content)))
+    (template_declaration
+      (slot
+        (identifier)
+        (type_reference
+          (name
+            (identifier)))))
+    (annotation
+      (identifier)
+      (string
+        (string_content)))
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (slot
+            (identifier))))
+      (action)
+      (resource))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (slot
+                    (identifier)))))))))))

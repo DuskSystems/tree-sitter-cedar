@@ -1,0 +1,29 @@
+================================================================================
+scope_slots
+================================================================================
+
+permit (
+  principal is User in ?principal,
+  action,
+  resource is Photo in ?resource
+);
+
+--------------------------------------------------------------------------------
+
+(policy_set
+  (policy
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (name
+            (identifier))
+          (slot
+            (identifier))))
+      (action)
+      (resource
+        (scope_constraint
+          (name
+            (identifier))
+          (slot
+            (identifier)))))))

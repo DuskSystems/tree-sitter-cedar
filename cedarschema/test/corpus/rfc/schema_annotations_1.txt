@@ -52,32 +52,42 @@ namespace TinyTodo {
         (string
           (string_content)))
       (identifier)
-      (record_type
-        (attribute_declaration
-          (annotation
-            (identifier)
+      (type_reference
+        (record_type
+          (attribute_declaration
+            (annotation
+              (identifier)
+              (string
+                (string_content)))
             (string
-              (string_content)))
-          (string
-            (string_content))
-          (primitive_type))
-        (attribute_declaration
-          (string
-            (string_content))
-          (primitive_type))
-        (attribute_declaration
-          (string
-            (string_content))
-          (primitive_type))))
+              (string_content))
+            (type_reference
+              (name
+                (identifier))))
+          (attribute_declaration
+            (string
+              (string_content))
+            (type_reference
+              (name
+                (identifier))))
+          (attribute_declaration
+            (string
+              (string_content))
+            (type_reference
+              (name
+                (identifier)))))))
     (common_type_declaration
       (annotation
         (identifier)
         (string
           (string_content)))
       (identifier)
-      (set_type
+      (type_reference
         (name
-          (identifier))))
+          (identifier))
+        (type_reference
+          (name
+            (identifier)))))
     (entity_declaration
       (annotation
         (identifier)
@@ -93,39 +103,46 @@ namespace TinyTodo {
         (type_list
           (name
             (identifier))))
-      (record_type
-        (attribute_declaration
-          (annotation
-            (identifier)
+      (type_reference
+        (record_type
+          (attribute_declaration
+            (annotation
+              (identifier)
+              (string
+                (string_content)))
             (string
-              (string_content)))
-          (string
-            (string_content))
-          (name
-            (identifier)))
-        (attribute_declaration
-          (string
-            (string_content))
-          (primitive_type))
-        (attribute_declaration
-          (string
-            (string_content))
-          (name
-            (identifier)))
-        (attribute_declaration
-          (annotation
-            (identifier)
+              (string_content))
+            (type_reference
+              (name
+                (identifier))))
+          (attribute_declaration
             (string
-              (string_content)))
-          (string
-            (string_content))
-          (name
-            (identifier)))
-        (attribute_declaration
-          (string
-            (string_content))
-          (name
-            (identifier)))))
+              (string_content))
+            (type_reference
+              (name
+                (identifier))))
+          (attribute_declaration
+            (string
+              (string_content))
+            (type_reference
+              (name
+                (identifier))))
+          (attribute_declaration
+            (annotation
+              (identifier)
+              (string
+                (string_content)))
+            (string
+              (string_content))
+            (type_reference
+              (name
+                (identifier))))
+          (attribute_declaration
+            (string
+              (string_content))
+            (type_reference
+              (name
+                (identifier)))))))
     (action_declaration
       (annotation
         (identifier)

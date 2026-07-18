@@ -19,6 +19,13 @@ const common = {
   false: _ => 'false',
 
   integer: _ => token(/[0-9]+/),
+  decimal: _ => token(/[0-9]+\.[0-9]+/),
+
+  _number: $ => choice(
+    $.integer,
+    $.decimal,
+    seq('-', choice($.integer, $.decimal)),
+  ),
 
   string: $ => seq(
     '"',
@@ -44,14 +51,45 @@ const common = {
     ),
   ),
 
+  annotation: $ => seq(
+    '@',
+    $.identifier,
+    optional(seq('(', $.string, ')')),
+  ),
+
   identifier: _ => token(/[_a-zA-Z][_a-zA-Z0-9]*/),
   comment: _ => token(seq('//', /.*/)),
 };
 
-const annotation = $ => seq(
-  '@',
-  $.identifier,
-  optional(seq('(', $.string, ')')),
-);
+const literals = {
+  _literal: $ => choice(
+    $.true,
+    $.false,
+    $._number,
+    $.string,
+  ),
+};
 
-export { commaSep, commaSep1, common, annotation };
+const types = {
+  type_reference: $ => choice(
+    prec.left(seq($.name, optional(seq('<', commaSep1($.type_reference), '>')))),
+    $.record_type,
+  ),
+
+  record_type: $ => seq(
+    '{',
+    commaSep($.attribute_declaration),
+    optional(','),
+    '}',
+  ),
+
+  attribute_declaration: $ => seq(
+    repeat($.annotation),
+    choice($.identifier, $.string),
+    optional('?'),
+    ':',
+    $.type_reference,
+  ),
+};
+
+export { commaSep, commaSep1, common, literals, types };

@@ -29,12 +29,14 @@ action edit, view appliesTo { principal: [User], resource: [Photo] };
       (type_list
         (name
           (identifier))))
-    (record_type
-      (attribute_declaration
-        (identifier)
-        (name
+    (type_reference
+      (record_type
+        (attribute_declaration
           (identifier)
-          (identifier)))))
+          (type_reference
+            (name
+              (identifier)
+              (identifier)))))))
   (entity_declaration
     (identifier_list
       (identifier)))
@@ -45,11 +47,13 @@ action edit, view appliesTo { principal: [User], resource: [Photo] };
       (type_list
         (name
           (identifier))))
-    (record_type
-      (attribute_declaration
-        (identifier)
-        (name
-          (identifier)))))
+    (type_reference
+      (record_type
+        (attribute_declaration
+          (identifier)
+          (type_reference
+            (name
+              (identifier)))))))
   (action_declaration
     (action_name_list
       (identifier)

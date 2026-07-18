@@ -1,7 +1,7 @@
 /// <reference path="../dsl.d.ts" />
 // @ts-check
 
-import { commaSep, commaSep1, common, annotation } from '../common.js';
+import { commaSep, commaSep1, common, literals, types } from '../common.js';
 
 export default grammar({
   name: 'cedar',
@@ -15,8 +15,8 @@ export default grammar({
   rules: {
     policy_set: $ => repeat($.policy),
     policy: $ => seq(
-      optional($.template_declaration),
       repeat($.annotation),
+      optional(seq($.template_declaration, repeat($.annotation))),
       $.effect,
       '(',
       $.scope,
@@ -28,8 +28,6 @@ export default grammar({
     template_declaration: $ => seq('template', '(', commaSep($.slot), ')', '=>'),
 
     effect: _ => choice('permit', 'forbid'),
-
-    annotation,
 
     scope: $ => seq(
       $.principal,
@@ -49,7 +47,7 @@ export default grammar({
     scope_constraint: $ => choice(
       seq('==', choice($.entity_reference, $.slot)),
       seq('in', choice($.entity_reference, $.entity_list, $.slot)),
-      seq('is', $.name, optional(seq('in', $.entity_reference))),
+      seq('is', $.name, optional(seq('in', choice($.entity_reference, $.slot)))),
     ),
 
     condition: $ => seq(
@@ -173,6 +171,7 @@ export default grammar({
       $.true,
       $.false,
       $.integer,
+      $.decimal,
       $.string,
       $.slot,
       $.entity_reference,
@@ -235,25 +234,19 @@ export default grammar({
       $._literal,
     ),
 
-    _literal: $ => choice(
-      $.true,
-      $.false,
-      $.integer,
-      $.string,
-    ),
-
     entity_list: $ => seq(
       '[',
-      commaSep1($.entity_reference),
+      commaSep($.entity_reference),
       optional(','),
       ']',
     ),
 
     slot: $ => seq('?', $.identifier, optional(seq(':', $.type_reference))),
-    type_reference: $ => prec.left(seq($.name, optional(seq('<', commaSep1($.type_reference), '>')))),
 
     variable: _ => choice('principal', 'action', 'resource', 'context'),
 
+    ...literals,
+    ...types,
     ...common,
   },
 });

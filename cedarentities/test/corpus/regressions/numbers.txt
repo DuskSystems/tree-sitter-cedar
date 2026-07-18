@@ -1,0 +1,35 @@
+================================================================================
+numbers
+================================================================================
+
+instance User::"alice" = {
+  age: -5,
+  rating: 2.5,
+  offset: -1.5,
+  scores: [-1, 2.5, 3],
+};
+
+--------------------------------------------------------------------------------
+
+(entities
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (record
+      (record_entry
+        (identifier)
+        (integer))
+      (record_entry
+        (identifier)
+        (decimal))
+      (record_entry
+        (identifier)
+        (decimal))
+      (record_entry
+        (identifier)
+        (set
+          (integer)
+          (decimal)
+          (integer))))))

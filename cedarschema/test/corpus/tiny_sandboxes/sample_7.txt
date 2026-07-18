@@ -50,21 +50,26 @@ namespace PhotoFlash::Data {
         (type_list
           (name
             (identifier))))
-      (record_type
-        (attribute_declaration
-          (identifier)
-          (name
-            (identifier)))))
+      (type_reference
+        (record_type
+          (attribute_declaration
+            (identifier)
+            (type_reference
+              (name
+                (identifier)))))))
     (entity_declaration
       (identifier_list
         (identifier)))
     (entity_declaration
       (identifier_list
         (identifier))
-      (record_type
-        (attribute_declaration
-          (identifier)
-          (primitive_type))))
+      (type_reference
+        (record_type
+          (attribute_declaration
+            (identifier)
+            (type_reference
+              (name
+                (identifier)))))))
     (entity_declaration
       (identifier_list
         (identifier))
@@ -72,11 +77,13 @@ namespace PhotoFlash::Data {
         (type_list
           (name
             (identifier))))
-      (record_type
-        (attribute_declaration
-          (identifier)
-          (name
-            (identifier)))))
+      (type_reference
+        (record_type
+          (attribute_declaration
+            (identifier)
+            (type_reference
+              (name
+                (identifier)))))))
     (action_declaration
       (action_name_list
         (identifier))
@@ -104,26 +111,41 @@ namespace PhotoFlash::Data {
             (name
               (identifier))))
         (context_type
-          (record_type
-            (attribute_declaration
-              (identifier)
-              (record_type
-                (attribute_declaration
-                  (identifier)
-                  (primitive_type))
-                (attribute_declaration
-                  (identifier)
-                  (primitive_type))))
-            (attribute_declaration
-              (identifier)
-              (record_type
-                (attribute_declaration
-                  (identifier)
-                  (primitive_type))
-                (attribute_declaration
-                  (identifier)
-                  (primitive_type))))
-            (attribute_declaration
-              (identifier)
-              (set_type
-                (primitive_type)))))))))
+          (type_reference
+            (record_type
+              (attribute_declaration
+                (identifier)
+                (type_reference
+                  (record_type
+                    (attribute_declaration
+                      (identifier)
+                      (type_reference
+                        (name
+                          (identifier))))
+                    (attribute_declaration
+                      (identifier)
+                      (type_reference
+                        (name
+                          (identifier)))))))
+              (attribute_declaration
+                (identifier)
+                (type_reference
+                  (record_type
+                    (attribute_declaration
+                      (identifier)
+                      (type_reference
+                        (name
+                          (identifier))))
+                    (attribute_declaration
+                      (identifier)
+                      (type_reference
+                        (name
+                          (identifier)))))))
+              (attribute_declaration
+                (identifier)
+                (type_reference
+                  (name
+                    (identifier))
+                  (type_reference
+                    (name
+                      (identifier))))))))))))

@@ -30,13 +30,17 @@ action Delete appliesTo {
           (name
             (identifier))))
       (context_type
-        (record_type
-          (attribute_declaration
-            (string
-              (string_content))
-            (primitive_type))
-          (attribute_declaration
-            (string
-              (string_content))
-            (name
-              (identifier))))))))
+        (type_reference
+          (record_type
+            (attribute_declaration
+              (string
+                (string_content))
+              (type_reference
+                (name
+                  (identifier))))
+            (attribute_declaration
+              (string
+                (string_content))
+              (type_reference
+                (name
+                  (identifier))))))))))

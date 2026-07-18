@@ -17,10 +17,15 @@ entity User in [UserGroup] { department: String, jobLevel: Long };
       (type_list
         (name
           (identifier))))
-    (record_type
-      (attribute_declaration
-        (identifier)
-        (primitive_type))
-      (attribute_declaration
-        (identifier)
-        (primitive_type)))))
+    (type_reference
+      (record_type
+        (attribute_declaration
+          (identifier)
+          (type_reference
+            (name
+              (identifier))))
+        (attribute_declaration
+          (identifier)
+          (type_reference
+            (name
+              (identifier))))))))

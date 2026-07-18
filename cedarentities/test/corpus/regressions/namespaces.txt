@@ -1,0 +1,44 @@
+================================================================================
+namespaces
+================================================================================
+
+@doc("outer")
+namespace A {
+  namespace B {
+    @doc("nested instance")
+    @internal
+    instance C::"x";
+  }
+
+  instance D::"y";
+}
+
+--------------------------------------------------------------------------------
+
+(entities
+  (namespace
+    (annotation
+      (identifier)
+      (string
+        (string_content)))
+    (name
+      (identifier))
+    (namespace
+      (name
+        (identifier))
+      (instance
+        (annotation
+          (identifier)
+          (string
+            (string_content)))
+        (annotation
+          (identifier))
+        (entity_reference
+          (identifier)
+          (string
+            (string_content)))))
+    (instance
+      (entity_reference
+        (identifier)
+        (string
+          (string_content))))))

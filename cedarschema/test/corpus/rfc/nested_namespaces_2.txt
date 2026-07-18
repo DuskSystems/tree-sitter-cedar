@@ -38,6 +38,7 @@ namespace Foo {
       (comment))
     (common_type_declaration
       (identifier)
-      (name
-        (identifier)
-        (identifier)))))
+      (type_reference
+        (name
+          (identifier)
+          (identifier))))))

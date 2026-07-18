@@ -18,6 +18,10 @@
 
 (integer) @number
 
+(decimal) @number
+
+"-" @number
+
 (true) @boolean
 
 (false) @boolean
@@ -27,13 +31,6 @@
   "resource"
   "context"
 ] @variable
-
-[
-  "Bool"
-  "Long"
-  "String"
-  "Set"
-] @type
 
 "=" @operator
 
@@ -69,20 +66,46 @@
   (action_name_list
     (identifier) @function))
 
+(action_declaration
+  (action_name_list
+    (string) @function))
+
 (common_type_declaration
   (identifier) @type.definition)
 
 (attribute_declaration
   (identifier) @property)
 
+(attribute_declaration
+  (string) @property)
+
 (attribute_entry
   (identifier) @property)
 
+(attribute_entry
+  .
+  (string) @property)
+
 (name
-  (identifier) @type)
+  (identifier) @module)
+
+(name
+  (identifier) @type .)
 
 (qualified_name
-  (identifier) @type)
+  (identifier) @module)
+
+(qualified_name
+  (identifier) @type
+  .
+  (string))
+
+(qualified_name
+  (identifier) @function .)
+
+(qualified_name
+  .
+  (string) @function)
 
 (namespace
   (name

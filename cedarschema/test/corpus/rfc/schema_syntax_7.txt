@@ -41,14 +41,18 @@ action ViewDocument in [ReadActions]
           (name
             (identifier))))
       (context_type
-        (record_type
-          (attribute_declaration
-            (identifier)
-            (name
-              (identifier)))
-          (attribute_declaration
-            (identifier)
-            (primitive_type)))))
+        (type_reference
+          (record_type
+            (attribute_declaration
+              (identifier)
+              (type_reference
+                (name
+                  (identifier))))
+            (attribute_declaration
+              (identifier)
+              (type_reference
+                (name
+                  (identifier))))))))
     (action_attributes
       (attribute_entry
         (identifier)

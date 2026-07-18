@@ -16,6 +16,7 @@ const config = {
     "function": 0,
     "function.builtin": 0,
     "keyword": 0,
+    "keyword.conditional": 0,
     "keyword.operator": 0,
     "module": 0,
     "number": 0,
@@ -28,8 +29,8 @@ const config = {
     "string.escape": 0,
     "string.regexp": 0,
     "type": 0,
+    "type.definition": 0,
     "variable": 0,
-    "variable.builtin": 0,
     "variable.parameter": 0
   }
 };

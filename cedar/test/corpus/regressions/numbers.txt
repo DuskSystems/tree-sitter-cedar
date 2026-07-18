@@ -1,0 +1,53 @@
+================================================================================
+numbers
+================================================================================
+
+permit (
+  principal == Foo::{ score: -10, rating: 2.5 },
+  action,
+  resource
+)
+when { context.score == 1.5 && context.offset == -2 };
+
+--------------------------------------------------------------------------------
+
+(policy_set
+  (policy
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (entity_reference
+            (identifier)
+            (entity_record
+              (ref_init
+                (identifier)
+                (integer))
+              (ref_init
+                (identifier)
+                (decimal))))))
+      (action)
+      (resource))
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (decimal))))
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (unary_expression
+                  (member_expression
+                    (integer)))))))))))

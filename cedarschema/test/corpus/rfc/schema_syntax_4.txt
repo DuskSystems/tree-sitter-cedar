@@ -76,11 +76,15 @@ action ViewDocument in [ReadActions] appliesTo {
           (name
             (identifier))))
       (context_type
-        (record_type
-          (attribute_declaration
-            (identifier)
-            (name
-              (identifier)))
-          (attribute_declaration
-            (identifier)
-            (primitive_type)))))))
+        (type_reference
+          (record_type
+            (attribute_declaration
+              (identifier)
+              (type_reference
+                (name
+                  (identifier))))
+            (attribute_declaration
+              (identifier)
+              (type_reference
+                (name
+                  (identifier))))))))))

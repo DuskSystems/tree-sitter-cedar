@@ -1,7 +1,7 @@
 /// <reference path="../dsl.d.ts" />
 // @ts-check
 
-import { commaSep, common } from '../common.js';
+import { commaSep, common, literals } from '../common.js';
 
 export default grammar({
   name: 'cedarentities',
@@ -21,14 +21,16 @@ export default grammar({
     ),
 
     namespace: $ => seq(
+      repeat($.annotation),
       'namespace',
       $.name,
       '{',
-      repeat($.instance),
+      repeat(choice($.namespace, $.instance)),
       '}',
     ),
 
     instance: $ => seq(
+      repeat($.annotation),
       'instance',
       $.entity_reference,
       optional($.instance_parents),
@@ -75,10 +77,7 @@ export default grammar({
     ),
 
     _value: $ => choice(
-      $.true,
-      $.false,
-      $.integer,
-      $.string,
+      $._literal,
       $.entity_reference,
       $.extension_call,
       $.set,
@@ -99,6 +98,7 @@ export default grammar({
       ')',
     ),
 
+    ...literals,
     ...common,
   },
 });

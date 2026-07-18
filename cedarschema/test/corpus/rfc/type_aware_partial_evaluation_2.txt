@@ -15,8 +15,10 @@ entity UnknownIP {
   (entity_declaration
     (identifier_list
       (identifier))
-    (record_type
-      (attribute_declaration
-        (identifier)
-        (name
-          (identifier))))))
+    (type_reference
+      (record_type
+        (attribute_declaration
+          (identifier)
+          (type_reference
+            (name
+              (identifier))))))))

@@ -1,7 +1,7 @@
 /// <reference path="../dsl.d.ts" />
 // @ts-check
 
-import { commaSep, commaSep1, common, annotation } from '../common.js';
+import { commaSep, commaSep1, common, literals, types } from '../common.js';
 
 export default grammar({
   name: 'cedarschema',
@@ -42,7 +42,7 @@ export default grammar({
       choice(
         seq(
           optional($.entity_parents),
-          optional(seq(optional('='), $.record_type)),
+          optional(seq(optional('='), $.type_reference)),
           optional($.entity_tags),
           ';',
         ),
@@ -74,19 +74,12 @@ export default grammar({
       $._literal,
     ),
 
-    _literal: $ => choice(
-      $.true,
-      $.false,
-      $.integer,
-      $.string,
-    ),
-
     common_type_declaration: $ => seq(
       repeat($.annotation),
       'type',
       $.identifier,
       '=',
-      $._type_expression,
+      $.type_reference,
       ';',
     ),
 
@@ -97,7 +90,7 @@ export default grammar({
 
     entity_tags: $ => seq(
       'tags',
-      $._type_expression,
+      $.type_reference,
     ),
 
     enum_type: $ => seq(
@@ -143,48 +136,8 @@ export default grammar({
     context_type: $ => seq(
       'context',
       ':',
-      choice(
-        $.record_type,
-        $.name,
-      ),
+      $.type_reference,
     ),
-
-    _type_expression: $ => choice(
-      $.primitive_type,
-      $.set_type,
-      $.record_type,
-      $.name,
-    ),
-
-    primitive_type: _ => choice(
-      'Bool',
-      'Long',
-      'String',
-    ),
-
-    set_type: $ => seq(
-      'Set',
-      '<',
-      $._type_expression,
-      '>',
-    ),
-
-    record_type: $ => seq(
-      '{',
-      commaSep($.attribute_declaration),
-      optional(','),
-      '}',
-    ),
-
-    attribute_declaration: $ => seq(
-      repeat($.annotation),
-      $._attribute_name,
-      optional('?'),
-      ':',
-      $._type_expression,
-    ),
-
-    annotation,
 
     type_list: $ => choice(
       seq('[', commaSep($.name), optional(','), ']'),
@@ -209,6 +162,8 @@ export default grammar({
       $.string,
     ),
 
+    ...literals,
+    ...types,
     ...common,
   },
 });

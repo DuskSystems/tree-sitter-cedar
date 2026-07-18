@@ -16,7 +16,9 @@ namespace Foo {
   (comment)
   (common_type_declaration
     (identifier)
-    (primitive_type))
+    (type_reference
+      (name
+        (identifier))))
   (comment)
   (namespace
     (name
@@ -24,17 +26,22 @@ namespace Foo {
     (entity_declaration
       (identifier_list
         (identifier))
-      (record_type
-        (attribute_declaration
-          (identifier)
-          (primitive_type))))
+      (type_reference
+        (record_type
+          (attribute_declaration
+            (identifier)
+            (type_reference
+              (name
+                (identifier)))))))
     (comment)
     (entity_declaration
       (identifier_list
         (identifier))
-      (record_type
-        (attribute_declaration
-          (identifier)
-          (name
-            (identifier)))))
+      (type_reference
+        (record_type
+          (attribute_declaration
+            (identifier)
+            (type_reference
+              (name
+                (identifier)))))))
     (comment)))
