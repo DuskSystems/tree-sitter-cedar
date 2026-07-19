@@ -11,6 +11,7 @@ exclude_loopback = true
 exclude_private = true
 
 exclude = [
+  "https://img.shields.io",
   "https://www.npmjs.com",
 ]
 exclude_path = [

@@ -1,0 +1,228 @@
+================================================================================
+edge_cases
+================================================================================
+
+// https://github.com/cedar-policy/cedar/blob/2ab14af8cfdd7907f62785de8cba178e498938ca/cedar-policy-core/src/entities/cedar_syntax/testfiles/edge-cases/input.cedarentities#L1-L44
+
+// Special characters in entity IDs
+instance User::"alice smith";
+instance User::"bob\tbuilder";
+instance User::"carol \"C\" davis";
+instance User::"";
+
+// String values with escapes
+instance Document::"escapes" = {
+    "tab": "col1\tcol2",
+    "newline": "line1\nline2",
+    "quote": "she said \"hello\"",
+    "backslash": "path\\to\\file",
+    "unicode": "エモジ: \u{1F600}",
+    "empty": ""
+};
+
+// Attribute keys that could conflict with keywords
+instance Config::"settings" = {
+    "in": "production",
+    "type": "service",
+    "instance": "primary",
+    "namespace": "default",
+    "tags": "metadata",
+    "true": false,
+    "false": true
+};
+
+// Numeric edge cases
+instance Metrics::"extremes" = {
+    "max_long": 9223372036854775807,
+    "min_long": -9223372036854775808,
+    "zero": 0,
+    "negative": -42
+};
+
+// Single-element collections
+instance Collection::"singles" = {
+    "one_item_set": [42],
+    "one_item_record": { "only_key": "only_value" },
+    "one_parent_list": [User::"alice"]
+};
+
+// Empty attributes
+instance Empty::"no_attrs" = {};
+
+--------------------------------------------------------------------------------
+
+(entities
+  (comment)
+  (comment)
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)
+        (escape_sequence)
+        (string_content))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)
+        (escape_sequence)
+        (string_content)
+        (escape_sequence)
+        (string_content))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string)))
+  (comment)
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (record
+      (record_entry
+        (string
+          (string_content))
+        (string
+          (string_content)
+          (escape_sequence)
+          (string_content)))
+      (record_entry
+        (string
+          (string_content))
+        (string
+          (string_content)
+          (escape_sequence)
+          (string_content)))
+      (record_entry
+        (string
+          (string_content))
+        (string
+          (string_content)
+          (escape_sequence)
+          (string_content)
+          (escape_sequence)))
+      (record_entry
+        (string
+          (string_content))
+        (string
+          (string_content)
+          (escape_sequence)
+          (string_content)
+          (escape_sequence)
+          (string_content)))
+      (record_entry
+        (string
+          (string_content))
+        (string
+          (string_content)
+          (escape_sequence)))
+      (record_entry
+        (string
+          (string_content))
+        (string))))
+  (comment)
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (record
+      (record_entry
+        (string
+          (string_content))
+        (string
+          (string_content)))
+      (record_entry
+        (string
+          (string_content))
+        (string
+          (string_content)))
+      (record_entry
+        (string
+          (string_content))
+        (string
+          (string_content)))
+      (record_entry
+        (string
+          (string_content))
+        (string
+          (string_content)))
+      (record_entry
+        (string
+          (string_content))
+        (string
+          (string_content)))
+      (record_entry
+        (string
+          (string_content))
+        (false))
+      (record_entry
+        (string
+          (string_content))
+        (true))))
+  (comment)
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (record
+      (record_entry
+        (string
+          (string_content))
+        (integer))
+      (record_entry
+        (string
+          (string_content))
+        (integer))
+      (record_entry
+        (string
+          (string_content))
+        (integer))
+      (record_entry
+        (string
+          (string_content))
+        (integer))))
+  (comment)
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (record
+      (record_entry
+        (string
+          (string_content))
+        (set
+          (integer)))
+      (record_entry
+        (string
+          (string_content))
+        (record
+          (record_entry
+            (string
+              (string_content))
+            (string
+              (string_content)))))
+      (record_entry
+        (string
+          (string_content))
+        (set
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))))
+  (comment)
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (record)))

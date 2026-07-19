@@ -1,0 +1,144 @@
+================================================================================
+refs_and_sets
+================================================================================
+
+// https://github.com/cedar-policy/cedar/blob/2ab14af8cfdd7907f62785de8cba178e498938ca/cedar-policy-core/src/entities/cedar_syntax/testfiles/refs-and-sets/input.cedarentities#L1-L19
+
+instance Photo::"vacation.jpg" in Album::"summer" = {
+    "owner": User::"alice",
+    "viewers": [User::"bob", User::"carol"],
+    "tags_list": ["vacation", "beach", "sunset"],
+    "scores": [10, 20, 30],
+    "flags": [true, false, true],
+    "empty_set": [],
+    "nested": [[1, 2], [3, 4]]
+};
+
+instance Album::"summer" = {
+    "owner": Account::"alice",
+    "shared_with": [User::"bob"],
+    "admins": [User::"alice", User::"carol"]
+};
+
+instance Account::"alice" = {
+    "primary_user": User::"alice"
+};
+
+--------------------------------------------------------------------------------
+
+(entities
+  (comment)
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (entity_reference
+        (identifier)
+        (string
+          (string_content))))
+    (record
+      (record_entry
+        (string
+          (string_content))
+        (entity_reference
+          (identifier)
+          (string
+            (string_content))))
+      (record_entry
+        (string
+          (string_content))
+        (set
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (record_entry
+        (string
+          (string_content))
+        (set
+          (string
+            (string_content))
+          (string
+            (string_content))
+          (string
+            (string_content))))
+      (record_entry
+        (string
+          (string_content))
+        (set
+          (integer)
+          (integer)
+          (integer)))
+      (record_entry
+        (string
+          (string_content))
+        (set
+          (true)
+          (false)
+          (true)))
+      (record_entry
+        (string
+          (string_content))
+        (set))
+      (record_entry
+        (string
+          (string_content))
+        (set
+          (set
+            (integer)
+            (integer))
+          (set
+            (integer)
+            (integer))))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (record
+      (record_entry
+        (string
+          (string_content))
+        (entity_reference
+          (identifier)
+          (string
+            (string_content))))
+      (record_entry
+        (string
+          (string_content))
+        (set
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))
+      (record_entry
+        (string
+          (string_content))
+        (set
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (record
+      (record_entry
+        (string
+          (string_content))
+        (entity_reference
+          (identifier)
+          (string
+            (string_content)))))))

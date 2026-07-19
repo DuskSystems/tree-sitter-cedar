@@ -1,0 +1,90 @@
+================================================================================
+hierarchy
+================================================================================
+
+// https://github.com/cedar-policy/cedar/blob/2ab14af8cfdd7907f62785de8cba178e498938ca/cedar-policy-core/src/entities/cedar_syntax/testfiles/hierarchy/input.cedarentities#L1-L9
+
+instance User::"alice" in UserGroup::"admins";
+instance User::"bob" in [UserGroup::"editors", UserGroup::"viewers"];
+instance User::"carol";
+instance UserGroup::"admins";
+instance UserGroup::"editors";
+instance UserGroup::"viewers";
+instance Photo::"sunset.jpg" in Album::"vacation";
+instance Album::"vacation" in Account::"alice";
+instance Account::"alice";
+
+--------------------------------------------------------------------------------
+
+(entities
+  (comment)
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (entity_reference
+        (identifier)
+        (string
+          (string_content)))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (entity_list
+        (entity_reference
+          (identifier)
+          (string
+            (string_content)))
+        (entity_reference
+          (identifier)
+          (string
+            (string_content))))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (entity_reference
+        (identifier)
+        (string
+          (string_content)))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (entity_reference
+        (identifier)
+        (string
+          (string_content)))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))))

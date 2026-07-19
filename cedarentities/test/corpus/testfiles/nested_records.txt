@@ -1,0 +1,195 @@
+================================================================================
+nested_records
+================================================================================
+
+// https://github.com/cedar-policy/cedar/blob/2ab14af8cfdd7907f62785de8cba178e498938ca/cedar-policy-core/src/entities/cedar_syntax/testfiles/nested-records/input.cedarentities#L1-L37
+
+instance User::"alice" = {
+    "name": "Alice",
+    "address": {
+        "street": "123 Main St",
+        "city": "Seattle",
+        "state": "WA",
+        "zip": 98101
+    },
+    "preferences": {
+        "theme": "dark",
+        "notifications": {
+            "email": true,
+            "sms": false,
+            "channels": ["alerts", "updates"]
+        }
+    },
+    "manager": {
+        "ref": User::"bob",
+        "since": 2023
+    }
+};
+
+instance Document::"report" = {
+    "metadata": {
+        "author": User::"alice",
+        "reviewers": [User::"bob", User::"carol"],
+        "stats": {
+            "pages": 42,
+            "words": 15000,
+            "figures": 7
+        }
+    },
+    "permissions": {
+        "read": [Team::"engineering", Team::"management"],
+        "write": [User::"alice"]
+    }
+};
+
+--------------------------------------------------------------------------------
+
+(entities
+  (comment)
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (record
+      (record_entry
+        (string
+          (string_content))
+        (string
+          (string_content)))
+      (record_entry
+        (string
+          (string_content))
+        (record
+          (record_entry
+            (string
+              (string_content))
+            (string
+              (string_content)))
+          (record_entry
+            (string
+              (string_content))
+            (string
+              (string_content)))
+          (record_entry
+            (string
+              (string_content))
+            (string
+              (string_content)))
+          (record_entry
+            (string
+              (string_content))
+            (integer))))
+      (record_entry
+        (string
+          (string_content))
+        (record
+          (record_entry
+            (string
+              (string_content))
+            (string
+              (string_content)))
+          (record_entry
+            (string
+              (string_content))
+            (record
+              (record_entry
+                (string
+                  (string_content))
+                (true))
+              (record_entry
+                (string
+                  (string_content))
+                (false))
+              (record_entry
+                (string
+                  (string_content))
+                (set
+                  (string
+                    (string_content))
+                  (string
+                    (string_content))))))))
+      (record_entry
+        (string
+          (string_content))
+        (record
+          (record_entry
+            (string
+              (string_content))
+            (entity_reference
+              (identifier)
+              (string
+                (string_content))))
+          (record_entry
+            (string
+              (string_content))
+            (integer))))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (record
+      (record_entry
+        (string
+          (string_content))
+        (record
+          (record_entry
+            (string
+              (string_content))
+            (entity_reference
+              (identifier)
+              (string
+                (string_content))))
+          (record_entry
+            (string
+              (string_content))
+            (set
+              (entity_reference
+                (identifier)
+                (string
+                  (string_content)))
+              (entity_reference
+                (identifier)
+                (string
+                  (string_content)))))
+          (record_entry
+            (string
+              (string_content))
+            (record
+              (record_entry
+                (string
+                  (string_content))
+                (integer))
+              (record_entry
+                (string
+                  (string_content))
+                (integer))
+              (record_entry
+                (string
+                  (string_content))
+                (integer))))))
+      (record_entry
+        (string
+          (string_content))
+        (record
+          (record_entry
+            (string
+              (string_content))
+            (set
+              (entity_reference
+                (identifier)
+                (string
+                  (string_content)))
+              (entity_reference
+                (identifier)
+                (string
+                  (string_content)))))
+          (record_entry
+            (string
+              (string_content))
+            (set
+              (entity_reference
+                (identifier)
+                (string
+                  (string_content))))))))))

@@ -64,7 +64,10 @@
             # Snapshots
             PLAYWRIGHT_BROWSERS_PATH = pkgs.playwright-driver.browsers;
             FONTCONFIG_FILE = pkgs.makeFontsConf {
-              fontDirectories = [ pkgs.julia-mono ];
+              fontDirectories = [
+                pkgs.julia-mono
+                pkgs.noto-fonts-cjk-sans
+              ];
             };
           };
 
@@ -125,7 +128,10 @@
             # Snapshots
             PLAYWRIGHT_BROWSERS_PATH = pkgs.playwright-driver.browsers;
             FONTCONFIG_FILE = pkgs.makeFontsConf {
-              fontDirectories = [ pkgs.julia-mono ];
+              fontDirectories = [
+                pkgs.julia-mono
+                pkgs.noto-fonts-cjk-sans
+              ];
             };
           };
 

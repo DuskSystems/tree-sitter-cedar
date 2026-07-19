@@ -1,0 +1,147 @@
+================================================================================
+tags
+================================================================================
+
+// https://github.com/cedar-policy/cedar/blob/2ab14af8cfdd7907f62785de8cba178e498938ca/cedar-policy-core/src/entities/cedar_syntax/testfiles/tags/input.cedarentities#L1-L27
+
+instance Resource::"document1" = {
+    "title": "Design Doc"
+} tags {
+    "env": "production",
+    "team": "backend",
+    "priority": "high"
+};
+
+instance Resource::"document2" in Folder::"shared" = {
+    "title": "API Spec"
+} tags {
+    "owner": User::"alice",
+    "reviewer": User::"bob"
+};
+
+instance Resource::"document3" tags {
+    "created": datetime("2026-01-15T09:00:00Z"),
+    "ttl": duration("90d"),
+    "version": 3,
+    "draft": true
+};
+
+instance Resource::"empty_tags" = {
+    "title": "Minimal"
+} tags {};
+
+instance Folder::"shared";
+
+--------------------------------------------------------------------------------
+
+(entities
+  (comment)
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (record
+      (record_entry
+        (string
+          (string_content))
+        (string
+          (string_content))))
+    (instance_tags
+      (record
+        (record_entry
+          (string
+            (string_content))
+          (string
+            (string_content)))
+        (record_entry
+          (string
+            (string_content))
+          (string
+            (string_content)))
+        (record_entry
+          (string
+            (string_content))
+          (string
+            (string_content))))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (entity_reference
+        (identifier)
+        (string
+          (string_content))))
+    (record
+      (record_entry
+        (string
+          (string_content))
+        (string
+          (string_content))))
+    (instance_tags
+      (record
+        (record_entry
+          (string
+            (string_content))
+          (entity_reference
+            (identifier)
+            (string
+              (string_content))))
+        (record_entry
+          (string
+            (string_content))
+          (entity_reference
+            (identifier)
+            (string
+              (string_content)))))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_tags
+      (record
+        (record_entry
+          (string
+            (string_content))
+          (extension_call
+            (name
+              (identifier))
+            (string
+              (string_content))))
+        (record_entry
+          (string
+            (string_content))
+          (extension_call
+            (name
+              (identifier))
+            (string
+              (string_content))))
+        (record_entry
+          (string
+            (string_content))
+          (integer))
+        (record_entry
+          (string
+            (string_content))
+          (true)))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (record
+      (record_entry
+        (string
+          (string_content))
+        (string
+          (string_content))))
+    (instance_tags
+      (record)))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))))
