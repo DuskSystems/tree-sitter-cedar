@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.11.2](https://github.com/DuskSystems/tree-sitter-cedar/compare/v0.11.1...v0.11.2) (2026-07-21)
+
+
+### Fixes
+
+* Better handling of partials and keywords ([98fe7a0](https://github.com/DuskSystems/tree-sitter-cedar/commit/98fe7a0f80dba767aca78b4ed4182bea9614dda8))
+* Handle dangling expressions ([967ccd4](https://github.com/DuskSystems/tree-sitter-cedar/commit/967ccd4bde8b7f6f07bb7a98214b990471f62c7d))
+* Handle incomplete policy ([8d1ccb5](https://github.com/DuskSystems/tree-sitter-cedar/commit/8d1ccb5518848bbf7e7f7311e292b075b3d20c2c))
+* Handle unclosed generic ([208dc75](https://github.com/DuskSystems/tree-sitter-cedar/commit/208dc7543779e7fd465a4861a378083b75306167))
+* Handle unclosed items ([f61e20c](https://github.com/DuskSystems/tree-sitter-cedar/commit/f61e20c846814573b7e4c92225b5c10bdf6c7c90))
+
+
+### Performance
+
+* Flatten expression grammar ([165711a](https://github.com/DuskSystems/tree-sitter-cedar/commit/165711ad5efc5d002d55d41240cf152ac3d2f122))
+
+
+### Testing
+
+* Add more regression cases ([795bcce](https://github.com/DuskSystems/tree-sitter-cedar/commit/795bccef0a5e349e6d1dc61e4e09fcbd6705ee38))
+* Add more regression cases ([9b07ba9](https://github.com/DuskSystems/tree-sitter-cedar/commit/9b07ba9eb6045a8e551ba3024c845500e09def78))
+* Add upstream entities testfiles ([fec6529](https://github.com/DuskSystems/tree-sitter-cedar/commit/fec6529b5f1442aff550d186735d9f1a7036b3c9))
+
 ## [0.11.1](https://github.com/DuskSystems/tree-sitter-cedar/compare/v0.11.0...v0.11.1) (2026-07-18)
 
 
