@@ -76,6 +76,9 @@
             nodejs
             vtsls
 
+            # Snapshots
+            pngquant
+
             # Tree Sitter
             tree-sitter
             ts_query_ls
@@ -138,6 +141,9 @@
           buildInputs = with pkgs; [
             # Node
             nodejs
+
+            # Snapshots
+            pngquant
 
             # Tree Sitter
             tree-sitter

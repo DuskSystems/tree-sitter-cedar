@@ -4,4 +4,7 @@
 def main []: nothing -> nothing {
     npm ci
     npx vitest run --update
+
+    let snapshots: list<string> = glob "*/test/snapshots/**/*.png"
+    pngquant --force --ext .png ...$snapshots
 }
