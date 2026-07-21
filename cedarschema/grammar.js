@@ -24,6 +24,9 @@ export default grammar({
     [$.common_type_declaration],
     [$.identifier_list],
     [$.action_name_list],
+    [$.record_type],
+    [$.attribute_declaration],
+    [$.action_attributes],
   ],
 
   rules: {
@@ -34,12 +37,7 @@ export default grammar({
       ),
     ),
 
-    namespace: $ => seq(
-      repeat($.annotation),
-      'namespace',
-      optional($._any_name),
-      optional(prec.right(seq('{', repeat(choice($.namespace, $._declaration)), optional('}')))),
-    ),
+    _namespace_member: $ => $._declaration,
 
     _declaration: $ => choice(
       $.entity_declaration,
@@ -77,11 +75,11 @@ export default grammar({
       '{',
       commaSep($.attribute_entry),
       optional(','),
-      '}',
+      optional('}'),
     ),
 
     attribute_entry: $ => seq(
-      choice($.identifier, $.string),
+      choice($._name_identifier, $.string),
       ':',
       optional($._literal),
     ),
@@ -109,7 +107,7 @@ export default grammar({
       '[',
       commaSep($.string),
       optional(','),
-      ']',
+      optional(']'),
       optional(';'),
     ),
 

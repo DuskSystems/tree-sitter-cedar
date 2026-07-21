@@ -3,6 +3,7 @@ records
 ================================================================================
 
 instance A::"a" = { name: "x",
+
 instance Recovered::"s";
 
 --------------------------------------------------------------------------------
@@ -13,11 +14,13 @@ instance Recovered::"s";
       (identifier)
       (string
         (string_content)))
-    (ERROR
+    (record
       (record_entry
         (identifier)
         (string
-          (string_content)))
+          (string_content)))))
+  (instance
+    (entity_reference
       (identifier)
-      (identifier)
-      (identifier))))
+      (string
+        (string_content)))))

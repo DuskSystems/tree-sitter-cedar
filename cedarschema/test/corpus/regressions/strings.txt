@@ -11,7 +11,7 @@ entity User = { name: String } tags Set<String>;
 (schema
   (entity_declaration
     (identifier_list
-      (identifier)))
-  (ERROR
-    (string
-      (string_content))))
+      (identifier))
+    (enum_type
+      (string
+        (string_content)))))

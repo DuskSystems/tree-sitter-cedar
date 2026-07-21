@@ -1902,6 +1902,10 @@
         "value": "identifier"
       }
     },
+    "_any_type_reference": {
+      "type": "SYMBOL",
+      "name": "type_reference"
+    },
     "_literal": {
       "type": "CHOICE",
       "members": [
@@ -2060,8 +2064,16 @@
           ]
         },
         {
-          "type": "STRING",
-          "value": "}"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "}"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -2080,7 +2092,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "identifier"
+              "name": "_name_identifier"
             },
             {
               "type": "SYMBOL",
@@ -2109,7 +2121,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "type_reference"
+              "name": "_any_type_reference"
             },
             {
               "type": "BLANK"
@@ -2392,6 +2404,9 @@
   "conflicts": [
     [
       "annotation"
+    ],
+    [
+      "record_type"
     ]
   ],
   "precedences": [],

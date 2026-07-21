@@ -67,6 +67,13 @@ const common = {
 };
 
 const keywords = {
+  namespace: $ => seq(
+    repeat($.annotation),
+    'namespace',
+    optional($._any_name),
+    optional(prec.right(seq('{', repeat(choice($.namespace, $._namespace_member)), optional('}')))),
+  ),
+
   _any_name: $ => choice(
     $.name,
     alias($._keyword_name, $.name),
@@ -97,15 +104,15 @@ const types = {
     '{',
     commaSep($.attribute_declaration),
     optional(','),
-    '}',
+    optional('}'),
   ),
 
   attribute_declaration: $ => seq(
     repeat($.annotation),
-    choice($.identifier, $.string),
+    choice($._name_identifier, $.string),
     optional('?'),
     ':',
-    optional($.type_reference),
+    optional($._any_type_reference),
   ),
 };
 

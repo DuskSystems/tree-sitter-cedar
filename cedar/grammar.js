@@ -13,6 +13,7 @@ export default grammar({
   ],
   conflicts: $ => [
     [$.annotation],
+    [$.record_type],
   ],
 
   rules: {
@@ -237,6 +238,8 @@ export default grammar({
     variable: _ => choice('principal', 'action', 'resource', 'context'),
 
     _keyword_identifier: $ => prec.dynamic(1, alias(choice('permit', 'forbid', 'template'), $.identifier)),
+
+    _any_type_reference: $ => $.type_reference,
 
     ...literals,
     ...types,

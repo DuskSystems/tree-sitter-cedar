@@ -17,6 +17,8 @@ export default grammar({
     [$.namespace],
     [$.instance],
     [$.instance_tags, $._keyword_identifier],
+    [$.record],
+    [$.set],
   ],
 
   rules: {
@@ -27,12 +29,7 @@ export default grammar({
       ),
     ),
 
-    namespace: $ => seq(
-      repeat($.annotation),
-      'namespace',
-      optional($._any_name),
-      optional(prec.right(seq('{', repeat(choice($.namespace, $.instance)), optional('}')))),
-    ),
+    _namespace_member: $ => $.instance,
 
     instance: $ => seq(
       repeat($.annotation),
@@ -71,11 +68,11 @@ export default grammar({
       '{',
       commaSep($.record_entry),
       optional(','),
-      '}',
+      optional('}'),
     ),
 
     record_entry: $ => seq(
-      choice($.identifier, $.string),
+      choice($._name_identifier, $.string),
       ':',
       optional($._value),
     ),
@@ -92,7 +89,7 @@ export default grammar({
       '[',
       commaSep($._value),
       optional(','),
-      ']',
+      optional(']'),
     ),
 
     extension_call: $ => seq(
