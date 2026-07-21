@@ -1,0 +1,44 @@
+================================================================================
+expression_field
+================================================================================
+
+permit () when { context.
+
+permit (principal, action, resource);
+
+--------------------------------------------------------------------------------
+
+(policy_set
+  (policy
+    (effect)
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (method_call
+                    (identifier)
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (variable)))))))
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (variable)))))))
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (variable)))))))))))))))))
