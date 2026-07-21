@@ -1,0 +1,21 @@
+================================================================================
+keyword_parents_list
+================================================================================
+
+entity D in [entity];
+
+entity Recovered;
+
+--------------------------------------------------------------------------------
+
+(schema
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (entity_parents
+      (type_list
+        (name
+          (identifier)))))
+  (entity_declaration
+    (identifier_list
+      (identifier))))

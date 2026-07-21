@@ -1,0 +1,26 @@
+================================================================================
+keyword_parents
+================================================================================
+
+instance A::"a" in instance::"i";
+
+instance Recovered::"s";
+
+--------------------------------------------------------------------------------
+
+(entities
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (entity_reference
+        (identifier)
+        (string
+          (string_content)))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))))

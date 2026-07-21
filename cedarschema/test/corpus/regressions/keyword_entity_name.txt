@@ -1,0 +1,17 @@
+================================================================================
+keyword_entity_name
+================================================================================
+
+entity action;
+
+entity Recovered;
+
+--------------------------------------------------------------------------------
+
+(schema
+  (entity_declaration
+    (identifier_list
+      (identifier)))
+  (entity_declaration
+    (identifier_list
+      (identifier))))

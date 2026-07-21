@@ -1,0 +1,21 @@
+================================================================================
+keyword_instance_name
+================================================================================
+
+instance instance::"x";
+
+instance Recovered::"s";
+
+--------------------------------------------------------------------------------
+
+(entities
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content))))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))))

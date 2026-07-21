@@ -1,0 +1,23 @@
+================================================================================
+records
+================================================================================
+
+instance A::"a" = { name: "x",
+instance Recovered::"s";
+
+--------------------------------------------------------------------------------
+
+(entities
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (ERROR
+      (record_entry
+        (identifier)
+        (string
+          (string_content)))
+      (identifier)
+      (identifier)
+      (identifier))))

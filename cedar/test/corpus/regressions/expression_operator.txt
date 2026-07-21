@@ -1,0 +1,50 @@
+================================================================================
+expression_operator
+================================================================================
+
+permit () when { context.n ==
+
+permit (principal, action, resource);
+
+--------------------------------------------------------------------------------
+
+(policy_set
+  (policy
+    (effect)
+    (condition
+      (expression
+        (or_expression
+          (and_expression
+            (relation_expression
+              (unary_expression
+                (member_expression
+                  (variable)
+                  (field_access
+                    (identifier))))
+              (unary_expression
+                (member_expression
+                  (extension_call
+                    (name
+                      (identifier))
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (variable)))))))
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (variable)))))))
+                    (expression
+                      (or_expression
+                        (and_expression
+                          (relation_expression
+                            (unary_expression
+                              (member_expression
+                                (variable))))))))))))))
+      (MISSING "}"))))

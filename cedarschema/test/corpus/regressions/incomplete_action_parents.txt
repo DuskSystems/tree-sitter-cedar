@@ -1,0 +1,20 @@
+================================================================================
+incomplete_action_parents
+================================================================================
+
+action b in
+
+entity Recovered;
+
+--------------------------------------------------------------------------------
+
+(schema
+  (action_declaration
+    (action_name_list
+      (identifier))
+    (action_parents
+      (ERROR
+        (identifier))
+      (qualified_name_list
+        (qualified_name
+          (identifier))))))

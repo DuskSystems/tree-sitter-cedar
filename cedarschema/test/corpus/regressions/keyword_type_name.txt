@@ -1,0 +1,19 @@
+================================================================================
+keyword_type_name
+================================================================================
+
+type type = Long;
+
+entity Recovered;
+
+--------------------------------------------------------------------------------
+
+(schema
+  (common_type_declaration
+    (identifier)
+    (type_reference
+      (name
+        (identifier))))
+  (entity_declaration
+    (identifier_list
+      (identifier))))

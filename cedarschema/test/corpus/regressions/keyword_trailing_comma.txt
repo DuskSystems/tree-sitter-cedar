@@ -1,0 +1,17 @@
+================================================================================
+keyword_trailing_comma
+================================================================================
+
+entity A, B,
+entity C;
+
+--------------------------------------------------------------------------------
+
+(schema
+  (entity_declaration
+    (identifier_list
+      (identifier)
+      (identifier)))
+  (entity_declaration
+    (identifier_list
+      (identifier))))

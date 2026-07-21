@@ -1,0 +1,21 @@
+================================================================================
+incomplete_template
+================================================================================
+
+template(?x: Long
+
+permit (principal, action, resource);
+
+--------------------------------------------------------------------------------
+
+(policy_set
+  (ERROR
+    (slot
+      (identifier)
+      (type_reference
+        (name
+          (identifier))))
+    (ERROR
+      (identifier)
+      (identifier)
+      (identifier))))

@@ -1,0 +1,19 @@
+================================================================================
+incomplete_scope_operator
+================================================================================
+
+permit (principal ==
+
+permit (principal, action, resource);
+
+--------------------------------------------------------------------------------
+
+(policy_set
+  (policy
+    (effect)
+    (ERROR
+      (identifier))
+    (scope
+      (principal)
+      (action)
+      (resource))))

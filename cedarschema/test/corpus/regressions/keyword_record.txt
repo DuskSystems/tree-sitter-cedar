@@ -1,0 +1,29 @@
+================================================================================
+keyword_record
+================================================================================
+
+entity User = { type: String, owner: entity };
+
+entity Recovered;
+
+--------------------------------------------------------------------------------
+
+(schema
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (type_reference
+      (record_type
+        (attribute_declaration
+          (identifier)
+          (type_reference
+            (name
+              (identifier))))
+        (attribute_declaration
+          (identifier)
+          (type_reference
+            (name
+              (identifier)))))))
+  (entity_declaration
+    (identifier_list
+      (identifier))))

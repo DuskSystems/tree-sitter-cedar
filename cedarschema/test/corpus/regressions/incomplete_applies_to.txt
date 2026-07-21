@@ -1,0 +1,18 @@
+================================================================================
+incomplete_applies_to
+================================================================================
+
+action b appliesTo {
+
+entity Recovered;
+
+--------------------------------------------------------------------------------
+
+(schema
+  (action_declaration
+    (ERROR
+      (action_name_list
+        (identifier))
+      (identifier))
+    (action_name_list
+      (identifier))))

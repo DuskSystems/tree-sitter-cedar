@@ -1,0 +1,22 @@
+================================================================================
+annotation_unclosed
+================================================================================
+
+@id("x"
+
+permit (principal, action, resource);
+
+--------------------------------------------------------------------------------
+
+(policy_set
+  (policy
+    (annotation
+      (identifier))
+    (ERROR
+      (string
+        (string_content)))
+    (effect)
+    (scope
+      (principal)
+      (action)
+      (resource))))

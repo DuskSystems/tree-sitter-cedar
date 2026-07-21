@@ -1,0 +1,24 @@
+================================================================================
+keyword_entity_tags
+================================================================================
+
+entity tags tags Set<String>;
+
+entity Recovered;
+
+--------------------------------------------------------------------------------
+
+(schema
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (entity_tags
+      (type_reference
+        (name
+          (identifier))
+        (type_reference
+          (name
+            (identifier))))))
+  (entity_declaration
+    (identifier_list
+      (identifier))))

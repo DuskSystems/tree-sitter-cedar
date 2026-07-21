@@ -1,0 +1,21 @@
+================================================================================
+annotation_unclosed
+================================================================================
+
+@doc("x"
+
+instance Recovered::"s";
+
+--------------------------------------------------------------------------------
+
+(entities
+  (instance
+    (annotation
+      (identifier)
+      (string
+        (string_content))
+      (MISSING ")"))
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))))

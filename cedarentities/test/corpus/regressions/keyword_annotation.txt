@@ -1,0 +1,19 @@
+================================================================================
+keyword_annotation
+================================================================================
+
+@instance("x")
+instance Annotated::"a";
+
+--------------------------------------------------------------------------------
+
+(entities
+  (instance
+    (annotation
+      (identifier)
+      (string
+        (string_content)))
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))))

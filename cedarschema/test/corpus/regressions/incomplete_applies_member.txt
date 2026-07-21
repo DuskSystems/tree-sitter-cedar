@@ -1,0 +1,22 @@
+================================================================================
+incomplete_applies_member
+================================================================================
+
+action b appliesTo { principal:
+
+entity Recovered;
+
+--------------------------------------------------------------------------------
+
+(schema
+  (action_declaration
+    (action_name_list
+      (identifier))
+    (applies_to
+      (principal_types
+        (type_list
+          (name
+            (identifier))))
+      (ERROR
+        (identifier))
+      (MISSING "}"))))

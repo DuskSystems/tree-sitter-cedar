@@ -1,0 +1,23 @@
+================================================================================
+incomplete_parents
+================================================================================
+
+instance A::"x" in
+
+instance Recovered::"s";
+
+--------------------------------------------------------------------------------
+
+(entities
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))
+    (instance_parents
+      (ERROR
+        (identifier))
+      (entity_reference
+        (identifier)
+        (string
+          (string_content))))))

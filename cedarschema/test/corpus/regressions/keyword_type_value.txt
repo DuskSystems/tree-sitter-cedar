@@ -1,0 +1,19 @@
+================================================================================
+keyword_type_value
+================================================================================
+
+type T = entity;
+
+entity Recovered;
+
+--------------------------------------------------------------------------------
+
+(schema
+  (common_type_declaration
+    (identifier))
+  (entity_declaration
+    (identifier_list
+      (MISSING identifier)))
+  (entity_declaration
+    (identifier_list
+      (identifier))))

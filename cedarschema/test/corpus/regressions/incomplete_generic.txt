@@ -1,0 +1,22 @@
+================================================================================
+incomplete_generic
+================================================================================
+
+type T = Set<
+
+entity Recovered;
+
+--------------------------------------------------------------------------------
+
+(schema
+  (common_type_declaration
+    (identifier)
+    (type_reference
+      (name
+        (identifier))
+      (type_reference
+        (name
+          (identifier)))
+      (ERROR
+        (identifier))
+      (MISSING ">"))))

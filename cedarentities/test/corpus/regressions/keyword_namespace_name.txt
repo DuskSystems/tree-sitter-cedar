@@ -1,0 +1,19 @@
+================================================================================
+keyword_namespace_name
+================================================================================
+
+namespace instance {}
+
+instance Recovered::"s";
+
+--------------------------------------------------------------------------------
+
+(entities
+  (namespace
+    (name
+      (identifier)))
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))))

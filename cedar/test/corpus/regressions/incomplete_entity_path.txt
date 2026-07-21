@@ -1,0 +1,20 @@
+================================================================================
+incomplete_entity_path
+================================================================================
+
+permit (principal == User::
+
+permit (principal, action, resource);
+
+--------------------------------------------------------------------------------
+
+(policy_set
+  (policy
+    (effect)
+    (ERROR
+      (identifier)
+      (identifier))
+    (scope
+      (principal)
+      (action)
+      (resource))))

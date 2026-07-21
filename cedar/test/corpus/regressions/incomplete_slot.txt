@@ -1,0 +1,21 @@
+================================================================================
+incomplete_slot
+================================================================================
+
+permit (principal == ?
+
+permit (principal, action, resource);
+
+--------------------------------------------------------------------------------
+
+(policy_set
+  (policy
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (slot
+            (identifier))))
+      (ERROR)
+      (action)
+      (resource))))

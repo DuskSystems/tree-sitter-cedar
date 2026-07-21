@@ -1,0 +1,17 @@
+================================================================================
+strings
+================================================================================
+
+entity Color enum ["Re
+
+entity User = { name: String } tags Set<String>;
+
+--------------------------------------------------------------------------------
+
+(schema
+  (entity_declaration
+    (identifier_list
+      (identifier)))
+  (ERROR
+    (string
+      (string_content))))

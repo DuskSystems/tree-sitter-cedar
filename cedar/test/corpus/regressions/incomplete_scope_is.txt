@@ -1,0 +1,22 @@
+================================================================================
+incomplete_scope_is
+================================================================================
+
+permit (principal is User in
+
+permit (principal, action, resource);
+
+--------------------------------------------------------------------------------
+
+(policy_set
+  (policy
+    (effect)
+    (scope
+      (principal
+        (scope_constraint
+          (name
+            (identifier))))
+      (ERROR
+        (identifier))
+      (action)
+      (resource))))

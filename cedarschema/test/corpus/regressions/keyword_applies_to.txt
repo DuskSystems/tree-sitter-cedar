@@ -1,0 +1,26 @@
+================================================================================
+keyword_applies_to
+================================================================================
+
+action v appliesTo { principal: [entity], context: entity };
+
+entity Recovered;
+
+--------------------------------------------------------------------------------
+
+(schema
+  (action_declaration
+    (action_name_list
+      (identifier))
+    (applies_to
+      (principal_types
+        (type_list
+          (name
+            (identifier))))
+      (context_type
+        (type_reference
+          (name
+            (identifier))))))
+  (entity_declaration
+    (identifier_list
+      (identifier))))

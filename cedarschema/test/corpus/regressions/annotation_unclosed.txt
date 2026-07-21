@@ -1,0 +1,19 @@
+================================================================================
+annotation_unclosed
+================================================================================
+
+@doc("x"
+
+entity Recovered;
+
+--------------------------------------------------------------------------------
+
+(schema
+  (entity_declaration
+    (annotation
+      (identifier)
+      (string
+        (string_content))
+      (MISSING ")"))
+    (identifier_list
+      (identifier))))

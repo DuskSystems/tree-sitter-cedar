@@ -1,0 +1,21 @@
+================================================================================
+records
+================================================================================
+
+entity A = { name: String,
+entity Recovered;
+
+--------------------------------------------------------------------------------
+
+(schema
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (ERROR
+      (attribute_declaration
+        (identifier)
+        (type_reference
+          (name
+            (identifier))))
+      (identifier)
+      (identifier))))

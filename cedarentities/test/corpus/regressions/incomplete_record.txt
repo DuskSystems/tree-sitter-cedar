@@ -1,0 +1,22 @@
+================================================================================
+incomplete_record
+================================================================================
+
+instance A::"x" =
+
+instance Recovered::"s";
+
+--------------------------------------------------------------------------------
+
+(entities
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content))))
+  (ERROR)
+  (instance
+    (entity_reference
+      (identifier)
+      (string
+        (string_content)))))

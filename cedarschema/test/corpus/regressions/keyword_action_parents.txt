@@ -1,0 +1,21 @@
+================================================================================
+keyword_action_parents
+================================================================================
+
+action a in action;
+
+entity Recovered;
+
+--------------------------------------------------------------------------------
+
+(schema
+  (action_declaration
+    (action_name_list
+      (identifier))
+    (action_parents
+      (qualified_name_list
+        (qualified_name
+          (identifier)))))
+  (entity_declaration
+    (identifier_list
+      (identifier))))

@@ -75,6 +75,7 @@ def tree-sitter-check []: nothing -> nothing {
         do {
             cd $grammar
             tree-sitter test
+            tree-sitter fuzz --iterations 1000
         }
     }
 

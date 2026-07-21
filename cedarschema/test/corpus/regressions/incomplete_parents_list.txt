@@ -1,0 +1,22 @@
+================================================================================
+incomplete_parents_list
+================================================================================
+
+entity A in [
+
+entity Recovered;
+
+--------------------------------------------------------------------------------
+
+(schema
+  (entity_declaration
+    (identifier_list
+      (identifier))
+    (entity_parents
+      (type_list
+        (name
+          (identifier))
+        (MISSING "]")))
+    (type_reference
+      (name
+        (identifier)))))
