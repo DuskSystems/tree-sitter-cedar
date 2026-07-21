@@ -10,8 +10,8 @@ permit (principal, action, resource);
 
 (policy_set
   (policy
-    (effect))
-  (ERROR)
+    (effect)
+    (condition))
   (policy
     (effect)
     (scope

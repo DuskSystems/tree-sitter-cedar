@@ -21,14 +21,12 @@ export default grammar({
       repeat($.annotation),
       optional(seq($.template_declaration, repeat($.annotation))),
       $.effect,
-      '(',
-      optional($.scope),
-      ')',
+      optional(seq('(', optional($.scope), optional(')'))),
       repeat(choice($.condition, $.advice)),
       optional(';'),
     ),
 
-    template_declaration: $ => seq('template', '(', commaSep($.slot), ')', '=>'),
+    template_declaration: $ => seq('template', optional(seq('(', commaSep($.slot), optional(')'))), optional('=>')),
 
     effect: _ => choice('permit', 'forbid'),
 
@@ -41,27 +39,23 @@ export default grammar({
     action: $ => seq('action', optional($._type_annotation), optional($.scope_constraint)),
     resource: $ => seq('resource', optional($._type_annotation), optional($.scope_constraint)),
 
-    _type_annotation: $ => seq(':', $.type_reference),
+    _type_annotation: $ => prec.right(seq(':', optional($.type_reference))),
 
-    scope_constraint: $ => choice(
-      seq('==', choice($.entity_reference, $.slot)),
-      seq('in', choice($.entity_reference, $.entity_list, $.slot)),
-      seq('is', $.name, optional(seq('in', choice($.entity_reference, $.slot)))),
-    ),
+    scope_constraint: $ => prec.right(choice(
+      seq('==', optional(choice($.entity_reference, $.slot))),
+      seq('in', optional(choice($.entity_reference, $.entity_list, $.slot))),
+      seq('is', optional($.name), optional(seq('in', optional(choice($.entity_reference, $.slot))))),
+    )),
 
-    condition: $ => seq(
+    condition: $ => prec.right(seq(
       choice('when', 'unless'),
-      '{',
-      optional($.expression),
-      '}',
-    ),
+      optional(seq('{', optional($.expression), optional('}'))),
+    )),
 
-    advice: $ => seq(
+    advice: $ => prec.right(seq(
       'advice',
-      '{',
-      optional($.expression),
-      '}',
-    ),
+      optional(seq('{', optional($.expression), optional('}'))),
+    )),
 
     expression: $ => choice(
       $.if_expression,
@@ -213,12 +207,12 @@ export default grammar({
       optional($.expression),
     ),
 
-    entity_reference: $ => seq(
+    entity_reference: $ => prec.right(seq(
       $.identifier,
       repeat(seq('::', $.identifier)),
       '::',
-      choice($.string, $.entity_record),
-    ),
+      optional(choice($.string, $.entity_record)),
+    )),
 
     entity_record: $ => seq(
       '{',
@@ -233,14 +227,14 @@ export default grammar({
       optional($._literal),
     ),
 
-    entity_list: $ => seq(
+    entity_list: $ => prec.right(seq(
       '[',
       commaSep($.entity_reference),
       optional(','),
-      ']',
-    ),
+      optional(']'),
+    )),
 
-    slot: $ => seq('?', $.identifier, optional(seq(':', $.type_reference))),
+    slot: $ => prec.right(seq('?', optional($.identifier), optional(seq(':', optional($.type_reference))))),
 
     variable: _ => choice('principal', 'action', 'resource', 'context'),
 

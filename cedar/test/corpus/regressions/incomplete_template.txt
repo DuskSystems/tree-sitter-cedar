@@ -9,13 +9,13 @@ permit (principal, action, resource);
 --------------------------------------------------------------------------------
 
 (policy_set
-  (ERROR
-    (slot
-      (identifier)
-      (type_reference
-        (name
-          (identifier)))))
   (policy
+    (template_declaration
+      (slot
+        (identifier)
+        (type_reference
+          (name
+            (identifier)))))
     (effect)
     (scope
       (principal)

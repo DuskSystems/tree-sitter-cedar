@@ -11,9 +11,13 @@ permit (principal, action, resource);
 (policy_set
   (policy
     (effect)
-    (ERROR
-      (identifier)
-      (identifier))
+    (scope
+      (principal
+        (scope_constraint
+          (entity_reference
+            (identifier))))))
+  (policy
+    (effect)
     (scope
       (principal)
       (action)

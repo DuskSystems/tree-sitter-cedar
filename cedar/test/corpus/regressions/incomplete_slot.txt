@@ -14,8 +14,10 @@ permit (principal, action, resource);
     (scope
       (principal
         (scope_constraint
-          (slot
-            (identifier))))
-      (ERROR)
+          (slot)))))
+  (policy
+    (effect)
+    (scope
+      (principal)
       (action)
       (resource))))
