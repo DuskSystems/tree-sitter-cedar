@@ -65,11 +65,9 @@ export default grammar({
     if_expression: $ => prec.right(0,
       seq(
         'if',
-        $.expression,
-        'then',
-        $.expression,
-        'else',
-        $.expression,
+        optional($.expression),
+        optional(seq('then', optional($.expression))),
+        optional(seq('else', optional($.expression))),
       ),
     ),
 
@@ -79,7 +77,7 @@ export default grammar({
         repeat(
           seq(
             choice('||', '|'),
-            $.and_expression,
+            optional($.and_expression),
           ),
         ),
       ),
@@ -91,18 +89,18 @@ export default grammar({
         repeat(
           seq(
             choice('&&', '&'),
-            $.relation_expression,
+            optional($.relation_expression),
           ),
         ),
       ),
     ),
 
     relation_expression: $ => choice(
-      prec.left(3, seq($._add_expression, choice('==', '!=', '<', '<=', '>', '>=', '='), $._add_expression)),
-      prec.left(3, seq($._add_expression, 'has', $._add_expression)),
-      prec.left(3, seq($._add_expression, 'like', $.string)),
-      prec.left(3, seq($._add_expression, 'is', $.name, optional(seq('in', $._add_expression)))),
-      prec.left(3, seq($._add_expression, 'in', $._add_expression)),
+      prec.left(3, seq($._add_expression, choice('==', '!=', '<', '<=', '>', '>=', '='), optional($._add_expression))),
+      prec.left(3, seq($._add_expression, 'has', optional($._add_expression))),
+      prec.left(3, seq($._add_expression, 'like', optional($.string))),
+      prec.left(3, seq($._add_expression, 'is', optional($.name), optional(seq('in', optional($._add_expression))))),
+      prec.left(3, seq($._add_expression, 'in', optional($._add_expression))),
       $._add_expression,
     ),
 
@@ -112,7 +110,7 @@ export default grammar({
         repeat(
           seq(
             choice('+', '-'),
-            $._multiply_expression,
+            optional($._multiply_expression),
           ),
         ),
       ),
@@ -124,14 +122,14 @@ export default grammar({
         repeat(
           seq(
             choice('*', '/', '%'),
-            $.unary_expression,
+            optional($.unary_expression),
           ),
         ),
       ),
     ),
 
     unary_expression: $ => choice(
-      prec(6, seq(choice('!', '-'), $.unary_expression)),
+      prec.right(6, seq(choice('!', '-'), optional($.unary_expression))),
       $.member_expression,
     ),
 

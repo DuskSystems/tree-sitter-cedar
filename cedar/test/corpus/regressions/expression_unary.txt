@@ -16,30 +16,10 @@ permit (principal, action, resource);
         (or_expression
           (and_expression
             (relation_expression
-              (unary_expression
-                (unary_expression
-                  (member_expression
-                    (extension_call
-                      (name
-                        (identifier))
-                      (expression
-                        (or_expression
-                          (and_expression
-                            (relation_expression
-                              (unary_expression
-                                (member_expression
-                                  (variable)))))))
-                      (expression
-                        (or_expression
-                          (and_expression
-                            (relation_expression
-                              (unary_expression
-                                (member_expression
-                                  (variable)))))))
-                      (expression
-                        (or_expression
-                          (and_expression
-                            (relation_expression
-                              (unary_expression
-                                (member_expression
-                                  (variable))))))))))))))))))
+              (unary_expression)))))))
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action)
+      (resource))))
