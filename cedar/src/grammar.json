@@ -1546,6 +1546,32 @@
         }
       ]
     },
+    "_keyword_identifier": {
+      "type": "PREC_DYNAMIC",
+      "value": 1,
+      "content": {
+        "type": "ALIAS",
+        "content": {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "permit"
+            },
+            {
+              "type": "STRING",
+              "value": "forbid"
+            },
+            {
+              "type": "STRING",
+              "value": "template"
+            }
+          ]
+        },
+        "named": true,
+        "value": "identifier"
+      }
+    },
     "_literal": {
       "type": "CHOICE",
       "members": [
@@ -1916,8 +1942,16 @@
           "value": "@"
         },
         {
-          "type": "SYMBOL",
-          "name": "identifier"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_name_identifier"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "CHOICE",
@@ -1930,12 +1964,28 @@
                   "value": "("
                 },
                 {
-                  "type": "SYMBOL",
-                  "name": "string"
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "string"
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
                 },
                 {
-                  "type": "STRING",
-                  "value": ")"
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": ")"
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
                 }
               ]
             },
@@ -1943,6 +1993,19 @@
               "type": "BLANK"
             }
           ]
+        }
+      ]
+    },
+    "_name_identifier": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_keyword_identifier"
         }
       ]
     },
@@ -1980,7 +2043,11 @@
       "name": "comment"
     }
   ],
-  "conflicts": [],
+  "conflicts": [
+    [
+      "annotation"
+    ]
+  ],
   "precedences": [],
   "externals": [],
   "inline": [],

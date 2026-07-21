@@ -10,10 +10,10 @@ entity Recovered;
 
 (schema
   (common_type_declaration
-    (identifier))
-  (entity_declaration
-    (identifier_list
-      (MISSING identifier)))
+    (identifier)
+    (type_reference
+      (name
+        (identifier))))
   (entity_declaration
     (identifier_list
       (identifier))))

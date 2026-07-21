@@ -12,7 +12,6 @@ permit (principal, action, resource);
   (policy
     (annotation
       (identifier))
-    (ERROR)
     (effect)
     (scope
       (principal)

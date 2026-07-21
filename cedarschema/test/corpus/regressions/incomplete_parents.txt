@@ -12,10 +12,7 @@ entity Recovered;
   (entity_declaration
     (identifier_list
       (identifier))
-    (entity_parents
-      (type_list
-        (name
-          (identifier))))
-    (type_reference
-      (name
-        (identifier)))))
+    (entity_parents))
+  (entity_declaration
+    (identifier_list
+      (identifier))))

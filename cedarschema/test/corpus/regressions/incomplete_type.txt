@@ -11,9 +11,7 @@ entity Recovered;
 (schema
   (entity_declaration
     (identifier_list
-      (identifier))
-    (ERROR
-      (identifier))
-    (type_reference
-      (name
-        (identifier)))))
+      (identifier)))
+  (entity_declaration
+    (identifier_list
+      (identifier))))

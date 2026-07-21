@@ -14,7 +14,6 @@ instance Recovered::"s";
       (identifier)
       (string
         (string_content))))
-  (ERROR)
   (instance
     (entity_reference
       (identifier)

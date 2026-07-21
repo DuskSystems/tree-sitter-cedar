@@ -53,12 +53,29 @@ const common = {
 
   annotation: $ => seq(
     '@',
+    optional($._name_identifier),
+    optional(seq('(', optional($.string), optional(')'))),
+  ),
+
+  _name_identifier: $ => choice(
     $.identifier,
-    optional(seq('(', $.string, ')')),
+    $._keyword_identifier,
   ),
 
   identifier: _ => token(/[_a-zA-Z][_a-zA-Z0-9]*/),
   comment: _ => token(seq('//', /.*/)),
+};
+
+const keywords = {
+  _any_name: $ => choice(
+    $.name,
+    alias($._keyword_name, $.name),
+  ),
+
+  _keyword_name: $ => prec.right(seq(
+    $._keyword_identifier,
+    repeat(seq('::', $.identifier)),
+  )),
 };
 
 const literals = {
@@ -92,4 +109,4 @@ const types = {
   ),
 };
 
-export { commaSep, commaSep1, common, literals, types };
+export { commaSep, commaSep1, common, keywords, literals, types };

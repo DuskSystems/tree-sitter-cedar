@@ -55,68 +55,65 @@ namespace GitHub {
     (entity_declaration
       (identifier_list
         (identifier))
-      (type_reference
-        (record_type
-          (attribute_declaration
-            (identifier)
-            (type_reference
-              (name
-                (identifier))))
-          (attribute_declaration
-            (identifier)
-            (type_reference
-              (name
-                (identifier))))
-          (attribute_declaration
-            (identifier)
-            (type_reference
-              (name
-                (identifier))))
-          (attribute_declaration
-            (identifier)
-            (type_reference
-              (name
-                (identifier))))
-          (attribute_declaration
-            (identifier)
-            (type_reference
-              (name
-                (identifier)))))))
+      (record_type
+        (attribute_declaration
+          (identifier)
+          (type_reference
+            (name
+              (identifier))))
+        (attribute_declaration
+          (identifier)
+          (type_reference
+            (name
+              (identifier))))
+        (attribute_declaration
+          (identifier)
+          (type_reference
+            (name
+              (identifier))))
+        (attribute_declaration
+          (identifier)
+          (type_reference
+            (name
+              (identifier))))
+        (attribute_declaration
+          (identifier)
+          (type_reference
+            (name
+              (identifier))))))
     (entity_declaration
       (identifier_list
         (identifier))
-      (type_reference
-        (record_type
-          (attribute_declaration
-            (identifier)
-            (type_reference
-              (name
-                (identifier))))
-          (attribute_declaration
-            (identifier)
-            (type_reference
-              (name
-                (identifier)))))))
+      (record_type
+        (attribute_declaration
+          (identifier)
+          (type_reference
+            (name
+              (identifier))))
+        (attribute_declaration
+          (identifier)
+          (type_reference
+            (name
+              (identifier))))))
     (entity_declaration
       (identifier_list
         (identifier))
-      (type_reference
-        (record_type
-          (attribute_declaration
-            (identifier)
-            (type_reference
-              (name
-                (identifier))))
-          (attribute_declaration
-            (identifier)
-            (type_reference
-              (name
-                (identifier))))
-          (attribute_declaration
-            (identifier)
-            (type_reference
-              (name
-                (identifier)))))))
+      (record_type
+        (attribute_declaration
+          (identifier)
+          (type_reference
+            (name
+              (identifier))))
+        (attribute_declaration
+          (identifier)
+          (type_reference
+            (name
+              (identifier))))
+        (attribute_declaration
+          (identifier)
+          (type_reference
+            (name
+              (identifier))))))
     (action_declaration
       (action_name_list
         (identifier)

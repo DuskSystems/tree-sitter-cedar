@@ -11,8 +11,7 @@ permit (principal, action, resource);
 (policy_set
   (policy
     (annotation
-      (identifier))
-    (ERROR
+      (identifier)
       (string
         (string_content)))
     (effect)

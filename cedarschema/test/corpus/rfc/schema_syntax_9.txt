@@ -26,22 +26,20 @@ namespace Foo {
     (entity_declaration
       (identifier_list
         (identifier))
-      (type_reference
-        (record_type
-          (attribute_declaration
-            (identifier)
-            (type_reference
-              (name
-                (identifier)))))))
+      (record_type
+        (attribute_declaration
+          (identifier)
+          (type_reference
+            (name
+              (identifier))))))
     (comment)
     (entity_declaration
       (identifier_list
         (identifier))
-      (type_reference
-        (record_type
-          (attribute_declaration
-            (identifier)
-            (type_reference
-              (name
-                (identifier)))))))
+      (record_type
+        (attribute_declaration
+          (identifier)
+          (type_reference
+            (name
+              (identifier))))))
     (comment)))

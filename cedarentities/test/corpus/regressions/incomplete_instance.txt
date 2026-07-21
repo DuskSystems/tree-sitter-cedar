@@ -9,9 +9,8 @@ instance Recovered::"s";
 --------------------------------------------------------------------------------
 
 (entities
+  (instance)
   (instance
-    (ERROR
-      (identifier))
     (entity_reference
       (identifier)
       (string

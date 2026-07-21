@@ -12,9 +12,7 @@ entity Recovered;
   (action_declaration
     (action_name_list
       (identifier))
-    (action_parents
-      (ERROR
-        (identifier))
-      (qualified_name_list
-        (qualified_name
-          (identifier))))))
+    (action_parents))
+  (entity_declaration
+    (identifier_list
+      (identifier))))

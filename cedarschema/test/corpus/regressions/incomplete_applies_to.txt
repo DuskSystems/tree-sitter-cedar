@@ -10,9 +10,9 @@ entity Recovered;
 
 (schema
   (action_declaration
-    (ERROR
-      (action_name_list
-        (identifier))
-      (identifier))
     (action_name_list
+      (identifier))
+    (applies_to))
+  (entity_declaration
+    (identifier_list
       (identifier))))

@@ -13,8 +13,7 @@ instance Recovered::"s";
     (annotation
       (identifier)
       (string
-        (string_content))
-      (MISSING ")"))
+        (string_content)))
     (entity_reference
       (identifier)
       (string

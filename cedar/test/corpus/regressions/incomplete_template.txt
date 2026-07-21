@@ -14,8 +14,10 @@ permit (principal, action, resource);
       (identifier)
       (type_reference
         (name
-          (identifier))))
-    (ERROR
-      (identifier)
-      (identifier)
-      (identifier))))
+          (identifier)))))
+  (policy
+    (effect)
+    (scope
+      (principal)
+      (action)
+      (resource))))

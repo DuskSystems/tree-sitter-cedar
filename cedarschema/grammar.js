@@ -1,7 +1,7 @@
 /// <reference path="../dsl.d.ts" />
 // @ts-check
 
-import { commaSep, commaSep1, common, literals, types } from '../common.js';
+import { commaSep, commaSep1, common, keywords, literals, types } from '../common.js';
 
 export default grammar({
   name: 'cedarschema',
@@ -10,6 +10,20 @@ export default grammar({
   extras: $ => [
     /\s/,
     $.comment,
+  ],
+  conflicts: $ => [
+    [$.context_type],
+    [$.qualified_name_list],
+    [$.type_list],
+    [$.entity_tags],
+    [$.entity_tags, $._keyword_identifier],
+    [$.annotation],
+    [$.namespace],
+    [$.entity_declaration],
+    [$.action_declaration],
+    [$.common_type_declaration],
+    [$.identifier_list],
+    [$.action_name_list],
   ],
 
   rules: {
@@ -23,10 +37,8 @@ export default grammar({
     namespace: $ => seq(
       repeat($.annotation),
       'namespace',
-      $.name,
-      '{',
-      repeat(choice($.namespace, $._declaration)),
-      '}',
+      optional($._any_name),
+      optional(prec.right(seq('{', repeat(choice($.namespace, $._declaration)), optional('}')))),
     ),
 
     _declaration: $ => choice(
@@ -38,11 +50,11 @@ export default grammar({
     entity_declaration: $ => seq(
       repeat($.annotation),
       'entity',
-      $.identifier_list,
+      optional($.identifier_list),
       choice(
         seq(
           optional($.entity_parents),
-          optional(seq(optional('='), $.type_reference)),
+          optional(choice(seq('=', optional($._any_type_reference)), $.record_type)),
           optional($.entity_tags),
           optional(';'),
         ),
@@ -53,7 +65,7 @@ export default grammar({
     action_declaration: $ => seq(
       repeat($.annotation),
       'action',
-      $.action_name_list,
+      optional($.action_name_list),
       optional($.action_parents),
       optional($.applies_to),
       optional($.action_attributes),
@@ -77,19 +89,19 @@ export default grammar({
     common_type_declaration: $ => seq(
       repeat($.annotation),
       'type',
-      $.identifier,
-      optional(seq('=', optional($.type_reference))),
+      optional($._name_identifier),
+      optional(seq('=', optional($._any_type_reference))),
       optional(';'),
     ),
 
-    entity_parents: $ => seq(
+    entity_parents: $ => prec.right(seq(
       'in',
-      $.type_list,
-    ),
+      optional($.type_list),
+    )),
 
     entity_tags: $ => seq(
       'tags',
-      $.type_reference,
+      optional($._any_type_reference),
     ),
 
     enum_type: $ => seq(
@@ -101,10 +113,10 @@ export default grammar({
       optional(';'),
     ),
 
-    action_parents: $ => seq(
+    action_parents: $ => prec.right(seq(
       'in',
-      $.qualified_name_list,
-    ),
+      optional($.qualified_name_list),
+    )),
 
     _applies_to_member: $ => choice(
       $.principal_types,
@@ -112,55 +124,65 @@ export default grammar({
       $.context_type,
     ),
 
-    applies_to: $ => seq(
+    applies_to: $ => prec.right(seq(
       'appliesTo',
       '{',
       commaSep($._applies_to_member),
       optional(','),
-      '}',
-    ),
+      optional('}'),
+    )),
 
-    principal_types: $ => seq(
+    principal_types: $ => prec.right(seq(
       'principal',
       ':',
-      $.type_list,
-    ),
+      optional($.type_list),
+    )),
 
-    resource_types: $ => seq(
+    resource_types: $ => prec.right(seq(
       'resource',
       ':',
-      $.type_list,
-    ),
+      optional($.type_list),
+    )),
 
     context_type: $ => seq(
       'context',
       ':',
-      $.type_reference,
+      optional($._any_type_reference),
     ),
 
     type_list: $ => choice(
-      seq('[', commaSep($.name), optional(','), ']'),
+      seq('[', commaSep($._any_name), optional(','), optional(']')),
       $.name,
     ),
 
     qualified_name: $ => choice(
-      seq($.identifier, repeat(seq('::', $.identifier)), '::', $.string),
+      prec.right(seq($.identifier, repeat(seq('::', $.identifier)), '::', optional($.string))),
       $._attribute_name,
     ),
 
     qualified_name_list: $ => choice(
-      seq('[', commaSep($.qualified_name), optional(','), ']'),
+      seq('[', commaSep(choice($.qualified_name, alias($._keyword_name, $.qualified_name))), optional(','), optional(']')),
       $.qualified_name,
     ),
 
-    identifier_list: $ => prec.right(seq(commaSep1($.identifier), optional(','))),
-    action_name_list: $ => prec.right(seq(commaSep1($._attribute_name), optional(','))),
+    identifier_list: $ => seq(commaSep1($._name_identifier), optional(',')),
+    action_name_list: $ => seq(commaSep1(choice($._name_identifier, $.string)), optional(',')),
 
     _attribute_name: $ => choice(
       $.identifier,
       $.string,
     ),
 
+    _keyword_identifier: $ => prec.dynamic(1, alias(choice('namespace', 'entity', 'action', 'type', 'tags', 'enum', 'appliesTo', 'principal', 'resource', 'context', 'attributes'), $.identifier)),
+
+    _any_type_reference: $ => choice(
+      $.type_reference,
+      alias($._keyword_type_reference, $.type_reference),
+    ),
+
+    _keyword_type_reference: $ => prec.dynamic(1, alias($._keyword_name, $.name)),
+
+    ...keywords,
     ...literals,
     ...types,
     ...common,

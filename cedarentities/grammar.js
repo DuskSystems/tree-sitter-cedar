@@ -1,7 +1,7 @@
 /// <reference path="../dsl.d.ts" />
 // @ts-check
 
-import { commaSep, common, literals } from '../common.js';
+import { commaSep, common, keywords, literals } from '../common.js';
 
 export default grammar({
   name: 'cedarentities',
@@ -10,6 +10,13 @@ export default grammar({
   extras: $ => [
     /\s/,
     $.comment,
+  ],
+  conflicts: $ => [
+    [$.entity_list],
+    [$.annotation],
+    [$.namespace],
+    [$.instance],
+    [$.instance_tags, $._keyword_identifier],
   ],
 
   rules: {
@@ -23,26 +30,24 @@ export default grammar({
     namespace: $ => seq(
       repeat($.annotation),
       'namespace',
-      $.name,
-      '{',
-      repeat(choice($.namespace, $.instance)),
-      '}',
+      optional($._any_name),
+      optional(prec.right(seq('{', repeat(choice($.namespace, $.instance)), optional('}')))),
     ),
 
     instance: $ => seq(
       repeat($.annotation),
       'instance',
-      $.entity_reference,
+      optional($._any_reference),
       optional($.instance_parents),
-      optional(seq(optional('='), $.record)),
+      optional(choice(seq('=', optional($.record)), $.record)),
       optional($.instance_tags),
       optional(';'),
     ),
 
-    instance_parents: $ => seq(
+    instance_parents: $ => prec.right(seq(
       'in',
-      choice($.entity_reference, $.entity_list),
-    ),
+      optional(choice($.entity_reference, $.entity_list)),
+    )),
 
     instance_tags: $ => seq(
       'tags',
@@ -51,17 +56,16 @@ export default grammar({
 
     entity_list: $ => seq(
       '[',
-      commaSep($.entity_reference),
+      commaSep($._any_reference),
       optional(','),
-      ']',
+      optional(']'),
     ),
 
-    entity_reference: $ => seq(
+    entity_reference: $ => prec.right(seq(
       $.identifier,
       repeat(seq('::', $.identifier)),
-      '::',
-      $.string,
-    ),
+      optional(seq('::', optional($.string))),
+    )),
 
     record: $ => seq(
       '{',
@@ -98,6 +102,20 @@ export default grammar({
       ')',
     ),
 
+    _keyword_identifier: $ => prec.dynamic(1, alias(choice('namespace', 'instance', 'tags'), $.identifier)),
+
+    _any_reference: $ => choice(
+      $.entity_reference,
+      alias($._keyword_reference, $.entity_reference),
+    ),
+
+    _keyword_reference: $ => prec.right(seq(
+      $._keyword_identifier,
+      repeat(seq('::', $.identifier)),
+      optional(seq('::', optional($.string))),
+    )),
+
+    ...keywords,
     ...literals,
     ...common,
   },

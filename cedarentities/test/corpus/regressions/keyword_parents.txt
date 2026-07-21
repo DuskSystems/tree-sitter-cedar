@@ -14,11 +14,12 @@ instance Recovered::"s";
       (identifier)
       (string
         (string_content)))
-    (instance_parents
-      (entity_reference
-        (identifier)
-        (string
-          (string_content)))))
+    (instance_parents))
+  (instance
+    (entity_reference
+      (MISSING identifier)
+      (string
+        (string_content))))
   (instance
     (entity_reference
       (identifier)

@@ -9,7 +9,7 @@ entity Recovered;
 --------------------------------------------------------------------------------
 
 (schema
-  (ERROR
+  (namespace
     (name
       (identifier)))
   (entity_declaration

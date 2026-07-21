@@ -11,6 +11,9 @@ export default grammar({
     /\s/,
     $.comment,
   ],
+  conflicts: $ => [
+    [$.annotation],
+  ],
 
   rules: {
     policy_set: $ => repeat($.policy),
@@ -240,6 +243,8 @@ export default grammar({
     slot: $ => seq('?', $.identifier, optional(seq(':', $.type_reference))),
 
     variable: _ => choice('principal', 'action', 'resource', 'context'),
+
+    _keyword_identifier: $ => prec.dynamic(1, alias(choice('permit', 'forbid', 'template'), $.identifier)),
 
     ...literals,
     ...types,

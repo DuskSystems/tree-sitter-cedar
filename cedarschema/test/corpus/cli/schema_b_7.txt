@@ -17,10 +17,9 @@ entity Account in [AccountGroup] { owner?: User };
       (type_list
         (name
           (identifier))))
-    (type_reference
-      (record_type
-        (attribute_declaration
-          (identifier)
-          (type_reference
-            (name
-              (identifier))))))))
+    (record_type
+      (attribute_declaration
+        (identifier)
+        (type_reference
+          (name
+            (identifier)))))))

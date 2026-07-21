@@ -9,6 +9,10 @@ permit (principal, action, resource);
 --------------------------------------------------------------------------------
 
 (policy_set
-  (ERROR
-    (identifier)
-    (identifier)))
+  (policy
+    (annotation)
+    (effect)
+    (scope
+      (principal)
+      (action)
+      (resource))))

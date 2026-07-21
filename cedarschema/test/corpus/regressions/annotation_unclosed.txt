@@ -13,7 +13,6 @@ entity Recovered;
     (annotation
       (identifier)
       (string
-        (string_content))
-      (MISSING ")"))
+        (string_content)))
     (identifier_list
       (identifier))))

@@ -25,33 +25,30 @@ namespace Demo {
   (entity_declaration
     (identifier_list
       (identifier))
-    (type_reference
-      (record_type
-        (attribute_declaration
-          (identifier)
-          (type_reference
-            (name
-              (identifier)))))))
+    (record_type
+      (attribute_declaration
+        (identifier)
+        (type_reference
+          (name
+            (identifier))))))
   (namespace
     (name
       (identifier))
     (entity_declaration
       (identifier_list
         (identifier))
-      (type_reference
-        (record_type
-          (attribute_declaration
-            (identifier)
-            (type_reference
-              (name
-                (identifier)))))))
+      (record_type
+        (attribute_declaration
+          (identifier)
+          (type_reference
+            (name
+              (identifier))))))
     (entity_declaration
       (identifier_list
         (identifier))
-      (type_reference
-        (record_type
-          (attribute_declaration
-            (identifier)
-            (type_reference
-              (name
-                (identifier)))))))))
+      (record_type
+        (attribute_declaration
+          (identifier)
+          (type_reference
+            (name
+              (identifier))))))))

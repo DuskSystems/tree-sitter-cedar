@@ -13,10 +13,7 @@ entity Recovered;
     (action_name_list
       (identifier))
     (applies_to
-      (principal_types
-        (type_list
-          (name
-            (identifier))))
-      (ERROR
-        (identifier))
-      (MISSING "}"))))
+      (principal_types)))
+  (entity_declaration
+    (identifier_list
+      (identifier))))
