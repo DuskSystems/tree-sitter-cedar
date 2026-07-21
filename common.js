@@ -89,7 +89,7 @@ const literals = {
 
 const types = {
   type_reference: $ => choice(
-    prec.left(seq($.name, optional(seq('<', commaSep1($.type_reference), '>')))),
+    prec.right(seq($.name, optional(seq('<', commaSep($.type_reference), optional('>'))))),
     $.record_type,
   ),
 

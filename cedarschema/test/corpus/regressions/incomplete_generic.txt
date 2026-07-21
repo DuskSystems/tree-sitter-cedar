@@ -13,10 +13,7 @@ entity Recovered;
     (identifier)
     (type_reference
       (name
-        (identifier))
-      (type_reference
-        (name
-          (identifier)))
-      (ERROR
-        (identifier))
-      (MISSING ">"))))
+        (identifier))))
+  (entity_declaration
+    (identifier_list
+      (identifier))))
