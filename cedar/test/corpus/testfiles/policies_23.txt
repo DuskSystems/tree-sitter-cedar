@@ -30,47 +30,34 @@ unless {
             (string
               (string_content))))))
     (condition
-      (expression
-        (or_expression
-          (and_expression
-            (relation_expression
-              (unary_expression
+      (binary_expression
+        (binary_expression
+          (member_expression
+            (variable)
+            (field_access
+              (identifier))
+            (field_access
+              (identifier))
+            (field_access
+              (identifier)))
+          (string
+            (string_content)))
+        (binary_expression
+          (member_expression
+            (parenthesized_expression
+              (binary_expression
                 (member_expression
                   (variable)
                   (field_access
                     (identifier))
                   (field_access
+                    (identifier)))
+                (member_expression
+                  (variable)
+                  (field_access
                     (identifier))
                   (field_access
-                    (identifier))))
-              (unary_expression
-                (member_expression
-                  (string
-                    (string_content)))))
-            (relation_expression
-              (unary_expression
-                (member_expression
-                  (parenthesized_expression
-                    (expression
-                      (or_expression
-                        (and_expression
-                          (relation_expression
-                            (unary_expression
-                              (member_expression
-                                (variable)
-                                (field_access
-                                  (identifier))
-                                (field_access
-                                  (identifier))))
-                            (unary_expression
-                              (member_expression
-                                (variable)
-                                (field_access
-                                  (identifier))
-                                (field_access
-                                  (identifier)))))))))
-                  (method_call
-                    (identifier))))
-              (unary_expression
-                (member_expression
-                  (integer))))))))))
+                    (identifier)))))
+            (method_call
+              (identifier)))
+          (integer))))))

@@ -30,15 +30,9 @@ when { principal == resource.owner };
           (name
             (identifier)))))
     (condition
-      (expression
-        (or_expression
-          (and_expression
-            (relation_expression
-              (unary_expression
-                (member_expression
-                  (variable)))
-              (unary_expression
-                (member_expression
-                  (variable)
-                  (field_access
-                    (identifier)))))))))))
+      (binary_expression
+        (variable)
+        (member_expression
+          (variable)
+          (field_access
+            (identifier)))))))

@@ -38,15 +38,9 @@ unless {
           (slot
             (identifier)))))
     (condition
-      (expression
-        (or_expression
-          (and_expression
-            (relation_expression
-              (unary_expression
-                (member_expression
-                  (variable)
-                  (field_access
-                    (identifier))))
-              (unary_expression
-                (member_expression
-                  (true))))))))))
+      (binary_expression
+        (member_expression
+          (variable)
+          (field_access
+            (identifier)))
+        (true)))))

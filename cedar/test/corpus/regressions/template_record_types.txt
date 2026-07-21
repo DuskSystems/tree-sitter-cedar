@@ -39,16 +39,10 @@ when { ?config.level > 3 };
       (action)
       (resource))
     (condition
-      (expression
-        (or_expression
-          (and_expression
-            (relation_expression
-              (unary_expression
-                (member_expression
-                  (slot
-                    (identifier))
-                  (field_access
-                    (identifier))))
-              (unary_expression
-                (member_expression
-                  (integer))))))))))
+      (binary_expression
+        (member_expression
+          (slot
+            (identifier))
+          (field_access
+            (identifier)))
+        (integer)))))

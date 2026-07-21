@@ -12,11 +12,7 @@ permit (principal, action, resource);
   (policy
     (effect)
     (condition
-      (expression
-        (or_expression
-          (and_expression
-            (relation_expression
-              (unary_expression)))))))
+      (unary_expression)))
   (policy
     (effect)
     (scope

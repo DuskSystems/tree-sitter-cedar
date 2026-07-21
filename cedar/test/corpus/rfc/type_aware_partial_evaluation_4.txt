@@ -26,15 +26,10 @@ when {
       (action)
       (resource))
     (condition
-      (expression
-        (or_expression
-          (and_expression
-            (relation_expression
-              (unary_expression
-                (member_expression
-                  (variable)
-                  (field_access
-                    (identifier))))))))))
+      (member_expression
+        (variable)
+        (field_access
+          (identifier)))))
   (policy
     (effect)
     (scope
@@ -42,24 +37,17 @@ when {
       (action)
       (resource))
     (condition
-      (expression
-        (or_expression
-          (and_expression
-            (relation_expression
-              (unary_expression
-                (member_expression
-                  (variable)
-                  (field_access
-                    (identifier)))))
-            (relation_expression
-              (unary_expression
-                (member_expression
-                  (variable)
-                  (field_access
-                    (identifier))))
-              (unary_expression
-                (member_expression
-                  (entity_reference
-                    (identifier)
-                    (string
-                      (string_content))))))))))))
+      (binary_expression
+        (member_expression
+          (variable)
+          (field_access
+            (identifier)))
+        (binary_expression
+          (member_expression
+            (variable)
+            (field_access
+              (identifier)))
+          (entity_reference
+            (identifier)
+            (string
+              (string_content))))))))

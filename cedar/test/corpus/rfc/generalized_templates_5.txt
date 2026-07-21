@@ -30,14 +30,7 @@ permit (
       (action)
       (resource))
     (condition
-      (expression
-        (or_expression
-          (and_expression
-            (relation_expression
-              (unary_expression
-                (member_expression
-                  (integer)))
-              (unary_expression
-                (member_expression
-                  (slot
-                    (identifier)))))))))))
+      (binary_expression
+        (integer)
+        (slot
+          (identifier))))))

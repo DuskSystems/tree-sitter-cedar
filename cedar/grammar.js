@@ -50,94 +50,69 @@ export default grammar({
 
     condition: $ => prec.right(seq(
       choice('when', 'unless'),
-      optional(seq('{', optional($.expression), optional('}'))),
+      optional(seq('{', optional($._expression), optional('}'))),
     )),
 
     advice: $ => prec.right(seq(
       'advice',
-      optional(seq('{', optional($.expression), optional('}'))),
+      optional(seq('{', optional($._expression), optional('}'))),
     )),
 
-    expression: $ => choice(
+    _expression: $ => choice(
       $.if_expression,
-      $.or_expression,
+      $.binary_expression,
+      $.is_expression,
+      $.like_expression,
+      $.has_expression,
+      $.unary_expression,
+      $.member_expression,
+      $._primary,
     ),
 
     if_expression: $ => prec.right(0,
       seq(
         'if',
-        optional($.expression),
-        optional(seq('then', optional($.expression))),
-        optional(seq('else', optional($.expression))),
+        optional($._expression),
+        optional(seq('then', optional($._expression))),
+        optional(seq('else', optional($._expression))),
       ),
     ),
 
-    or_expression: $ => prec.left(1,
-      seq(
-        $.and_expression,
-        repeat(
-          seq(
-            choice('||', '|'),
-            optional($.and_expression),
-          ),
-        ),
-      ),
+    binary_expression: $ => choice(
+      prec.left(1, seq($._expression, choice('||', '|'), $._expression)),
+      prec.left(2, seq($._expression, choice('&&', '&'), $._expression)),
+      prec.left(3, seq($._expression, choice('==', '!=', '<', '<=', '>', '>=', '='), $._expression)),
+      prec.left(3, seq($._expression, 'in', $._expression)),
+      prec.left(4, seq($._expression, choice('+', '-'), $._expression)),
+      prec.left(5, seq($._expression, choice('*', '/', '%'), $._expression)),
+      prec.right(1, seq($._expression, choice('||', '|'))),
+      prec.right(2, seq($._expression, choice('&&', '&'))),
+      prec.right(3, seq($._expression, choice('==', '!=', '<', '<=', '>', '>=', '='))),
+      prec.right(3, seq($._expression, 'in')),
+      prec.right(4, seq($._expression, choice('+', '-'))),
+      prec.right(5, seq($._expression, choice('*', '/', '%'))),
     ),
 
-    and_expression: $ => prec.left(2,
-      seq(
-        $.relation_expression,
-        repeat(
-          seq(
-            choice('&&', '&'),
-            optional($.relation_expression),
-          ),
-        ),
-      ),
+    is_expression: $ => prec.left(3,
+      seq($._expression, 'is', optional($.name), optional(seq('in', optional($._expression)))),
     ),
 
-    relation_expression: $ => choice(
-      prec.left(3, seq($._add_expression, choice('==', '!=', '<', '<=', '>', '>=', '='), optional($._add_expression))),
-      prec.left(3, seq($._add_expression, 'has', optional($._add_expression))),
-      prec.left(3, seq($._add_expression, 'like', optional($.string))),
-      prec.left(3, seq($._add_expression, 'is', optional($.name), optional(seq('in', optional($._add_expression))))),
-      prec.left(3, seq($._add_expression, 'in', optional($._add_expression))),
-      $._add_expression,
+    like_expression: $ => prec.left(3,
+      seq($._expression, 'like', optional($.string)),
     ),
 
-    _add_expression: $ => prec.left(4,
-      seq(
-        $._multiply_expression,
-        repeat(
-          seq(
-            choice('+', '-'),
-            optional($._multiply_expression),
-          ),
-        ),
-      ),
+    has_expression: $ => prec.left(3,
+      seq($._expression, 'has', optional($._expression)),
     ),
 
-    _multiply_expression: $ => prec.left(5,
-      seq(
-        $.unary_expression,
-        repeat(
-          seq(
-            choice('*', '/', '%'),
-            optional($.unary_expression),
-          ),
-        ),
-      ),
-    ),
-
-    unary_expression: $ => choice(
-      prec.right(6, seq(choice('!', '-'), optional($.unary_expression))),
-      $.member_expression,
+    unary_expression: $ => prec.right(6,
+      seq(choice('!', '-'), optional(choice($.unary_expression, $.member_expression, $._primary))),
     ),
 
     member_expression: $ => prec.left(7,
       seq(
         $._primary,
-        repeat($._accessor),
+        repeat1($._accessor),
       ),
     ),
 
@@ -153,7 +128,7 @@ export default grammar({
       '.',
       $.identifier,
       '(',
-      commaSep($.expression),
+      commaSep($._expression),
       ')',
     ),
 
@@ -179,16 +154,16 @@ export default grammar({
       seq(
         $.name,
         '(',
-        commaSep($.expression),
+        commaSep($._expression),
         ')',
       ),
     ),
 
-    parenthesized_expression: $ => seq('(', $.expression, ')'),
+    parenthesized_expression: $ => seq('(', $._expression, ')'),
 
     set_expression: $ => seq(
       '[',
-      commaSep($.expression),
+      commaSep($._expression),
       optional(','),
       ']',
     ),
@@ -203,7 +178,7 @@ export default grammar({
     record_entry: $ => seq(
       choice($.identifier, $.string),
       ':',
-      optional($.expression),
+      optional($._expression),
     ),
 
     entity_reference: $ => prec.right(seq(

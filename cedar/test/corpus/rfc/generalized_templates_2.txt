@@ -27,16 +27,10 @@ permit(principal, action == Action::"AccessDocument", resource in ?resource) whe
           (slot
             (identifier)))))
     (condition
-      (expression
-        (or_expression
-          (and_expression
-            (relation_expression
-              (unary_expression
-                (member_expression
-                  (slot
-                    (identifier))))
-              (unary_expression
-                (member_expression
-                  (variable)
-                  (field_access
-                    (identifier)))))))))))
+      (binary_expression
+        (slot
+          (identifier))
+        (member_expression
+          (variable)
+          (field_access
+            (identifier)))))))

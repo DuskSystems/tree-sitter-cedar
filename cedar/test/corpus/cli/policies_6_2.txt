@@ -25,31 +25,14 @@ when { context.source_ip.isInRange(ip("222.222.222.0/24")) };
       (action)
       (resource))
     (condition
-      (expression
-        (or_expression
-          (and_expression
-            (relation_expression
-              (unary_expression
-                (member_expression
-                  (variable)
-                  (field_access
-                    (identifier))
-                  (method_call
-                    (identifier)
-                    (expression
-                      (or_expression
-                        (and_expression
-                          (relation_expression
-                            (unary_expression
-                              (member_expression
-                                (extension_call
-                                  (name
-                                    (identifier))
-                                  (expression
-                                    (or_expression
-                                      (and_expression
-                                        (relation_expression
-                                          (unary_expression
-                                            (member_expression
-                                              (string
-                                                (string_content)))))))))))))))))))))))))
+      (member_expression
+        (variable)
+        (field_access
+          (identifier))
+        (method_call
+          (identifier)
+          (extension_call
+            (name
+              (identifier))
+            (string
+              (string_content))))))))

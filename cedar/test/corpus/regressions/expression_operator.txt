@@ -12,15 +12,11 @@ permit (principal, action, resource);
   (policy
     (effect)
     (condition
-      (expression
-        (or_expression
-          (and_expression
-            (relation_expression
-              (unary_expression
-                (member_expression
-                  (variable)
-                  (field_access
-                    (identifier))))))))))
+      (binary_expression
+        (member_expression
+          (variable)
+          (field_access
+            (identifier))))))
   (policy
     (effect)
     (scope

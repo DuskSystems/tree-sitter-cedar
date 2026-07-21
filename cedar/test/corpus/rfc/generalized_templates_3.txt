@@ -31,24 +31,15 @@ when {
           (slot
             (identifier)))))
     (condition
-      (expression
-        (or_expression
-          (and_expression
-            (relation_expression
-              (unary_expression
-                (member_expression
-                  (slot
-                    (identifier))))
-              (unary_expression
-                (member_expression
-                  (identifier))))
-            (relation_expression
-              (unary_expression
-                (member_expression
-                  (slot
-                    (identifier))
-                  (field_access
-                    (identifier))))
-              (unary_expression
-                (member_expression
-                  (integer))))))))))
+      (binary_expression
+        (has_expression
+          (slot
+            (identifier))
+          (identifier))
+        (binary_expression
+          (member_expression
+            (slot
+              (identifier))
+            (field_access
+              (identifier)))
+          (integer))))))

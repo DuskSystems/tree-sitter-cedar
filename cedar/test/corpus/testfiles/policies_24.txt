@@ -39,11 +39,5 @@ advice {
             (string
               (string_content))))))
     (advice
-      (expression
-        (or_expression
-          (and_expression
-            (relation_expression
-              (unary_expression
-                (member_expression
-                  (string
-                    (string_content)))))))))))
+      (string
+        (string_content)))))

@@ -55,22 +55,13 @@ when { resource has reporters && principal in resource.reporters };
             (string
               (string_content))))))
     (condition
-      (expression
-        (or_expression
-          (and_expression
-            (relation_expression
-              (unary_expression
-                (member_expression
-                  (variable)))
-              (unary_expression
-                (member_expression
-                  (identifier))))
-            (relation_expression
-              (unary_expression
-                (member_expression
-                  (variable)))
-              (unary_expression
-                (member_expression
-                  (variable)
-                  (field_access
-                    (identifier)))))))))))
+      (binary_expression
+        (has_expression
+          (variable)
+          (identifier))
+        (binary_expression
+          (variable)
+          (member_expression
+            (variable)
+            (field_access
+              (identifier))))))))

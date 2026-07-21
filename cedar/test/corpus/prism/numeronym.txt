@@ -45,17 +45,10 @@ forbid (
             (identifier)
             (identifier)))))
     (condition
-      (expression
-        (or_expression
-          (and_expression
-            (relation_expression
-              (unary_expression
-                (member_expression
-                  (variable)))
-              (unary_expression
-                (member_expression
-                  (entity_reference
-                    (identifier)
-                    (identifier)
-                    (string
-                      (string_content))))))))))))
+      (binary_expression
+        (variable)
+        (entity_reference
+          (identifier)
+          (identifier)
+          (string
+            (string_content)))))))

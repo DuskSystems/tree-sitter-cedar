@@ -16,6 +16,7 @@ unless
 };
 
 --------------------------------------------------------------------------------
+
 (policy_set
   (comment)
   (policy
@@ -38,16 +39,11 @@ unless
               (string_content))))))
     (condition
       (comment)
-      (expression
-        (or_expression
-          (and_expression
-            (relation_expression
-              (unary_expression
-                (member_expression
-                  (entity_reference
-                    (identifier)
-                    (identifier)
-                    (string
-                      (string_content)))))
-              (name
-                (identifier)))))))))
+      (is_expression
+        (entity_reference
+          (identifier)
+          (identifier)
+          (string
+            (string_content)))
+        (name
+          (identifier))))))

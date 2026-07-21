@@ -112,13 +112,17 @@
 (ref_init
   "-" @number)
 
-(relation_expression
+(has_expression
   "has"
   .
-  (unary_expression
-    (member_expression
-      .
-      (identifier) @property)))
+  (identifier) @property)
+
+(has_expression
+  "has"
+  .
+  (member_expression
+    .
+    (identifier) @property))
 
 (entity_reference
   (identifier) @type)
@@ -132,13 +136,13 @@
   (name
     (identifier) @type))
 
-(relation_expression
-  "is"
+(is_expression
   (name
     (identifier) @type))
 
-(relation_expression
+(like_expression
   "like"
+  .
   (string) @string.regexp)
 
 (type_reference

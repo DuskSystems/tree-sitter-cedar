@@ -19,6 +19,7 @@ when
 };
 
 --------------------------------------------------------------------------------
+
 (policy_set
   (comment)
   (policy
@@ -39,93 +40,46 @@ when
           (name
             (identifier)))))
     (condition
-      (expression
-        (or_expression
-          (and_expression
-            (relation_expression
-              (unary_expression
+      (binary_expression
+        (binary_expression
+          (member_expression
+            (variable)
+            (field_access
+              (identifier)))
+          (variable))
+        (parenthesized_expression
+          (binary_expression
+            (binary_expression
+              (binary_expression
+                (binary_expression
+                  (member_expression
+                    (variable)
+                    (field_access
+                      (identifier)))
+                  (integer))
                 (member_expression
                   (variable)
-                  (field_access
-                    (identifier))))
-              (unary_expression
+                  (method_call
+                    (identifier)
+                    (string
+                      (string_content)))))
+              (member_expression
+                (variable)
+                (method_call
+                  (identifier)
+                  (string
+                    (string_content)))))
+            (member_expression
+              (variable)
+              (method_call
+                (identifier)
+                (string
+                  (string_content)))
+              (method_call
+                (identifier)
                 (member_expression
-                  (variable)))))
-          (and_expression
-            (relation_expression
-              (unary_expression
-                (member_expression
-                  (parenthesized_expression
-                    (expression
-                      (or_expression
-                        (and_expression
-                          (relation_expression
-                            (unary_expression
-                              (member_expression
-                                (variable)
-                                (field_access
-                                  (identifier))))
-                            (unary_expression
-                              (member_expression
-                                (integer))))
-                          (relation_expression
-                            (unary_expression
-                              (member_expression
-                                (variable)
-                                (method_call
-                                  (identifier)
-                                  (expression
-                                    (or_expression
-                                      (and_expression
-                                        (relation_expression
-                                          (unary_expression
-                                            (member_expression
-                                              (string
-                                                (string_content))))))))))))
-                          (relation_expression
-                            (unary_expression
-                              (member_expression
-                                (variable)
-                                (method_call
-                                  (identifier)
-                                  (expression
-                                    (or_expression
-                                      (and_expression
-                                        (relation_expression
-                                          (unary_expression
-                                            (member_expression
-                                              (string
-                                                (string_content))))))))))))
-                          (relation_expression
-                            (unary_expression
-                              (member_expression
-                                (variable)
-                                (method_call
-                                  (identifier)
-                                  (expression
-                                    (or_expression
-                                      (and_expression
-                                        (relation_expression
-                                          (unary_expression
-                                            (member_expression
-                                              (string
-                                                (string_content)))))))))
-                                (method_call
-                                  (identifier)
-                                  (expression
-                                    (or_expression
-                                      (and_expression
-                                        (relation_expression
-                                          (unary_expression
-                                            (member_expression
-                                              (variable)
-                                              (method_call
-                                                (identifier)
-                                                (expression
-                                                  (or_expression
-                                                    (and_expression
-                                                      (relation_expression
-                                                        (unary_expression
-                                                          (member_expression
-                                                            (string
-                                                              (string_content))))))))))))))))))))))))))))))))
+                  (variable)
+                  (method_call
+                    (identifier)
+                    (string
+                      (string_content))))))))))))

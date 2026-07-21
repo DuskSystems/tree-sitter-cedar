@@ -28,36 +28,23 @@ unless { resource.account has owner && resource.account.owner == principal };
       (action)
       (resource))
     (condition
-      (expression
-        (or_expression
-          (and_expression
-            (relation_expression
-              (unary_expression
-                (member_expression
-                  (variable)
-                  (field_access
-                    (identifier)))))))))
+      (member_expression
+        (variable)
+        (field_access
+          (identifier))))
     (condition
-      (expression
-        (or_expression
-          (and_expression
-            (relation_expression
-              (unary_expression
-                (member_expression
-                  (variable)
-                  (field_access
-                    (identifier))))
-              (unary_expression
-                (member_expression
-                  (identifier))))
-            (relation_expression
-              (unary_expression
-                (member_expression
-                  (variable)
-                  (field_access
-                    (identifier))
-                  (field_access
-                    (identifier))))
-              (unary_expression
-                (member_expression
-                  (variable))))))))))
+      (binary_expression
+        (has_expression
+          (member_expression
+            (variable)
+            (field_access
+              (identifier)))
+          (identifier))
+        (binary_expression
+          (member_expression
+            (variable)
+            (field_access
+              (identifier))
+            (field_access
+              (identifier)))
+          (variable))))))
